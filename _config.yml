@@ -1,0 +1,8 @@
+plugins:
+  - jekyll-polyglot
+
+languages: ["ca", "es", "en"]
+default_lang: "ca"
+exclude_from_localization: ["javascript", "images", "css", "public", "sitemap", "CNAME"]
+parallel_localization: true
+url: https://supporterapp.github.io
