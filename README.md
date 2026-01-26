@@ -1,7 +1,4 @@
 # supporterapp.github.io
 SupporterApp Website
 
-{% for lang in site.languages %}
-  {% capture lang_href %}{{site.baseurl}}/{% if lang != site.default_lang %}{{ lang }}/{% endif %}{% if page.permalink_lang[lang] != '/' %}{{page.permalink_lang[lang]}}{% endif %}{% endcapture %}
-  <link rel="alternate" hreflang="{{ lang }}" {% static_href %}href="{{ lang_href }}"{% endstatic_href %} />
-{% endfor %}
+
