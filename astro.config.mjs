@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://supporterapp.github.io',
-  base: 'supporterapp.github.io',
+  base: '/',
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: "en",
