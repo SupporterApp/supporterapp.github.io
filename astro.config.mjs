@@ -11,10 +11,10 @@ export default defineConfig({
   site: 'https://supporterapp.github.io',
   integrations: [mdx(), sitemap()],
   i18n: {
-    defaultLocale: "en",
+    defaultLocale: "ca",
     locales: ["ca", "es", "en"],
     routing: {
-        prefixDefaultLocale: false
+        prefixDefaultLocale: true
     }
   },
   vite: {
