@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import { SITE_TITLE } from '../../../consts';
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post); // <--- Canvi clau
 ---
 
 <Layout title={`${post.data.title} - ${SITE_TITLE}`}>
