@@ -2,14 +2,12 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
-// Idiomes: l'actual (per defecte 'ca') 
+// Idiomes: l'actual (per defecte 'ca')
 const currentLocale = Astro.currentLocale || 'ca';
 const basePath = `/${currentLocale}`;
 
-// Obtenim la ruta sense el prefix de l'idioma per poder canviar d'idioma
+// Obtenim la ruta sense el prefix de l'idioma
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
-// Si estem a l'arrel (només '/'), pathWithoutLocale serà ''; llavors l'enllaç per a cada idioma serà simplement '/ca', '/es', '/en'
-// Per a la resta, construïm l'enllaç com /ca/path, /es/path, etc.
 ---
 
 <header>
@@ -45,29 +43,36 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 			</div>
 		</div>
 
-		<!-- Selector d'idioma -->
+		<!-- Selector d'idioma amb banderes PNG -->
 		<div class="lang-selector">
-			<a href={`/ca${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'ca' }]}>CA</a>
-			<a href={`/es${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'es' }]}>ES</a>
-			<a href={`/en${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'en' }]}>EN</a>
+			<a href={`/ca${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'ca' }]} title="Català">
+				<img src="/ca.png" alt="Català" width="32" height="32" />
+			</a>
+			<a href={`/es${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'es' }]} title="Castellà">
+				<img src="/es.png" alt="Castellà" width="32" height="32" />
+			</a>
+			<a href={`/en${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'en' }]} title="English">
+				<img src="/en.png" alt="English" width="32" height="32" />
+			</a>
 		</div>
 	</nav>
 </header>
 
 <style>
-	/* Estils generals del header (els mateixos que tenies) */
+	/* Estils generals del header */
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		background: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(8px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 	}
 	h2 {
 		margin: 0;
 		font-size: 1em;
 	}
-	h2 a,
-	h2 a.active {
+	h2 a {
+		color: white !important;
 		text-decoration: none;
 	}
 	nav {
@@ -78,7 +83,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	nav a,
 	nav button {
 		padding: 1em 0.5em;
-		color: var(--black);
+		color: white !important;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 		background: none;
@@ -88,36 +93,41 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: #4caf50;
+	}
+	.internal-links {
+		display: flex;
+		align-items: center;
+		gap: 0.2em;
 	}
 
-	/* Estils per al selector d'idioma */
+	/* Selector d'idioma */
 	.lang-selector {
 		display: flex;
-		gap: 0.3em;
+		gap: 0.5em;
+		align-items: center;
 	}
 	.lang-selector a {
-		padding: 0.3em 0.6em;
-		border-radius: 4px;
-		border: 1px solid #ccc;
-		text-decoration: none;
-		color: var(--black);
-		font-size: 0.8em;
-		font-weight: bold;
+		display: inline-block;
+		padding: 0.2em;
+		border-radius: 50%;
+		border: 2px solid transparent;
+		transition: border-color 0.2s;
+		line-height: 0;
 	}
 	.lang-selector a.active {
-		background-color: var(--accent);
-		color: white;
-		border-color: var(--accent);
+		border-color: #4caf50;
+		box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
 	}
-	.lang-selector a:hover {
-		background-color: #f0f0f0;
-	}
-	.lang-selector a.active:hover {
-		background-color: var(--accent);
+	.lang-selector img {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		object-fit: cover;
 	}
 
-	/* Estils per als dropdowns (no canviem res) */
+	/* Estils per als dropdowns */
 	.dropdown {
 		position: relative;
 		display: inline-block;
@@ -126,16 +136,17 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		background: none;
 		border: none;
 		font: inherit;
-		color: var(--black);
+		color: white !important;
 		padding: 1em 0.5em;
 		cursor: pointer;
 	}
 	.dropdown-content {
 		display: none;
 		position: absolute;
-		background-color: white;
+		background: rgba(0, 0, 0, 0.9);
+		backdrop-filter: blur(8px);
 		min-width: 160px;
-		box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+		box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 		z-index: 1;
 		top: 100%;
 		left: 0;
@@ -143,28 +154,47 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		overflow: hidden;
 	}
 	.dropdown-content a {
-		color: var(--black);
+		color: white !important;
 		padding: 12px 16px;
 		text-decoration: none;
 		display: block;
 		border-bottom: none;
 	}
 	.dropdown-content a:hover {
-		background-color: #f1f1f1;
+		background-color: rgba(76, 175, 80, 0.3);
 	}
 	.dropdown:hover .dropdown-content,
 	.dropdown:focus-within .dropdown-content {
 		display: block;
 	}
 
-	/* Responsive: en mòbils, podríem ocultar el selector si cal */
-	@media (max-width: 720px) {
-		.lang-selector {
-			gap: 0.2em;
+	/* Responsive */
+	@media (max-width: 920px) {
+		.internal-links {
+			flex-wrap: wrap;
+			gap: 0;
 		}
-		.lang-selector a {
-			font-size: 0.7em;
-			padding: 0.2em 0.4em;
+		nav a,
+		nav button {
+			padding: 0.8em 0.3em;
+			font-size: 0.85rem;
+		}
+		.lang-selector img {
+			width: 28px;
+			height: 28px;
+		}
+	}
+	@media (max-width: 720px) {
+		.internal-links a:not(.dropdown) {
+			display: none;
+		}
+		.dropdown .dropbtn {
+			padding: 0.8em 0.3em;
+			font-size: 0.85rem;
+		}
+		.lang-selector img {
+			width: 24px;
+			height: 24px;
 		}
 	}
 </style>
