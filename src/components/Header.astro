@@ -12,7 +12,12 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 
 <header>
 	<nav>
-		<h2><a href={basePath}>{SITE_TITLE}</a></h2>
+		<h2>
+			<a href={basePath}>
+			<img src="/fans.png" alt="Ffans" width="32" height="32" style="vertical-align: middle; margin-right: 0.5rem; border-radius: 50%;" />
+			{SITE_TITLE}
+			</a>
+		</h2>
 		<div class="internal-links">
 			<HeaderLink href={basePath}>Inici</HeaderLink>
 			<HeaderLink href={`${basePath}/blog`}>Blog</HeaderLink>

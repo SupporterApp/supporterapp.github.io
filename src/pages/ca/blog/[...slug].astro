@@ -1,20 +1,74 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../../layouts/BlogPost.astro';
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import { SITE_TITLE } from '../../../consts';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await render(post);
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<Layout title={`${post.data.title} - ${SITE_TITLE}`}>
+  <article class="blog-post">
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="date">
+        <FormattedDate date={post.data.pubDate} />
+        {post.data.author && <span> • {post.data.author}</span>}
+      </p>
+    </header>
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    color: white;
+  }
+  .blog-post h1 {
+    font-size: 2.5rem;
+    color: white;
+  }
+  .blog-post .date {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .blog-post .content {
+    line-height: 1.8;
+  }
+  .blog-post .content p {
+    margin: 1rem 0;
+  }
+  .blog-post .content a {
+    color: #4caf50;
+  }
+  .blog-post .content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  @media (max-width: 720px) {
+    .blog-post {
+      padding: 1rem;
+    }
+    .blog-post h1 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
