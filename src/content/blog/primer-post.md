@@ -3,9 +3,7 @@ title: 'Benvinguts al blog de Ffans'
 pubDate: 2026-08-05
 description: 'El primer post del blog de Ffans'
 author: 'Equip Ffans'
-image:
-  url: 'https://docs.astro.build/assets/full-logo-light.png'
-  alt: 'El logotip d\'Astro'
+heroImage: 'https://docs.astro.build/assets/full-logo-light.png'
 tags: ["futbol", "fans", "comunitat"]
 ---
 # Benvinguts a Ffans!
