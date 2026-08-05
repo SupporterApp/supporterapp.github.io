@@ -1,0 +1,83 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import { nom, adreca, email, ciutat, dataRevisio } from '../../../data/empresa';
+---
+
+<DocLayout title="Termes i Condicions d'Ús">
+  <style>
+    .terms-container h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .terms-container h2 {
+      color: #2c3e50;
+      margin-top: 25px;
+    }
+    .terms-container .highlight {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+    .terms-container .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+  </style>
+
+  <div class="terms-container">
+    <h1>Termes i Condicions d'Ús</h1>
+    <p><strong>Data d'actualització:</strong> {dataRevisio}</p>
+
+    <p>Aquests Termes i Condicions regulen l'ús de l'aplicació mòbil "Supporters App" (d'ara endavant, "l'Aplicació"), propietat de {nom}.</p>
+
+    <div class="highlight">
+      <h2>1. Acceptació dels termes</h2>
+      <p>En registrar-se i utilitzar l'Aplicació, l'usuari accepta íntegrament aquests Termes i Condicions. Si no hi està d'acord, no ha de fer ús de l'Aplicació.</p>
+    </div>
+
+    <h2>2. Registre i àlies</h2>
+    <p>Per utilitzar l'Aplicació, l'usuari ha de crear un compte proporcionant un <strong>àlies</strong> vàlid. L'àlies no pot ser ofensiu, difamatori o infringir drets de tercers. El responsable es reserva el dret a eliminar qualsevol àlies que incompleixi aquesta norma.</p>
+
+    <h2>3. Ús de l'Aplicació</h2>
+    <p>L'usuari es compromet a utilitzar l'Aplicació de manera lícita i respectant els drets de tercers. Queda prohibit:</p>
+    <ul>
+      <li>Utilitzar l'Aplicació per a activitats fraudulentes o il·legals.</li>
+      <li>Intentar accedir a àrees restringides del sistema.</li>
+      <li>Copiar, modificar o distribuir el codi o contingut de l'Aplicació sense autorització.</li>
+      <li>Utilitzar l'Aplicació per enviar spam o contingut maliciós.</li>
+    </ul>
+
+    <h2>4. Funcionalitat de geolocalització</h2>
+    <p>La funció de verificació d'assistència requereix accés a la ubicació GPS de l'usuari. Aquesta funció s'activa només amb el consentiment explícit de l'usuari. La ubicació només es compara amb les coordenades de l'estadi per verificar l'assistència; <strong>no s'emmagatzema un historial de moviments</strong> de l'usuari.</p>
+
+    <h2>5. Notificacions push</h2>
+    <p>L'Aplicació utilitza Firebase Cloud Messaging (FCM) per enviar notificacions push relacionades amb esdeveniments, recordatoris o canvis d'última hora. L'usuari pot desactivar aquestes notificacions des de la configuració del seu dispositiu en qualsevol moment.</p>
+
+    <h2>6. Limitació de responsabilitat</h2>
+    <p>El responsable no es fa responsable dels danys derivats de:</p>
+    <ul>
+      <li>Interrupcions o errors en el servei deguts a causes alienes a la seva voluntat (caigudes de servidors, manteniment, etc.).</li>
+      <li>Ús indegut de l'Aplicació per part de l'usuari.</li>
+      <li>Veracitat de la informació proporcionada per tercers (equips, horaris, etc.).</li>
+    </ul>
+    <p>L'Aplicació es proporciona "tal qual" i no es garanteix que estigui lliure d'errors o que el servei sigui ininterromput.</p>
+
+    <h2>7. Modificacions dels termes</h2>
+    <p>El responsable es reserva el dret a modificar aquests Termes i Condicions en qualsevol moment. Les modificacions seran notificades a l'usuari a través de l'Aplicació o per correu electrònic. L'ús continuat de l'Aplicació després de la publicació dels canvis implica l'acceptació dels nous termes.</p>
+
+    <h2>8. Resolució del compte</h2>
+    <p>L'usuari pot sol·licitar la baixa del seu compte en qualsevol moment enviant un correu a <a href={`mailto:${email}`}>{email}</a>. El responsable podrà suspendre o eliminar comptes que incompleixin aquestes condicions.</p>
+
+    <h2>9. Llei aplicable</h2>
+    <p>Aquests Termes es regeixen per la legislació espanyola. Qualsevol controvèrsia es resoldrà davant els jutjats de {ciutat}.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. Tots els drets reservats.</p>
+    </div>
+  </div>
+</DocLayout>

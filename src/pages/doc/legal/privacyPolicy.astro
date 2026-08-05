@@ -1,0 +1,101 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import { nom, nif, adreca, email, dataRevisio } from '../../../data/empresa';
+---
+
+<DocLayout title="Política de Privacitat">
+  <style>
+    .privacy-container h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .privacy-container h2 {
+      color: #2c3e50;
+      margin-top: 25px;
+    }
+    .privacy-container .highlight {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      margin: 20px 0;
+    }
+    .privacy-container .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+  </style>
+
+  <div class="privacy-container">
+    <h1>Política de Privacitat</h1>
+    <p><strong>Data d'actualització:</strong> {dataRevisio}</p>
+
+    <p>Aquesta Política de Privacitat explica com {nom} (d'ara endavant, "el responsable") tracta les dades personals dels usuaris de l'aplicació mòbil "Supporters App".</p>
+
+    <div class="highlight">
+      <h2>1. Responsable del tractament</h2>
+      <ul>
+        <li><strong>Responsable:</strong> {nom}</li>
+        <li><strong>NIF:</strong> {nif}</li>
+        <li><strong>Adreça:</strong> {adreca}</li>
+        <li><strong>Correu de contacte (Drets ARCO):</strong> <a href={`mailto:${email}`}>{email}</a></li>
+      </ul>
+    </div>
+
+    <h2>2. Dades que recollim</h2>
+    <p>Recollim les següents dades personals:</p>
+    <ul>
+      <li><strong>Àlies:</strong> Un nom d'usuari escollit lliurement per l'usuari.</li>
+      <li><strong>Identificador intern:</strong> Un codi aleatori generat pel sistema per identificar l'usuari de manera única.</li>
+      <li><strong>Dades de geolocalització:</strong> Coordenades GPS de l'usuari (només quan es fa servir la funció de verificació d'assistència a l'estadi).</li>
+      <li><strong>Dades d'ús:</strong> Estadístiques anònimes de navegació i interacció amb l'aplicació (mitjançant Firebase Analytics).</li>
+      <li><strong>Token de notificació:</strong> Identificador per a l'enviament de notificacions push (FCM).</li>
+    </ul>
+
+    <h2>3. Finalitats del tractament</h2>
+    <p>Les dades recollides es tracten amb les següents finalitats:</p>
+    <ul>
+      <li>Gestionar el registre i la identificació de l'usuari dins de l'aplicació.</li>
+      <li>Verificar l'assistència a esdeveniments esportics comparant la ubicació de l'usuari amb les coordenades de l'estadi (utilitzant un servei de càlcul geoespacial).</li>
+      <li>Enviar notificacions push relacionades amb l'esdeveniment (recordatoris, canvis d'horari, etc.).</li>
+      <li>Analitzar l'ús de l'aplicació per millorar l'experiència de l'usuari.</li>
+    </ul>
+
+    <h2>4. Base legal</h2>
+    <p>La base legal per al tractament de les dades és el <strong>consentiment exprés</strong> de l'usuari (article 6.1.a del RGPD), que es manifesta en el moment del registre i en l'acceptació d'aquesta política.</p>
+    <p>Per a la geolocalització, es demana un consentiment addicional i específic abans d'activar la funció.</p>
+
+    <h2>5. Encarregats del tractament (proveïdors)</h2>
+    <p>El responsable utilitza els serveis de les següents empreses per al tractament de dades:</p>
+    <ul>
+      <li><strong>Google LLC (Firebase):</strong> Autenticació, base de dades Firestore, Remote Config, FCM (notificacions) i Analytics. Informació a: <a href="https://firebase.google.com/privacy" target="_blank">https://firebase.google.com/privacy</a></li>
+      <li><strong>MongoDB, Inc. (Atlas):</strong> Base de dades geoespacial per a la comprovació de ubicacions. Informació a: <a href="https://www.mongodb.com/legal/privacy-policy" target="_blank">https://www.mongodb.com/legal/privacy-policy</a></li>
+    </ul>
+
+    <h2>6. Transferències internacionals</h2>
+    <p>Les dades emmagatzemades a Firebase es troben, principalment, a servidors dins de la Unió Europea. Tot i això, Google LLC és una empresa amb seu als Estats Units, per la qual cosa existeix una transferència internacional de dades.</p>
+    <p>Aquesta transferència està coberta per les <strong>Clàusules Contractuals Tipus (SCC)</strong> aprovades per la Comissió Europea, que garanteixen un nivell de protecció adequat. L'usuari pot sol·licitar més informació sobre aquestes garanties a l'adreça de correu indicada.</p>
+
+    <h2>7. Conservació de les dades</h2>
+    <p>Les dades es conservaran mentre l'usuari mantingui el compte actiu. Passats <strong>2 anys</strong> d'inactivitat, el responsable podrà procedir a l'eliminació de les dades personals, tret que l'usuari sol·liciti la baixa abans.</p>
+
+    <h2>8. Drets de l'usuari</h2>
+    <p>L'usuari té dret a exercir els següents drets en qualsevol moment, enviant un escrit a {email}:</p>
+    <ul>
+      <li><strong>Accés:</strong> Saber quines dades tenim sobre tu.</li>
+      <li><strong>Rectificació:</strong> Modificar dades inexactes.</li>
+      <li><strong>Supressió (dret a l'oblit):</strong> Eliminar les teves dades.</li>
+      <li><strong>Limitació del tractament:</strong> Restringir l'ús de les teves dades.</li>
+      <li><strong>Oposició:</strong> Oposar-te al tractament per a finalitats concretes.</li>
+      <li><strong>Portabilitat:</strong> Rebre les dades en un format estructurat i llegible.</li>
+    </ul>
+    <p>També tens dret a presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (AEPD) si consideres que no hem tractat correctament les teves dades.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. Tots els drets reservats.</p>
+    </div>
+  </div>
+</DocLayout>
