@@ -71,6 +71,8 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		background: rgba(0, 0, 0, 0.7);
 		backdrop-filter: blur(8px);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		position: relative;
+		z-index: 100; /* Assegura que el header estigui per sobre */
 	}
 	h2 {
 		margin: 0;
@@ -136,6 +138,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	.dropdown {
 		position: relative;
 		display: inline-block;
+		z-index: 100; /* Afegit */
 	}
 	.dropbtn {
 		background: none;
@@ -152,7 +155,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		backdrop-filter: blur(8px);
 		min-width: 160px;
 		box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-		z-index: 1;
+		z-index: 1000; /* Pujat a 1000 */
 		top: 100%;
 		left: 0;
 		border-radius: 4px;
