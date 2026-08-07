@@ -1,15 +1,17 @@
 ---
-import DocLayout from '../../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 ---
 
-<DocLayout title="Benvingut a fans!">
+<Layout title="Benvingut a fans!">
   <style>
     .help-container {
-      background-color: #1e1e1e;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 12px;
       color: #f0f0f0;
-      padding: 20px;
-      border-radius: 8px;
       line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .help-container h1 {
       color: #4caf50;
@@ -65,4 +67,4 @@ import DocLayout from '../../../layouts/Layout.astro';
     <h2>📅 Esdeveniments</h2>
     <p>Properament tindrem esdeveniments especials que no estan lligats a un partit en directe. Us avisarem quan estiguin disponibles.</p>
   </div>
-</DocLayout>
+</Layout>

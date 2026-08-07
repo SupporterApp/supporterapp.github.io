@@ -1,10 +1,18 @@
 ---
-import DocLayout from '../../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { nom, nif, adreca, email, dataRevisio } from '../../../data/empresa';
 ---
 
-<DocLayout title="Política de Privacitat">
+<Layout title="Política de Privacitat">
   <style>
+    .privacy-container {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+    }
     .privacy-container h1 {
       color: #1a1a1a;
       border-bottom: 2px solid #eee;
@@ -26,6 +34,9 @@ import { nom, nif, adreca, email, dataRevisio } from '../../../data/empresa';
       color: #777;
       border-top: 1px solid #ddd;
       padding-top: 20px;
+    }
+    .privacy-container a {
+      color: #1a73e8;
     }
   </style>
 
@@ -98,4 +109,4 @@ import { nom, nif, adreca, email, dataRevisio } from '../../../data/empresa';
       <p>© {dataRevisio} - {nom}. Tots els drets reservats.</p>
     </div>
   </div>
-</DocLayout>
+</Layout>
