@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
@@ -95,7 +96,7 @@ const posts = (await getCollection('blog')).sort(
 					<li>
 						<a href={`/ca/blog/${post.id}/`}>
 							{post.data.heroImage && (
-								<img src={post.data.heroImage} alt="" width="720" height="360" />
+								<Image width={720} height={360} src={post.data.heroImage} alt="" />
 							)}
 							<h4 class="title">{post.data.title}</h4>
 							<p class="date">
