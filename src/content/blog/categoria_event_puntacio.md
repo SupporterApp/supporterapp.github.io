@@ -1,7 +1,7 @@
 ---
-title: 'Benvinguts al blog de Ffans'
-pubDate: 2026-08-05
-description: 'El primer post del blog de Ffans'
+title: 'Categories, events i puntuació'
+pubDate: 2026-08-08
+description: 'Què i com valorem?'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat","puntuacio","events"]
 ---
