@@ -1,10 +1,12 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import { useTranslations } from '../i18n/ui';
 
 // Idiomes: l'actual (per defecte 'ca')
-const currentLocale = Astro.currentLocale || 'ca';
+const currentLocale = (Astro.currentLocale as keyof typeof ui) || 'ca';
 const basePath = `/${currentLocale}`;
+const t = useTranslations(currentLocale);
 
 // Obtenim la ruta sense el prefix de l'idioma
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
@@ -19,31 +21,31 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 			</a>
 		</h2>
 		<div class="internal-links">
-			<HeaderLink href={basePath}>Inici</HeaderLink>
-			<HeaderLink href={`${basePath}/blog`}>Blog</HeaderLink>
-			<HeaderLink href={`${basePath}/about`}>Sobre nosaltres</HeaderLink>
+			<HeaderLink href={basePath}>{t('nav.home')}</HeaderLink>
+			<HeaderLink href={`${basePath}/blog`}>{t('nav.blog')}</HeaderLink>
+			<HeaderLink href={`${basePath}/about`}>{t('nav.about')}</HeaderLink>
 
 			<!-- Menú desplegable: Legal -->
 			<div class="dropdown">
 				<button class="dropbtn" aria-haspopup="true" aria-expanded="false">
-					Legal ▾
+					{t('nav.legal')} ▾
 				</button>
 				<div class="dropdown-content" role="menu">
-					<a href={`${basePath}/legal/privacyPolicy`} role="menuitem">Privacitat</a>
-					<a href={`${basePath}/legal/legalNotice`} role="menuitem">Avís Legal</a>
-					<a href={`${basePath}/legal/termsOfUse`} role="menuitem">Termes</a>
+					<a href={`${basePath}/legal/privacyPolicy`} role="menuitem">{t('legal.privacy')}</a>
+					<a href={`${basePath}/legal/legalNotice`} role="menuitem">{t('legal.notice')}</a>
+					<a href={`${basePath}/legal/termsOfUse`} role="menuitem">{t('legal.terms')}</a>
 				</div>
 			</div>
 
 			<!-- Menú desplegable: Ajuda -->
 			<div class="dropdown">
 				<button class="dropbtn" aria-haspopup="true" aria-expanded="false">
-					Ajuda ▾
+					{t('nav.help')} ▾
 				</button>
 				<div class="dropdown-content" role="menu">
-					<a href={`${basePath}/help/home_page`} role="menuitem">Inici</a>
-					<a href={`${basePath}/help/attend_match`} role="menuitem">Assistència</a>
-					<a href={`${basePath}/help/progress_page`} role="menuitem">Progrés</a>
+					<a href={`${basePath}/help/home_page`} role="menuitem">{t('help.home')}</a>
+					<a href={`${basePath}/help/attend_match`} role="menuitem">{t('help.attend')}</a>
+					<a href={`${basePath}/help/progress_page`} role="menuitem">{t('help.progress')}</a>
 				</div>
 			</div>
 		</div>
