@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="¿Cómo funciona la puntuación y los niveles?">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>¿Cómo funciona la puntuación y los niveles?</h1>
+    <p>En la sección <strong>Puntuación/Nivel</strong> podrás ver toda tu actividad como aficionado. Cada vez que asistes a un partido y completas los eventos que se desarrollan, ganas puntos que te permiten subir de nivel y desbloquear insignias.</p>
+
+    <hr>
+
+    <h2>📊 ¿Cómo se calcula tu puntuación?</h2>
+    <ul>
+      <li><strong>Asistencia al partido:</strong> Recibirás puntos por cada partido al que asistas. La puntuación se cuenta cuando el partido ha comenzado la segunda parte o cuando completas algún evento dentro del partido.</li>
+      <li><strong>Eventos de apoyo (canciones):</strong> Para completar un evento de apoyo, como cantar el himno del equipo, debes hacer sonar la canción durante al menos 20 segundos. Esto te dará puntos adicionales.</li>
+      <li><strong>Eventos de conocimiento (cuestionarios):</strong> Respondiendo correctamente las preguntas de los cuestionarios, y cuanto más rápido lo hagas, más puntos obtendrás.</li>
+    </ul>
+
+    <h2>🏅 Niveles e insignias</h2>
+    <p>A medida que acumules puntos, irás subiendo de nivel. Cada nivel tiene un nombre y un icono diferentes. Además, podrás conseguir insignias especiales al superar determinadas metas (por ejemplo, haber asistido a 10 partidos, haber cantado 20 canciones, etc.). En la pestaña <em>Insignias</em> podrás ver tu progreso hacia cada una de ellas.</p>
+
+    <h2>📈 Clasificación</h2>
+    <p>En la pestaña <em>Clasificación</em> puedes comparar tu puntuación con el resto de seguidores de tu equipo. Solo se muestran los 50 mejores por equipos, para fomentar una competición sana.</p>
+
+    <p>¡Recuerda que cuanto más participes, más puntuación conseguirás y más arriba subirás en el ranking! ¡Sigue animando a tu equipo!</p>
+  </div>
+</Layout>

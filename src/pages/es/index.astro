@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Ffans - Fans del Fútbol">
+  <div class="hero">
+    <h1 class="main-title">Ffans: Fans del Fútbol</h1>
+    <p class="subtitle">Eres el alma del fútbol. Ahora tienes tu propia puntuación.</p>
+    <p class="highlight">Nunca se había medido la pasión de los aficionados. Hasta ahora.</p>
+    <p class="description">
+      Ffans es la primera aplicación que te pone a ti, el aficionado, en el centro del espectáculo.
+      No hay resultados ni fichajes. Solo hay personas como tú, que viven el fútbol con intensidad.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+  }
+  .main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  }
+  .subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: #f0f0f0;
+  }
+  .highlight {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ffb74d;
+    margin-bottom: 1.5rem;
+  }
+  .description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #e0e0e0;
+  }
+  @media (max-width: 720px) {
+    .main-title {
+      font-size: 2.2rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+    }
+  }
+</style>

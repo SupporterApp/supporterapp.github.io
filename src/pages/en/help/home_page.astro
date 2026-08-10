@@ -1,0 +1,83 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to fans!">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Welcome to fans!</h1>
+    <p>This app is made for you, the fans who make this sport great. We want to help you enjoy your team’s matches even more.</p>
+
+    <hr>
+
+    <h2>📝 Registration process</h2>
+    <p>To get started, you must:</p>
+    <ul>
+      <li>Choose your favorite team.</li>
+      <li>Pick an alias (name) that we will use to address you and that other fans will know you by.</li>
+      <li>Accept the terms of use and the privacy policy.</li>
+    </ul>
+
+    <h2>👤 Profile</h2>
+    <p>In this section you can view your registered data.</p>
+
+    <h2>🏆 Score and level</h2>
+    <p>Every time you attend a match and complete events, you earn points. As you accumulate points, you will level up and unlock badges. Check the Score/Level section to track your progress.</p>
+
+    <h2>📍 Go to the stadium</h2>
+    <p>When you are inside the stadium, tap this option. We will ask for location permission to confirm your presence. Once confirmed, you will be able to see all the match events and participate.</p>
+
+    <h2>📅 Events</h2>
+    <p>Soon we will have special events that are not tied to a live match. We will notify you when they are available.</p>
+  </div>
+</Layout>

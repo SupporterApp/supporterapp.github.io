@@ -1,0 +1,83 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="¡Bienvenido a fans!">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>¡Bienvenido a fans!</h1>
+    <p>Esta aplicación está hecha para vosotros, los aficionados que hacéis grande el deporte. Queremos que os ayude a disfrutar aún más de los partidos de vuestro equipo.</p>
+
+    <hr>
+
+    <h2>📝 Proceso de registro</h2>
+    <p>Para empezar, deberéis:</p>
+    <ul>
+      <li>Indicar cuál es vuestro equipo favorito.</li>
+      <li>Elegir un alias (nombre) con el que os dirigiremos y os conocerán el resto de aficionados.</li>
+      <li>Aceptar los términos de uso y la política de privacidad.</li>
+    </ul>
+
+    <h2>👤 Perfil</h2>
+    <p>En esta sección podréis ver los datos que habéis registrado.</p>
+
+    <h2>🏆 Puntuación y nivel</h2>
+    <p>Cada vez que asistís a un partido y completáis los eventos, ganáis puntos. A medida que acumuláis puntos, subiréis de nivel y podréis desbloquear insignias. Consultad la sección de Puntuación/Nivel para seguir vuestro progreso.</p>
+
+    <h2>📍 Acceder al estadio</h2>
+    <p>Cuando estéis dentro del campo, pulsad esta opción. Os pediremos permiso para la ubicación para confirmar vuestra presencia. Una vez confirmada, podréis ver todos los eventos del partido y participar.</p>
+
+    <h2>📅 Eventos</h2>
+    <p>Próximamente tendremos eventos especiales que no están ligados a un partido en directo. Os avisaremos cuando estén disponibles.</p>
+  </div>
+</Layout>

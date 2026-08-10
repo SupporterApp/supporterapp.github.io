@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { nom, adreca, email, ciutat, dataRevisio } from '../../../data/empresa';
+---
+
+<Layout title="Términos y Condiciones de Uso">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #2c3e50;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+      text-decoration: underline;
+    }
+    .doc-card .highlight {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 6px solid #f1c40f;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .doc-card .footer {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Términos y Condiciones de Uso</h1>
+    <p><strong>Fecha de actualización:</strong> {dataRevisio}</p>
+
+    <p>Estos Términos y Condiciones regulan el uso de la aplicación móvil "Supporters App" (en adelante, "la Aplicación"), propiedad de {nom}.</p>
+
+    <div class="highlight">
+      <h2>1. Aceptación de los términos</h2>
+      <p>Al registrarse y utilizar la Aplicación, el usuario acepta íntegramente estos Términos y Condiciones. Si no está de acuerdo, no debe hacer uso de la Aplicación.</p>
+    </div>
+
+    <h2>2. Registro y alias</h2>
+    <p>Para utilizar la Aplicación, el usuario debe crear una cuenta proporcionando un <strong>alias</strong> válido. El alias no puede ser ofensivo, difamatorio o infringir derechos de terceros. El responsable se reserva el derecho a eliminar cualquier alias que incumpla esta norma.</p>
+
+    <h2>3. Uso de la Aplicación</h2>
+    <p>El usuario se compromete a utilizar la Aplicación de manera lícita y respetando los derechos de terceros. Queda prohibido:</p>
+    <ul>
+      <li>Utilizar la Aplicación para actividades fraudulentas o ilegales.</li>
+      <li>Intentar acceder a áreas restringidas del sistema.</li>
+      <li>Copiar, modificar o distribuir el código o contenido de la Aplicación sin autorización.</li>
+      <li>Utilizar la Aplicación para enviar spam o contenido malicioso.</li>
+    </ul>
+
+    <h2>4. Funcionalidad de geolocalización</h2>
+    <p>La función de verificación de asistencia requiere acceso a la ubicación GPS del usuario. Esta función se activa solo con el consentimiento explícito del usuario. La ubicación solo se compara con las coordenadas del estadio para verificar la asistencia; <strong>no se almacena un historial de movimientos</strong> del usuario.</p>
+
+    <h2>5. Notificaciones push</h2>
+    <p>La Aplicación utiliza Firebase Cloud Messaging (FCM) para enviar notificaciones push relacionadas con eventos, recordatorios o cambios de última hora. El usuario puede desactivar estas notificaciones desde la configuración de su dispositivo en cualquier momento.</p>
+
+    <h2>6. Limitación de responsabilidad</h2>
+    <p>El responsable no se hace responsable de los daños derivados de:</p>
+    <ul>
+      <li>Interrupciones o errores en el servicio debidos a causas ajenas a su voluntad (caídas de servidores, mantenimiento, etc.).</li>
+      <li>Uso indebido de la Aplicación por parte del usuario.</li>
+      <li>Veracidad de la información proporcionada por terceros (equipos, horarios, etc.).</li>
+    </ul>
+    <p>La Aplicación se proporciona "tal cual" y no se garantiza que esté libre de errores o que el servicio sea ininterrumpido.</p>
+
+    <h2>7. Modificaciones de los términos</h2>
+    <p>El responsable se reserva el derecho a modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán notificadas al usuario a través de la Aplicación o por correo electrónico. El uso continuado de la Aplicación después de la publicación de los cambios implica la aceptación de los nuevos términos.</p>
+
+    <h2>8. Resolución del cuenta</h2>
+    <p>El usuario puede solicitar la baja de su cuenta en cualquier momento enviando un correo a <a href={`mailto:${email}`}>{email}</a>. El responsable podrá suspender o eliminar cuentas que incumplan estas condiciones.</p>
+
+    <h2>9. Ley aplicable</h2>
+    <p>Estos Términos se rigen por la legislación española. Cualquier controversia se resolverá ante los juzgados de {ciutat}.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</Layout>

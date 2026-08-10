@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { nom, adreca, email, ciutat, dataRevisio } from '../../../data/empresa';
+---
+
+<Layout title="Terms and Conditions of Use">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #2c3e50;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+      text-decoration: underline;
+    }
+    .doc-card .highlight {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 6px solid #f1c40f;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .doc-card .footer {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Terms and Conditions of Use</h1>
+    <p><strong>Last updated:</strong> {dataRevisio}</p>
+
+    <p>These Terms and Conditions govern the use of the "Supporters App" mobile application (hereinafter, "the Application"), owned by {nom}.</p>
+
+    <div class="highlight">
+      <h2>1. Acceptance of terms</h2>
+      <p>By registering and using the Application, the user fully accepts these Terms and Conditions. If you do not agree, you must not use the Application.</p>
+    </div>
+
+    <h2>2. Registration and alias</h2>
+    <p>To use the Application, the user must create an account by providing a valid <strong>alias</strong>. The alias must not be offensive, defamatory, or infringe third-party rights. The controller reserves the right to remove any alias that violates this rule.</p>
+
+    <h2>3. Use of the Application</h2>
+    <p>The user agrees to use the Application lawfully and respecting third-party rights. The following is prohibited:</p>
+    <ul>
+      <li>Using the Application for fraudulent or illegal activities.</li>
+      <li>Attempting to access restricted areas of the system.</li>
+      <li>Copying, modifying, or distributing the Application's code or content without authorization.</li>
+      <li>Using the Application to send spam or malicious content.</li>
+    </ul>
+
+    <h2>4. Geolocation feature</h2>
+    <p>The attendance verification feature requires access to the user's GPS location. This feature is activated only with the user's explicit consent. The location is only compared with stadium coordinates to verify attendance; <strong>no movement history</strong> is stored.</p>
+
+    <h2>5. Push notifications</h2>
+    <p>The Application uses Firebase Cloud Messaging (FCM) to send push notifications related to events, reminders, or last-minute changes. The user can disable these notifications from their device settings at any time.</p>
+
+    <h2>6. Limitation of liability</h2>
+    <p>The controller is not liable for damages arising from:</p>
+    <ul>
+      <li>Service interruptions or errors due to causes beyond its control (server outages, maintenance, etc.).</li>
+      <li>Improper use of the Application by the user.</li>
+      <li>Accuracy of information provided by third parties (teams, schedules, etc.).</li>
+    </ul>
+    <p>The Application is provided "as is" and no guarantee is made that it is error-free or that the service will be uninterrupted.</p>
+
+    <h2>7. Modifications to the terms</h2>
+    <p>The controller reserves the right to modify these Terms and Conditions at any time. Changes will be notified to the user via the Application or by email. Continued use of the Application after the changes are posted implies acceptance of the new terms.</p>
+
+    <h2>8. Account termination</h2>
+    <p>The user may request account deletion at any time by sending an email to <a href={`mailto:${email}`}>{email}</a>. The controller may suspend or delete accounts that violate these conditions.</p>
+
+    <h2>9. Applicable law</h2>
+    <p>These Terms are governed by Spanish law. Any dispute shall be resolved before the courts of {ciutat}.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. All rights reserved.</p>
+    </div>
+  </div>
+</Layout>

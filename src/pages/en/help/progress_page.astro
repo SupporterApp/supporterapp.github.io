@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="How do scoring and levels work?">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>How do scoring and levels work?</h1>
+    <p>In the <strong>Score/Level</strong> section you can see all your activity as a fan. Every time you attend a match and complete the events that take place, you earn points that allow you to level up and unlock badges.</p>
+
+    <hr>
+
+    <h2>📊 How is your score calculated?</h2>
+    <ul>
+      <li><strong>Match attendance:</strong> You will receive points for each match you attend. The score is counted when the match has started the second half or when you complete any event within the match.</li>
+      <li><strong>Support events (songs):</strong> To complete a support event, such as singing the team anthem, you must play the song for at least 20 seconds. This will give you bonus points.</li>
+      <li><strong>Knowledge events (quizzes):</strong> By correctly answering quiz questions, and the faster you do it, the more points you will get.</li>
+    </ul>
+
+    <h2>🏅 Levels and badges</h2>
+    <p>As you accumulate points, you will level up. Each level has a different name and icon. Additionally, you can earn special badges by reaching certain milestones (e.g., attending 10 matches, singing 20 songs, etc.). In the <em>Badges</em> tab you can see your progress towards each of them.</p>
+
+    <h2>📈 Ranking</h2>
+    <p>In the <em>Ranking</em> tab you can compare your score with other fans of your team. Only the top 50 per team are shown to encourage healthy competition.</p>
+
+    <p>Remember, the more you participate, the more points you earn and the higher you will climb in the ranking! Keep cheering for your team!</p>
+  </div>
+</Layout>

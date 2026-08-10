@@ -1,0 +1,126 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { nom, nif, adreca, email, dataRevisio } from '../../../data/empresa';
+---
+
+<Layout title="Política de Privacidad">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #2c3e50;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+      text-decoration: underline;
+    }
+    .doc-card .highlight {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 6px solid #e74c3c;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .doc-card .footer {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Política de Privacidad</h1>
+    <p><strong>Fecha de actualización:</strong> {dataRevisio}</p>
+
+    <p>Esta Política de Privacidad explica cómo {nom} (en adelante, "el responsable") trata los datos personales de los usuarios de la aplicación móvil "Supporters App".</p>
+
+    <div class="highlight">
+      <h2>1. Responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> {nom}</li>
+        <li><strong>NIF:</strong> {nif}</li>
+        <li><strong>Dirección:</strong> {adreca}</li>
+        <li><strong>Correo de contacto (Derechos ARCO):</strong> <a href={`mailto:${email}`}>{email}</a></li>
+      </ul>
+    </div>
+
+    <h2>2. Datos que recopilamos</h2>
+    <p>Recopilamos los siguientes datos personales:</p>
+    <ul>
+      <li><strong>Alias:</strong> Un nombre de usuario elegido libremente por el usuario.</li>
+      <li><strong>Identificador interno:</strong> Un código aleatorio generado por el sistema para identificar al usuario de manera única.</li>
+      <li><strong>Datos de geolocalización:</strong> Coordenadas GPS del usuario (solo cuando se utiliza la función de verificación de asistencia al estadio).</li>
+      <li><strong>Datos de uso:</strong> Estadísticas anónimas de navegación e interacción con la aplicación (mediante Firebase Analytics).</li>
+      <li><strong>Token de notificación:</strong> Identificador para el envío de notificaciones push (FCM).</li>
+    </ul>
+
+    <h2>3. Finalidades del tratamiento</h2>
+    <p>Los datos recopilados se tratan con las siguientes finalidades:</p>
+    <ul>
+      <li>Gestionar el registro y la identificación del usuario dentro de la aplicación.</li>
+      <li>Verificar la asistencia a eventos deportivos comparando la ubicación del usuario con las coordenadas del estadio (utilizando un servicio de cálculo geoespacial).</li>
+      <li>Enviar notificaciones push relacionadas con el evento (recordatorios, cambios de horario, etc.).</li>
+      <li>Analizar el uso de la aplicación para mejorar la experiencia del usuario.</li>
+    </ul>
+
+    <h2>4. Base legal</h2>
+    <p>La base legal para el tratamiento de los datos es el <strong>consentimiento expreso</strong> del usuario (artículo 6.1.a del RGPD), que se manifiesta en el momento del registro y en la aceptación de esta política.</p>
+    <p>Para la geolocalización, se solicita un consentimiento adicional y específico antes de activar la función.</p>
+
+    <h2>5. Encargados del tratamiento (proveedores)</h2>
+    <p>El responsable utiliza los servicios de las siguientes empresas para el tratamiento de datos:</p>
+    <ul>
+      <li><strong>Google LLC (Firebase):</strong> Autenticación, base de datos Firestore, Remote Config, FCM (notificaciones) y Analytics. Información en: <a href="https://firebase.google.com/privacy" target="_blank">https://firebase.google.com/privacy</a></li>
+      <li><strong>MongoDB, Inc. (Atlas):</strong> Base de datos geoespacial para la comprobación de ubicaciones. Información en: <a href="https://www.mongodb.com/legal/privacy-policy" target="_blank">https://www.mongodb.com/legal/privacy-policy</a></li>
+    </ul>
+
+    <h2>6. Transferencias internacionales</h2>
+    <p>Los datos almacenados en Firebase se encuentran, principalmente, en servidores dentro de la Unión Europea. Sin embargo, Google LLC es una empresa con sede en los Estados Unidos, por lo que existe una transferencia internacional de datos.</p>
+    <p>Esta transferencia está cubierta por las <strong>Cláusulas Contractuales Tipo (SCC)</strong> aprobadas por la Comisión Europea, que garantizan un nivel de protección adecuado. El usuario puede solicitar más información sobre estas garantías en la dirección de correo indicada.</p>
+
+    <h2>7. Conservación de los datos</h2>
+    <p>Los datos se conservarán mientras el usuario mantenga la cuenta activa. Pasados <strong>2 años</strong> de inactividad, el responsable podrá proceder a la eliminación de los datos personales, a menos que el usuario solicite la baja antes.</p>
+
+    <h2>8. Derechos del usuario</h2>
+    <p>El usuario tiene derecho a ejercer los siguientes derechos en cualquier momento, enviando un escrito a {email}:</p>
+    <ul>
+      <li><strong>Acceso:</strong> Saber qué datos tenemos sobre ti.</li>
+      <li><strong>Rectificación:</strong> Modificar datos inexactos.</li>
+      <li><strong>Supresión (derecho al olvido):</strong> Eliminar tus datos.</li>
+      <li><strong>Limitación del tratamiento:</strong> Restringir el uso de tus datos.</li>
+      <li><strong>Oposición:</strong> Oponerte al tratamiento para fines concretos.</li>
+      <li><strong>Portabilidad:</strong> Recibir los datos en un formato estructurado y legible.</li>
+    </ul>
+    <p>También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) si consideras que no hemos tratado correctamente tus datos.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</Layout>

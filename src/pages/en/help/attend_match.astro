@@ -1,0 +1,79 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Pay attention to the events">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Pay attention to the events</h1>
+    <p>Once you have confirmed your attendance at the stadium, you will see the list of events that will appear during the match. Each event will give you the chance to participate and earn points.</p>
+
+    <hr>
+
+    <h2>🎵 Songs and support</h2>
+    <p>When a song is played (e.g., the team anthem), you must <span class="highlight">play it for at least 20 seconds</span> to complete the event. If you do, you will earn bonus points. The song will activate automatically at the scheduled time; stay tuned!</p>
+
+    <h2>❓ Knowledge quizzes</h2>
+    <p>You will be asked questions about the sport and the specific match. You must <span class="highlight">answer correctly</span> to complete the event. The faster you answer, the more points you will get.</p>
+
+    <h2>🕒 Time limit</h2>
+    <p>Some events have a start and end time (e.g., they can only be completed during a specific time window). Make sure to participate before the deadline.</p>
+
+    <h2>✅ Match attendance</h2>
+    <p>Match attendance will be automatically completed when:</p>
+    <ul>
+      <li>The second half has started, or</li>
+      <li>You complete any of the match events.</li>
+    </ul>
+  </div>
+</Layout>

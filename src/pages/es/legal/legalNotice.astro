@@ -1,0 +1,86 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { nom, nif, adreca, email, ciutat, dataRevisio } from '../../../data/empresa';
+---
+
+<Layout title="Aviso Legal">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #1a1a1a;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #2c3e50;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+      text-decoration: underline;
+    }
+    .doc-card .highlight {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 6px solid #3498db;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .doc-card .footer {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Aviso Legal</h1>
+    <p><strong>Fecha de actualización:</strong> {dataRevisio}</p>
+
+    <div class="highlight">
+      <h2>1. Identificación del responsable</h2>
+      <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico (LSSI), se facilita la siguiente información:</p>
+      <ul>
+        <li><strong>Responsable:</strong> {nom}</li>
+        <li><strong>NIF:</strong> {nif}</li>
+        <li><strong>Domicilio social:</strong> {adreca}</li>
+        <li><strong>Correo electrónico de contacto:</strong> <a href={`mailto:${email}`}>{email}</a></li>
+      </ul>
+    </div>
+
+    <h2>2. Propiedad intelectual e industrial</h2>
+    <p>Todos los contenidos de esta aplicación (textos, diseños, código fuente, logotipos, iconos, imágenes y software) son propiedad de {nom} o de sus licenciantes, y están protegidos por las leyes de propiedad intelectual e industrial.</p>
+    <p>Queda prohibida la reproducción, distribución, modificación o comunicación pública sin la autorización previa y por escrito del titular.</p>
+
+    <h2>3. Condiciones de uso</h2>
+    <p>El usuario se compromete a hacer un uso adecuado de la aplicación, respetando la normativa vigente y los derechos de terceros. El uso de la aplicación para fines ilegales o perjudiciales queda totalmente prohibido.</p>
+
+    <h2>4. Ley aplicable y jurisdicción</h2>
+    <p>Las relaciones derivadas del uso de esta aplicación se rigen por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales de la ciudad de {ciutat}, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+
+    <div class="footer">
+      <p>© {dataRevisio} - {nom}. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</Layout>

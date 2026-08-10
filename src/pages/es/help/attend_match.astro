@@ -1,0 +1,79 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Atención a los eventos">
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
+    }
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
+    }
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>Atención a los eventos</h1>
+    <p>Una vez confirmada vuestra asistencia al estadio, podréis ver la lista de eventos que irán apareciendo durante el partido. Cada evento os dará la opción de participar y ganar puntos.</p>
+
+    <hr>
+
+    <h2>🎵 Canciones y apoyo</h2>
+    <p>Cuando se reproduzca una canción (por ejemplo, el himno del equipo), deberéis <span class="highlight">hacerla sonar durante al menos 20 segundos</span> para completar el evento. Si lo hacéis, obtendréis puntos adicionales. La canción se activará automáticamente en el momento indicado; ¡estad atentos!</p>
+
+    <h2>❓ Cuestionarios de conocimiento</h2>
+    <p>Se harán preguntas sobre el deporte y el partido en concreto. Debéis <span class="highlight">responder correctamente</span> para completar el evento. Cuanto más rápido respondáis, más puntos recibiréis.</p>
+
+    <h2>🕒 Tiempo límite</h2>
+    <p>Algunos eventos tienen un horario de inicio y fin (por ejemplo, solo se pueden completar durante un intervalo de tiempo concreto). Aseguraos de participar antes de que finalice el plazo.</p>
+
+    <h2>✅ Asistencia al partido</h2>
+    <p>La asistencia al partido se dará por completada automáticamente cuando:</p>
+    <ul>
+      <li>Haya comenzado la segunda parte, o</li>
+      <li>Completéis alguno de los eventos del partido.</li>
+    </ul>
+  </div>
+</Layout>
