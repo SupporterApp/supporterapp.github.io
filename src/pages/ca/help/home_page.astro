@@ -3,45 +3,58 @@ import Layout from '../../../layouts/Layout.astro';
 ---
 
 <Layout title="Benvingut a fans!">
-  <style>
-    .help-container {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 12px;
-      color: #f0f0f0;
-      line-height: 1.6;
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
       max-width: 800px;
       margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .help-container h1 {
-      color: #4caf50;
-      font-size: 24px;
-      margin-top: 0;
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
     }
-    .help-container h2 {
-      color: #81c784;
-      font-size: 18px;
-      margin-top: 24px;
-      margin-bottom: 8px;
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
     }
-    .help-container .highlight {
-      color: #ffb74d;
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
     }
-    .help-container hr {
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
       border: none;
-      border-top: 1px solid #444;
-      margin: 20px 0;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
     }
-    .help-container ul {
-      margin: 8px 0 16px 20px;
-      padding-left: 0;
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
     }
-    .help-container li {
-      margin-bottom: 4px;
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
     }
   </style>
 
-  <div class="help-container">
+  <div class="doc-card">
     <h1>Benvingut a fans!</h1>
     <p>Aquesta aplicació està feta per a vosaltres, els aficionats que feu gran l’esport. Volem que us ajudi a gaudir encara més dels partits del vostre equip.</p>
 
