@@ -6,10 +6,10 @@ import { SITE_TITLE } from '../../../consts';
 
 export async function getStaticPaths() {
   // Carreguem tots els posts (incloent el prefix de l'idioma)
-  const allPosts = await getCollection('blog', ({ id }) => id.startsWith('ca/'));
+  const allPosts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
   return allPosts.map((post) => {
     // L'slug que es mostrarà a la URL serà sense el prefix
-    const slug = post.id.replace(/^ca\//, '');
+    const slug = post.id.replace(/^es\//, '');
     return {
       params: { slug },
       props: { post },

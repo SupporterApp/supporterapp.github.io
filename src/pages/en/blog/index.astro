@@ -6,7 +6,7 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../../consts';
 
 // Carreguem només els posts de la carpeta 'ca/'
-const allPosts = await getCollection('blog', ({ id }) => id.startsWith('ca/'));
+const allPosts = await getCollection('blog', ({ id }) => id.startsWith('en/'));
 const posts = allPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -95,11 +95,11 @@ const posts = allPosts.sort(
     <ul>
       {
         posts.map((post) => {
-          // Extraiem l'slug sense el prefix 'ca/'
-          const slug = post.id.replace(/^ca\//, '');
+          // Extraiem l'slug sense el prefix 'en/'
+          const slug = post.id.replace(/^en\//, '');
           return (
             <li>
-              <a href={`/ca/blog/${slug}/`}>
+              <a href={`/en/blog/${slug}/`}>
                 {post.data.heroImage && (
                   <Image width={720} height={360} src={post.data.heroImage} alt="" />
                 )}
