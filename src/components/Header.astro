@@ -195,16 +195,34 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		}
 	}
 	@media (max-width: 720px) {
+		/* Permet que els enllaços es trenquin en diverses línies */
+		.internal-links {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.2rem;
+		}
+		/* Mostrem tots els enllaços (no ocultem cap) */
 		.internal-links a:not(.dropdown) {
-			display: none;
+			display: inline-block;
+			font-size: 0.75rem;
+			padding: 0.4rem 0.3rem;
 		}
+		/* Ajustem els botons dels dropdowns */
 		.dropdown .dropbtn {
-			padding: 0.8em 0.3em;
-			font-size: 0.85rem;
+			font-size: 0.75rem;
+			padding: 0.4rem 0.3rem;
 		}
+		/* Selector d'idioma més compacte */
 		.lang-selector img {
 			width: 24px;
 			height: 24px;
+		}
+		/* Opcional: reduir el padding del header */
+		header {
+			padding: 0 0.5em;
+		}
+		nav {
+			gap: 0.3rem;
 		}
 	}
 </style>
