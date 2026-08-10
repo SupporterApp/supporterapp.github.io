@@ -12,9 +12,6 @@ export interface Props {
 }
 
 const { title, description, image, lang = 'ca' } = Astro.props;
-
-// Detectem si la pàgina es veu en webview (paràmetre ?webview=true)
-const isWebview = Astro.url.searchParams.has('webview');
 ---
 
 <!doctype html>
@@ -33,6 +30,12 @@ const isWebview = Astro.url.searchParams.has('webview');
         background-attachment: fixed;
         color: white;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+      }
+      * {
+        box-sizing: border-box;
       }
       .overlay {
         background-color: rgba(0, 0, 0, 0.6);
@@ -55,9 +58,9 @@ const isWebview = Astro.url.searchParams.has('webview');
         color: #4caf50;
       }
 
-      /* Ajust per a webview: eliminar padding extra i ocultar header/footer */
+      /* Estils per a webview (quan el body té la classe .webview) */
       body.webview .overlay {
-        background-color: rgba(0, 0, 0, 0.7); /* Una mica més fosc per a llegibilitat */
+        background-color: rgba(0, 0, 0, 0.7);
       }
       body.webview main {
         padding-top: 1rem;
@@ -67,15 +70,39 @@ const isWebview = Astro.url.searchParams.has('webview');
       body.webview footer {
         display: none !important;
       }
+
+      /* Evitar scroll horitzontal */
+      img, iframe, video, .doc-card, .blog-post, .help-container {
+        max-width: 100%;
+        height: auto;
+      }
     </style>
   </head>
-  <body class={isWebview ? 'webview' : ''}>
+  <body>
     <div class="overlay">
-      {!isWebview && <Header />}
+      <Header />
       <main>
         <slot />
       </main>
-      {!isWebview && <Footer />}
+      <Footer />
     </div>
+
+    <!-- DETECCIÓ DE WEBVIEW AL CLIENT (JavaScript) -->
+    <script>
+      (function() {
+        // Comprovar si la URL conté ?webview=true
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('webview')) {
+          // Afegir classe webview al body
+          document.body.classList.add('webview');
+          
+          // Ocultar header i footer (per si el CSS no ho fa)
+          const header = document.querySelector('header');
+          const footer = document.querySelector('footer');
+          if (header) header.style.display = 'none';
+          if (footer) footer.style.display = 'none';
+        }
+      })();
+    </script>
   </body>
 </html>

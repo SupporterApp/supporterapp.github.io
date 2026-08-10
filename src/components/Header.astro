@@ -74,7 +74,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		backdrop-filter: blur(8px);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 		position: relative;
-		z-index: 100; /* Assegura que el header estigui per sobre */
+		z-index: 100;
 	}
 	h2 {
 		margin: 0;
@@ -88,6 +88,8 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.3rem;
 	}
 	nav a,
 	nav button {
@@ -108,6 +110,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		display: flex;
 		align-items: center;
 		gap: 0.2em;
+		flex-wrap: wrap;
 	}
 
 	/* Selector d'idioma */
@@ -140,7 +143,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	.dropdown {
 		position: relative;
 		display: inline-block;
-		z-index: 100; /* Afegit */
+		z-index: 100;
 	}
 	.dropbtn {
 		background: none;
@@ -157,7 +160,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		backdrop-filter: blur(8px);
 		min-width: 160px;
 		box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-		z-index: 1000; /* Pujat a 1000 */
+		z-index: 1000;
 		top: 100%;
 		left: 0;
 		border-radius: 4px;
@@ -178,7 +181,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		display: block;
 	}
 
-	/* Responsive */
+	/* Responsive: pantalles mitjanes */
 	@media (max-width: 920px) {
 		.internal-links {
 			flex-wrap: wrap;
@@ -194,30 +197,28 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 			height: 28px;
 		}
 	}
+
+	/* Responsive: pantalles petites (mòbil) - FORMAT COMPACTE */
 	@media (max-width: 720px) {
-		/* Permet que els enllaços es trenquin en diverses línies */
+		/* Tots els enllaços visibles, en línia i compactes */
 		.internal-links {
 			flex-wrap: wrap;
 			justify-content: center;
 			gap: 0.2rem;
 		}
-		/* Mostrem tots els enllaços (no ocultem cap) */
 		.internal-links a:not(.dropdown) {
 			display: inline-block;
 			font-size: 0.75rem;
 			padding: 0.4rem 0.3rem;
 		}
-		/* Ajustem els botons dels dropdowns */
 		.dropdown .dropbtn {
 			font-size: 0.75rem;
 			padding: 0.4rem 0.3rem;
 		}
-		/* Selector d'idioma més compacte */
 		.lang-selector img {
 			width: 24px;
 			height: 24px;
 		}
-		/* Opcional: reduir el padding del header */
 		header {
 			padding: 0 0.5em;
 		}
