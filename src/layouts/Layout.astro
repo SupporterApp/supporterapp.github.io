@@ -18,8 +18,52 @@ const { title, description, image, lang = 'ca' } = Astro.props;
 <html lang={lang}>
   <head>
     <BaseHead title={title} description={description} image={image} />
+    <script is:inline>
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-pending');
+    </script>
     <style is:global>
-      /* Estils globals per al fons */
+      /* ── Theme tokens ── */
+      :root {
+        --overlay-bg:        rgba(255, 255, 255, 0.75);
+        --text:              #1a1a2e;
+        --text-muted:        #555;
+        --text-subtle:       #666;
+        --accent:            #2e7d32;
+        --accent-hover:      #1b5e20;
+        --header-bg:         rgba(255, 255, 255, 0.85);
+        --header-shadow:     rgba(0, 0, 0, 0.15);
+        --dropdown-bg:       rgba(255, 255, 255, 0.95);
+        --dropdown-hover:    rgba(46, 125, 50, 0.15);
+        --footer-bg:         rgba(255, 255, 255, 0.85);
+        --footer-border:     rgba(0, 0, 0, 0.1);
+        --card-bg:           rgba(255, 255, 255, 0.9);
+        --card-shadow:       rgba(0, 0, 0, 0.12);
+        --card-shadow-hover: rgba(0, 0, 0, 0.18);
+        --hero-title-shadow: rgba(255, 255, 255, 0.6);
+        --highlight:         #1b5e20;
+        --webview-overlay:   rgba(255, 255, 255, 0.85);
+      }
+      body.dark {
+        --overlay-bg:        rgba(0, 0, 0, 0.65);
+        --text:              #f0f0f0;
+        --text-muted:        #ccc;
+        --text-subtle:       #aaa;
+        --accent:            #4caf50;
+        --accent-hover:      #81c784;
+        --header-bg:         rgba(0, 0, 0, 0.75);
+        --header-shadow:     rgba(0, 0, 0, 0.4);
+        --dropdown-bg:       rgba(20, 20, 30, 0.97);
+        --dropdown-hover:    rgba(76, 175, 80, 0.25);
+        --footer-bg:         rgba(0, 0, 0, 0.8);
+        --footer-border:     rgba(255, 255, 255, 0.1);
+        --card-bg:           rgba(0, 0, 0, 0.55);
+        --card-shadow:       rgba(0, 0, 0, 0.35);
+        --card-shadow-hover: rgba(0, 0, 0, 0.5);
+        --hero-title-shadow: rgba(0, 0, 0, 0.8);
+        --highlight:         #ffb74d;
+        --webview-overlay:   rgba(0, 0, 0, 0.75);
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -28,7 +72,7 @@ const { title, description, image, lang = 'ca' } = Astro.props;
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        color: white;
+        color: var(--text);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         overflow-x: hidden;
         width: 100%;
@@ -38,10 +82,11 @@ const { title, description, image, lang = 'ca' } = Astro.props;
         box-sizing: border-box;
       }
       .overlay {
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: var(--overlay-bg);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        transition: background-color 0.3s;
       }
       main {
         flex: 1;
@@ -52,15 +97,14 @@ const { title, description, image, lang = 'ca' } = Astro.props;
         box-sizing: border-box;
       }
       h1, h2, h3, p {
-        color: white;
+        color: var(--text);
       }
       a {
-        color: #4caf50;
+        color: var(--accent);
       }
 
-      /* Estils per a webview (quan el body té la classe .webview) */
       body.webview .overlay {
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: var(--webview-overlay);
       }
       body.webview main {
         padding-top: 1rem;
@@ -71,7 +115,6 @@ const { title, description, image, lang = 'ca' } = Astro.props;
         display: none !important;
       }
 
-      /* Evitar scroll horitzontal */
       img, iframe, video, .doc-card, .blog-post, .help-container {
         max-width: 100%;
         height: auto;
@@ -87,16 +130,12 @@ const { title, description, image, lang = 'ca' } = Astro.props;
       <Footer />
     </div>
 
-    <!-- DETECCIÓ DE WEBVIEW AL CLIENT (JavaScript) -->
     <script>
+      if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
       (function() {
-        // Comprovar si la URL conté ?webview=true
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('webview')) {
-          // Afegir classe webview al body
           document.body.classList.add('webview');
-          
-          // Ocultar header i footer (per si el CSS no ho fa)
           const header = document.querySelector('header');
           const footer = document.querySelector('footer');
           if (header) header.style.display = 'none';

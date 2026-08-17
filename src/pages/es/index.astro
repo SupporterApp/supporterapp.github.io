@@ -26,19 +26,19 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    color: var(--text);
+    text-shadow: 0 2px 8px var(--hero-title-shadow);
   }
   .subtitle {
     font-size: 1.8rem;
     font-weight: 300;
     margin-bottom: 0.5rem;
-    color: #f0f0f0;
+    color: var(--text);
   }
   .highlight {
     font-size: 1.4rem;
-    font-weight: 500;
-    color: #ffb74d;
+    font-weight: 600;
+    color: var(--highlight);
     margin-bottom: 1.5rem;
   }
   .description {
@@ -46,7 +46,7 @@ import Layout from '../../layouts/Layout.astro';
     line-height: 1.8;
     max-width: 700px;
     margin: 0 auto;
-    color: #e0e0e0;
+    color: var(--text);
   }
   @media (max-width: 720px) {
     .main-title {

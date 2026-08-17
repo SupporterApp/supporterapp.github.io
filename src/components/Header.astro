@@ -50,6 +50,11 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 			</div>
 		</div>
 
+		<!-- Theme toggle -->
+		<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+			<span class="theme-icon">🌙</span>
+		</button>
+
 		<!-- Selector d'idioma amb banderes PNG -->
 		<div class="lang-selector">
 			<a href={`/ca${pathWithoutLocale}`} class:list={[{ active: currentLocale === 'ca' }]} title="Català">
@@ -70,18 +75,19 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: rgba(0, 0, 0, 0.7);
+		background: var(--header-bg);
 		backdrop-filter: blur(8px);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 2px 8px var(--header-shadow);
 		position: relative;
 		z-index: 100;
+		transition: background 0.3s, box-shadow 0.3s;
 	}
 	h2 {
 		margin: 0;
 		font-size: 1em;
 	}
 	h2 a {
-		color: white !important;
+		color: var(--text) !important;
 		text-decoration: none;
 	}
 	nav {
@@ -94,7 +100,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 	nav a,
 	nav button {
 		padding: 1em 0.5em;
-		color: white !important;
+		color: var(--text) !important;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 		background: none;
@@ -149,17 +155,17 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		background: none;
 		border: none;
 		font: inherit;
-		color: white !important;
+		color: var(--text) !important;
 		padding: 1em 0.5em;
 		cursor: pointer;
 	}
 	.dropdown-content {
 		display: none;
 		position: absolute;
-		background: rgba(0, 0, 0, 0.9);
+		background: var(--dropdown-bg);
 		backdrop-filter: blur(8px);
 		min-width: 160px;
-		box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+		box-shadow: 0 8px 16px var(--header-shadow);
 		z-index: 1000;
 		top: 100%;
 		left: 0;
@@ -167,14 +173,29 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		overflow: hidden;
 	}
 	.dropdown-content a {
-		color: white !important;
+		color: var(--text) !important;
 		padding: 12px 16px;
 		text-decoration: none;
 		display: block;
 		border-bottom: none;
 	}
 	.dropdown-content a:hover {
-		background-color: rgba(76, 175, 80, 0.3);
+		background-color: var(--dropdown-hover);
+	}
+	.theme-toggle {
+		background: none;
+		border: 2px solid var(--text);
+		border-radius: 20px;
+		padding: 0.25em 0.6em;
+		cursor: pointer;
+		font-size: 1rem;
+		line-height: 1;
+		color: var(--text);
+		transition: border-color 0.2s, opacity 0.2s;
+		opacity: 0.75;
+	}
+	.theme-toggle:hover {
+		opacity: 1;
 	}
 	.dropdown:hover .dropdown-content,
 	.dropdown:focus-within .dropdown-content {
@@ -229,7 +250,19 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 </style>
 
 <script>
-	// Gestió de clic per als dropdowns (mòbils)
+	// Theme toggle
+	const btn = document.getElementById('theme-toggle');
+	const icon = btn.querySelector('.theme-icon');
+	function applyTheme(dark) {
+		document.body.classList.toggle('dark', dark);
+		icon.textContent = dark ? '☀️' : '🌙';
+		localStorage.setItem('theme', dark ? 'dark' : 'light');
+	}
+	// Init icon from current state
+	applyTheme(document.body.classList.contains('dark'));
+	btn.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark')));
+
+	// Dropdown management
 	document.querySelectorAll('.dropdown').forEach(dropdown => {
 		const button = dropdown.querySelector('.dropbtn');
 		const content = dropdown.querySelector('.dropdown-content');
