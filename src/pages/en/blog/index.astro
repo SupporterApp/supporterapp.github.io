@@ -28,14 +28,15 @@ const posts = allPosts.sort(
     }
     .blog-list ul li {
       width: calc(50% - 1rem);
-      background: rgba(0, 0, 0, 0.5);
+      background: var(--card-bg);
       border-radius: 12px;
       padding: 1.5rem;
-      backdrop-filter: blur(4px);
-      transition: transform 0.2s;
+      box-shadow: 0 4px 16px var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
     }
     .blog-list ul li:hover {
       transform: scale(1.02);
+      box-shadow: 0 8px 24px var(--card-shadow-hover);
     }
     .blog-list ul li:first-child {
       width: 100%;
@@ -54,25 +55,25 @@ const posts = allPosts.sort(
     }
     .blog-list ul li a {
       display: block;
-      color: white !important;
+      color: var(--text) !important;
       text-decoration: none;
     }
     .blog-list .title {
       margin: 0;
-      color: white !important;
+      color: var(--text) !important;
       line-height: 1.2;
     }
     .blog-list .date {
       margin: 0.5rem 0 0 0;
-      color: #cccccc !important;
+      color: var(--text-subtle) !important;
       font-size: 0.9rem;
     }
     .blog-list ul li a:hover h4,
     .blog-list ul li a:hover .date {
-      color: #4caf50 !important;
+      color: var(--accent) !important;
     }
     .blog-list ul a:hover img {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 20px var(--card-shadow);
     }
     @media (max-width: 720px) {
       .blog-list ul {

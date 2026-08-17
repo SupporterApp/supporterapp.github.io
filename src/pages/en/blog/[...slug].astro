@@ -42,17 +42,18 @@ const { Content } = await render(post);
     max-width: 900px;
     margin: 0 auto;
     padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--card-bg);
     border-radius: 12px;
-    backdrop-filter: blur(8px);
-    color: white;
+    box-shadow: 0 4px 24px var(--card-shadow);
+    color: var(--text);
+    transition: background 0.3s;
   }
   .blog-post h1 {
     font-size: 2.5rem;
-    color: white;
+    color: var(--text);
   }
   .blog-post .date {
-    color: #ccc;
+    color: var(--text-muted);
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
   }
@@ -63,7 +64,7 @@ const { Content } = await render(post);
     margin: 1rem 0;
   }
   .blog-post .content a {
-    color: #4caf50;
+    color: var(--accent);
   }
   .blog-post .content img {
     max-width: 100%;
