@@ -1,0 +1,383 @@
+---
+/**
+ * src/components/TeamScores.astro
+ *
+ * Renders the daily team-score leaderboard extracted from the bundle zip.
+ * Reads scores.json from src/data/team-scores/ (unzipped at build time by
+ * the team-scores Astro integration).
+ *
+ * Props:
+ *   lang  — 'ca' | 'es' | 'en'
+ */
+
+import { Image } from 'astro:assets';
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  lang: 'ca' | 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+
+// ---------------------------------------------------------------------------
+// Load scores.json produced by the export script.
+// Falls back gracefully if the file is missing.
+// ---------------------------------------------------------------------------
+
+interface TeamEntry {
+  rank: number;
+  teamId: string;
+  label: string;
+  supporterCount: number;
+  avgPerSupporter: number;
+  earnedTotal: number;
+  earnedOnTeamEvents: number;
+  attendanceRate: number | null;
+  finishedEventCount: number;
+  activeSupporterCount: number;
+  country: string | null;
+}
+
+interface ScoresData {
+  generatedAt: string | null;
+  metrics: Record<string, number>;
+  teams: TeamEntry[];
+}
+
+const scoresPath = path.join(process.cwd(), 'src', 'data', 'team-scores', 'scores.json');
+let scores: ScoresData = { generatedAt: null, metrics: {}, teams: [] };
+
+try {
+  scores = JSON.parse(fs.readFileSync(scoresPath, 'utf8'));
+} catch {
+  // scores stays as empty stub
+}
+
+// ---------------------------------------------------------------------------
+// Labels (trilingual)
+// ---------------------------------------------------------------------------
+
+const labels = {
+  ca: {
+    title: '🏆 Classificació d\'equips',
+    subtitle: 'Rànquing dels equips amb els aficionats més actius a Ffans',
+    updated: 'Actualitzat',
+    noData: 'Les dades del rànquing no estan disponibles. Torna aviat!',
+    rank: '#',
+    team: 'Equip',
+    supporters: 'Seguidors',
+    avgScore: 'Pts/seguidor',
+    totalScore: 'Puntuació',
+    activeRate: 'Actius',
+    events: 'Events',
+    chartsTitle: 'Gràfics',
+    leaderboardAlt: 'Gràfic de líders',
+    supportersAlt: 'Creixement de seguidors',
+    attendanceAlt: 'Assistència per dia',
+  },
+  es: {
+    title: '🏆 Clasificación de equipos',
+    subtitle: 'Ranking de equipos con los aficionados más activos en Ffans',
+    updated: 'Actualizado',
+    noData: 'Los datos del ranking no están disponibles aún. ¡Vuelve pronto!',
+    rank: '#',
+    team: 'Equipo',
+    supporters: 'Seguidores',
+    avgScore: 'Pts/seguidor',
+    totalScore: 'Puntuación',
+    activeRate: 'Activos',
+    events: 'Eventos',
+    chartsTitle: 'Gráficas',
+    leaderboardAlt: 'Gráfica de líderes',
+    supportersAlt: 'Crecimiento de seguidores',
+    attendanceAlt: 'Asistencia por día',
+  },
+  en: {
+    title: '🏆 Team Leaderboard',
+    subtitle: 'Teams ranked by their most active supporters on Ffans',
+    updated: 'Updated',
+    noData: 'Leaderboard data is not available yet. Check back soon!',
+    rank: '#',
+    team: 'Team',
+    supporters: 'Supporters',
+    avgScore: 'Pts/supporter',
+    totalScore: 'Score',
+    activeRate: 'Active',
+    events: 'Events',
+    chartsTitle: 'Charts',
+    leaderboardAlt: 'Leaderboard chart',
+    supportersAlt: 'Supporter growth',
+    attendanceAlt: 'Attendance per day',
+  },
+} as const;
+
+const L = labels[lang];
+
+const generatedDate = scores.generatedAt
+  ? new Date(scores.generatedAt).toISOString().slice(0, 10)
+  : null;
+
+// Chart images path (served from /team-scores/ public folder — copied at build)
+// We reference them as relative paths; they'll be served from /team-scores/.
+const chartBase = '/team-scores';
+
+// Check if chart images were extracted.
+const chartsDir = path.join(process.cwd(), 'src', 'data', 'team-scores');
+const hasCharts = fs.existsSync(path.join(chartsDir, 'chart-leaderboard.png'));
+---
+
+<section class="team-scores">
+  <div class="scores-header">
+    <h2>{L.title}</h2>
+    <p class="scores-subtitle">{L.subtitle}</p>
+    {generatedDate && (
+      <p class="scores-updated">
+        <span>{L.updated}:</span> {generatedDate}
+      </p>
+    )}
+  </div>
+
+  {scores.teams.length === 0 ? (
+    <p class="scores-no-data">{L.noData}</p>
+  ) : (
+    <div class="scores-content">
+      <div class="scores-table-wrapper">
+        <table class="scores-table">
+          <thead>
+            <tr>
+              <th>{L.rank}</th>
+              <th>{L.team}</th>
+              <th class="num">{L.supporters}</th>
+              <th class="num">{L.avgScore}</th>
+              <th class="num">{L.totalScore}</th>
+              <th class="num">{L.activeRate}</th>
+              <th class="num">{L.events}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scores.teams.map((t) => (
+              <tr class={t.rank === 1 ? 'row-gold' : t.rank === 2 ? 'row-silver' : t.rank === 3 ? 'row-bronze' : ''}>
+                <td class="rank">
+                  {t.rank === 1 ? '🥇' : t.rank === 2 ? '🥈' : t.rank === 3 ? '🥉' : t.rank}
+                </td>
+                <td class="team-name">
+                  {t.country && <span class="country">{t.country}</span>}
+                  <strong>{t.label}</strong>
+                </td>
+                <td class="num">{t.supporterCount}</td>
+                <td class="num highlight">{Number(t.avgPerSupporter).toFixed(2)}</td>
+                <td class="num">{Number(t.earnedTotal).toFixed(0)}</td>
+                <td class="num">
+                  {t.attendanceRate !== null ? `${t.attendanceRate}%` : '–'}
+                </td>
+                <td class="num">{t.finishedEventCount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {hasCharts && (
+        <div class="scores-charts">
+          <h3>{L.chartsTitle}</h3>
+          <div class="chart-grid">
+            <figure>
+              <img
+                src={`${chartBase}/chart-leaderboard.png`}
+                alt={L.leaderboardAlt}
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="400"
+              />
+              <figcaption>{L.leaderboardAlt}</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={`${chartBase}/chart-supporters.png`}
+                alt={L.supportersAlt}
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="400"
+              />
+              <figcaption>{L.supportersAlt}</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={`${chartBase}/chart-attendance.png`}
+                alt={L.attendanceAlt}
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="400"
+              />
+              <figcaption>{L.attendanceAlt}</figcaption>
+            </figure>
+          </div>
+        </div>
+      )}
+    </div>
+  )}
+</section>
+
+<style>
+  .team-scores {
+    width: 100%;
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    color: var(--text);
+  }
+
+  .scores-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .scores-header h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .scores-subtitle {
+    color: var(--text-subtle, #888);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .scores-updated {
+    font-size: 0.85rem;
+    color: var(--text-subtle, #888);
+    margin-top: 0.4rem;
+  }
+
+  .scores-updated span {
+    font-weight: 600;
+  }
+
+  .scores-no-data {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-subtle, #888);
+    padding: 2rem 0;
+  }
+
+  /* Table */
+  .scores-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+
+  .scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .scores-table thead th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 2px solid var(--accent, #6366f1);
+    color: var(--accent, #6366f1);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .scores-table thead th.num,
+  .scores-table tbody td.num {
+    text-align: right;
+  }
+
+  .scores-table tbody tr {
+    border-bottom: 1px solid var(--card-shadow, #eee);
+    transition: background 0.15s;
+  }
+
+  .scores-table tbody tr:hover {
+    background: var(--card-shadow, rgba(0,0,0,0.04));
+  }
+
+  .scores-table tbody td {
+    padding: 0.55rem 0.75rem;
+    vertical-align: middle;
+  }
+
+  .scores-table td.rank {
+    font-weight: 700;
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .scores-table td.team-name {
+    white-space: nowrap;
+  }
+
+  .scores-table td.team-name .country {
+    margin-right: 0.35rem;
+    opacity: 0.8;
+  }
+
+  .scores-table td.highlight {
+    color: var(--accent, #6366f1);
+    font-weight: 700;
+  }
+
+  /* Medal rows */
+  .row-gold   { background: rgba(255, 215, 0,  0.08); }
+  .row-silver { background: rgba(192, 192, 192, 0.08); }
+  .row-bronze { background: rgba(205, 127, 50,  0.08); }
+
+  /* Charts */
+  .scores-charts h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .chart-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .chart-grid figure {
+    margin: 0;
+  }
+
+  .chart-grid figure img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .chart-grid figcaption {
+    font-size: 0.8rem;
+    color: var(--text-subtle, #888);
+    text-align: center;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 720px) {
+    .team-scores {
+      padding: 1rem;
+    }
+
+    .scores-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .scores-table {
+      font-size: 0.8rem;
+    }
+  }
+</style>

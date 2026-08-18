@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import TeamScores from '../../components/TeamScores.astro';
 ---
 
 <Layout title="Ffans - Fans del Fútbol">
@@ -12,6 +13,8 @@ import Layout from '../../layouts/Layout.astro';
       No hay resultados ni fichajes. Solo hay personas como tú, que viven el fútbol con intensidad.
     </p>
   </div>
+
+  <TeamScores lang="es" />
 </Layout>
 
 <style>
@@ -19,8 +22,9 @@ import Layout from '../../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 40vh;
     text-align: center;
+    padding-bottom: 1rem;
   }
   .main-title {
     font-size: 3.5rem;
@@ -49,6 +53,9 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--text);
   }
   @media (max-width: 720px) {
+    .hero {
+      min-height: 30vh;
+    }
     .main-title {
       font-size: 2.2rem;
     }

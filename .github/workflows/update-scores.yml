@@ -1,0 +1,81 @@
+name: Update team-score bundle
+
+on:
+  schedule:
+    # Every day at 06:00 UTC (08:00 CET / 07:00 CEST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write   # needed to commit the updated zip back to the repo
+
+jobs:
+  export-bundle:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout the Astro site repo ────────────────────────────────────
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── 2. Checkout the dashboard repo (score-computation-dashboard) ───────
+      #    The workflow reads the export script + its node modules from there.
+      #    Adjust the `repository` field to your actual GitHub org/repo.
+      - name: Checkout dashboard repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.DASHBOARD_REPO || 'your-org/score-computation-dashboard' }}
+          token: ${{ secrets.DASHBOARD_REPO_TOKEN || github.token }}
+          path: _dashboard
+
+      # ── 3. Set up Node (same version used by the dashboard server) ─────────
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # ── 4. Install canvas system dependencies ─────────────────────────────
+      #    The `canvas` npm package requires libcairo2, libpango and friends.
+      - name: Install canvas system libs
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends \
+            libcairo2-dev \
+            libpango1.0-dev \
+            libjpeg-dev \
+            libgif-dev \
+            librsvg2-dev
+
+      # ── 5. Install dashboard npm dependencies (dev deps included) ──────────
+      - name: Install dashboard deps
+        working-directory: _dashboard
+        run: npm ci --include=dev
+
+      # ── 6. Run the export script ───────────────────────────────────────────
+      #    DASHBOARD_URL must be set as a repository variable or secret in the
+      #    Astro site repo (e.g. https://score-dashboard-xxxx-ew.a.run.app).
+      #    BUNDLE_OUT is set to drop the zip directly into the Astro src/data dir.
+      - name: Run export-bundle
+        working-directory: _dashboard
+        env:
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          BUNDLE_OUT: ${{ github.workspace }}/src/data/team-scores.zip
+        run: node scripts/export-bundle.js
+
+      # ── 7. Commit the updated zip back to the site repo ────────────────────
+      #    Only commits if the file actually changed (avoids empty commits).
+      #    The push triggers the deploy.yml workflow automatically.
+      - name: Commit updated bundle
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/team-scores.zip
+          # Exit 0 even if nothing changed (git diff --cached --quiet returns 1 then)
+          if git diff --cached --quiet; then
+            echo "No changes to the bundle, skipping commit."
+          else
+            git commit -m "chore: update team-scores bundle [$(date -u +%Y-%m-%d)]"
+            git push
+          fi

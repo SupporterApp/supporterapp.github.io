@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-18T08:22:00.140Z",
+  "metrics": {
+    "totalTeams": 219,
+    "activeTeams": 4,
+    "teamsWithSupporters": 4,
+    "teamsWithEvents": 148,
+    "teamsWithDeclaredScoring": 1,
+    "totalSupporters": 57,
+    "totalSupporterScore": 803,
+    "orphanTeamRefs": 2,
+    "unattributableAttendances": 2,
+    "teamsWithIssues": 4
+  },
+  "teams": [
+    {
+      "rank": 1,
+      "teamId": "UAT_43fQKqKGShZ4UWpU3hxL",
+      "label": "France",
+      "supporterCount": 28,
+      "avgPerSupporter": 15.32,
+      "earnedTotal": 429,
+      "earnedOnTeamEvents": 429,
+      "attendanceRate": 100,
+      "finishedEventCount": 3,
+      "activeSupporterCount": 28,
+      "country": "France"
+    },
+    {
+      "rank": 2,
+      "teamId": "UAT_IZcKiaWDPajx02SpMsyU",
+      "label": "England",
+      "supporterCount": 22,
+      "avgPerSupporter": 15.18,
+      "earnedTotal": 334,
+      "earnedOnTeamEvents": 334,
+      "attendanceRate": 100,
+      "finishedEventCount": 3,
+      "activeSupporterCount": 22,
+      "country": "England"
+    },
+    {
+      "rank": 3,
+      "teamId": "0CxgQrIpYBuwH9YS1siU",
+      "label": "Sabadell",
+      "supporterCount": 4,
+      "avgPerSupporter": 10,
+      "earnedTotal": 40,
+      "earnedOnTeamEvents": 20,
+      "attendanceRate": 50,
+      "finishedEventCount": 6,
+      "activeSupporterCount": 2,
+      "country": "Spain"
+    },
+    {
+      "rank": 4,
+      "teamId": "07Xs1iGD3OW0g4oN2jHA",
+      "label": "Marbella",
+      "supporterCount": 3,
+      "avgPerSupporter": 0,
+      "earnedTotal": 0,
+      "earnedOnTeamEvents": 0,
+      "attendanceRate": 0,
+      "finishedEventCount": 4,
+      "activeSupporterCount": 0,
+      "country": "Spain"
+    }
+  ]
+}
