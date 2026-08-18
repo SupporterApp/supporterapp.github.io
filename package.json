@@ -19,5 +19,8 @@
     "astro": "^6.0.2",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "unzipper": "0.12.3"
   }
 }
