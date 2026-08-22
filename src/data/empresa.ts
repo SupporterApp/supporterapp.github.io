@@ -2,11 +2,11 @@
 
 export const empresaData = {
   // Dades de l'empresa (substitueix els valors pels teus reals)
-  nom: '[NOM_COMPLET]',
-  nif: '[NIF]',
-  adreca: '[ADREÇA_COMPLETA]',
-  email: '[EMAIL_PER_DRETS_ARCO]',
-  ciutat: '[CIUTAT_DEL_RESPONSABLE]',
+  nom: 'Jordi Sastre Saumell',
+  nif: '33909851P',
+  adreca: "Carrer d'Ausiàs Marc, 92 baixos 2a, 08205 Sabadell",
+  email: '[privacitat@supporter-app.com]',
+  ciutat: 'Sabadell',
   dataRevisio: '2026-08-04',  // Data d'actualització
   versio: '1.0.0',           // Per a control de versions
 };
