@@ -5,7 +5,7 @@ export const empresaData = {
   nom: 'Jordi Sastre Saumell',
   nif: '33909851P',
   adreca: "Carrer d'Ausiàs Marc, 92 baixos 2a, 08205 Sabadell",
-  email: '[privacitat@supporter-app.com]',
+  email: 'privacitat@supporter-app.com',
   ciutat: 'Sabadell',
   dataRevisio: '2026-08-04',  // Data d'actualització
   versio: '1.0.0',           // Per a control de versions
