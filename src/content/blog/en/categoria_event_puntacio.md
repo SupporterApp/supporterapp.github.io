@@ -7,7 +7,7 @@ tags: ["football", "fans", "community", "scoring", "events"]
 ---
 # How does scoring work in Ffans? ⚽
 
-In **Ffans**, every action you take as a fan has a reward. We have designed a points system to value your participation, knowledge and involvement. We present how we classify it and how we calculate your final score, step by step and transparently.
+At **Ffans**, every action you take as a fan earns you rewards. We've designed a points system to value your participation and knowledge. Here’s how we classify everything and how we calculate your final score, step by step, with full transparency.
 
 ---
 
@@ -15,78 +15,71 @@ In **Ffans**, every action you take as a fan has a reward. We have designed a po
 
 Each category has a generic weight that indicates the importance of that area within the system:
 
-|Category|What do we value?|Base Score|
+|Category|What we value|Base score|
 |---|---|---|
-|**Participation in Football events**|The essence of fandom: being at the matches.|10|
-|**Participation in Club events**|Supporting your club's structure.|8|
-|**Event generation**|Creating and growing football events.|7|
-|**Football Knowledge**|Showing that you know your team and the game.|5|
-|**Agility game**|Variable score depending on the game.|2|
+|**Participation in Football Events**|The essence of fandom: being at matches.|10|
+|**Participation in Club Events**|Supporting your club's structure.|8|
+|**Event Generation**|Creating and growing football events.|7|
+|**Football Knowledge**|Showing you know your team and the game.|5|
+|**Agility Game**|Score varies depending on the game.|2|
 
 ---
 
-## 🎯 2. The "Event Score" of each action
+## 🎯 2. The "Event Score" for each action
 
-Each specific action has its own specific score. This figure **is added to the base score** to obtain the starting points of the event.
+Each specific action has its own score. This figure **is added to the base score** to get the starting points for that event.
 
 ---
 
 ## ➕ 3. The "Total Score" (the real starting point)
 
-**Total Score = Base Score + Event Score**
+**Total Score = Base score + Event score**
 
-This is the figure on which we will then apply adjustments for multiple answers or time. In the table below you have it calculated for each event.
+This is the figure we'll adjust for multiple‑choice events, if applicable. The table below shows it calculated for every event.
 
-|Category|Aspect to value|Base Score|Event Score|**Total Score**|Multiple?|Time?|
-|---|---|---|---|---|---|---|
-|Participation in Football event|Attending your team's match as a local|10|40|**50**|N|N|
-|Participation in Football event|Attending your team's match as a visitor|10|50|**60**|N|N|
-|Participation in Football event|Attending a match where your team does not play|10|30|**40**|N|N|
-|Participation in Football event|Participating in fan chants|10|5|**15**|N|N|
-|Football Knowledge|Questions about your team (based on location)|5|10|**15**|Y|Y|
-|Football Knowledge|Guessing the MVP (voted by attendees)|5|15|**20**|N|Y|
-|Football Knowledge|Guessing your team's lineup|5|15|**20**|Y|Y|
+|Category|Aspect to value|Base score|Event score|**Total Score**|Multiple?|
+|---|---|---|---|---|---|
+|Participation in Football Events|Attending your team's home match|10|40|**50**|N|
+|Participation in Football Events|Attending your team's away match|10|50|**60**|N|
+|Participation in Football Events|Attending a match where your team isn't playing|10|30|**40**|N|
+|Participation in Football Events|Joining in fan chants at a match|10|5|**15**|N|
+|Football Knowledge|Questions about your team (based on location)|5|10|**15**|S|
+|Football Knowledge|Predicting the MVP (voted by attendees)|5|15|**20**|N|
+|Football Knowledge|Predicting your team's lineup|5|15|**20**|S|
 
-> **Legend**: **N** = Not applicable; **Y** = Applicable (multiple options or time bonus).
+> **Legend**: **N** = Not applicable; **S** = Applicable (the event has multiple options and uses the proportional rule).
 
 ---
 
-## 🧮 4. How do we adjust the "Total Score" depending on the event?
+## 🧮 4. How do we adjust the "Total Score" if the event has multiple options?
 
-Once we have the **Total Score** of the event, we check if it has the following characteristics:
+When an event has several options (e.g., predicting the 11 players in a lineup), the score is calculated like this:
 
-### 🔹 If the event has **multiple options** (e.g.: lineup of 11 players)
+- If you get **all** options right → you receive the full **Total Score**.
+    
+- If you only get some right → you receive the **direct proportional share** of 100% of the Total Score, distributed across the total number of options, rounded to the nearest whole number.
+    
 
-- If you get **all** options right → you get the full **Total Score**.
-- If you only get part of them right → you will receive **80% of the Total Score** distributed proportionally among the number of correct options, rounded to the nearest unit.
+**Formula**:
 
-**Example**: The lineup has **Total Score = 20 points**. You get 8 out of 11 players right.
+text
 
-- 80% of 20 = 16 points.
-- 16 points / 11 players = 1.454 points per player.
-- 8 correct × 1.454 = 11.63 → **12 points** (rounded).
+Points = (Total Score / Total number of options) × Number of correct options
 
-### 🔹 If the event is valued with **time**
+**Example**: The lineup has a **Total Score of 20 points** and 11 players. You get 8 players right.
 
-The time bonus is calculated based on the **available deadline to respond** (for example, the 24 hours before the match, or the hours from when the event is published until it closes).
-
-- If you respond **within the first half of that deadline** → your score is multiplied by **1.2**.
-- If you respond **within the second half of the deadline** → the score is multiplied by **1** (no bonus).
-
-**Example**: The MVP has **Total Score = 20 points**. The deadline to respond is 24 hours.
-
-- You respond in the first 12 hours → 20 × 1.2 = **24 points**.
-- You respond in the last 12 hours → 20 × 1 = **20 points**.
-
-> 💡 **If the event has multiple and time at the same time**, **both rules** apply: first the partial correct score is calculated (80% proportional) and, on that result, the time factor is applied according to the half of the deadline in which you responded.
+- (20 / 11) = 1.818 points per player.
+    
+- 8 correct × 1.818 = 14.54 → **15 points** (rounded).
+    
 
 ---
 
 ## 🏆 Why all this?
 
-We want every action you take to have value and for the system to be **transparent, motivating and fair**. Now you know that your points do not come out of a magic box: they start from the sum of the **category base** and the **specific action score**, and then they are adjusted to reward accuracy and speed (understood as responding early within the available deadline).
+We want every action you take to matter, and we want the system to be **transparent, motivating, and fair**. Now you know that your points come from the sum of the **category base** and the **specific action score**, and are adjusted proportionally if the event has multiple answers.
 
-So now you know: participate, show your passion... and climb the Ffans ranking! 🔥
+So now you know: take part, show your passion... and climb the Ffans leaderboard! 🔥
 
 ---
 

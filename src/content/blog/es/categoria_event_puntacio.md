@@ -7,7 +7,7 @@ tags: ["fútbol", "fans", "comunidad", "puntuación", "eventos"]
 ---
 # ¿Cómo funciona la puntuación en Ffans? ⚽
 
-En **Ffans**, cada acción que realizas como aficionado tiene recompensa. Hemos diseñado un sistema de puntos para valorar tu participación, conocimiento e implicación. Te presentamos cómo lo clasificamos y cómo calculamos tu puntuación final, paso a paso y de manera transparente.
+En **Ffans**, cada acción que realizas como aficionado tiene recompensa. Hemos diseñado un sistema de puntos para valorar tu participación y conocimiento. Te presentamos cómo lo clasificamos y cómo calculamos tu puntuación final, paso a paso y de forma transparente.
 
 ---
 
@@ -35,56 +35,49 @@ Cada acción concreta tiene su propia puntuación específica. Esta cifra **se s
 
 **Puntuación Total = Puntuación base + Puntuación evento**
 
-Esta es la cifra sobre la que aplicaremos después los ajustes por múltiples respuestas o tiempo. En la tabla siguiente la tienes calculada para cada evento.
+Esta es la cifra sobre la que aplicaremos el ajuste por respuestas múltiples, si corresponde. En la siguiente tabla la tienes calculada para cada evento.
 
-|Categoría|Aspecto a valorar|Puntuación base|Puntuación evento|**Puntuación Total**|¿Múltiple?|¿Tiempo?|
-|---|---|---|---|---|---|---|
-|Participación evento de Fútbol|Asistir al partido de tu equipo como local|10|40|**50**|N|N|
-|Participación evento de Fútbol|Asistir al partido de tu equipo como visitante|10|50|**60**|N|N|
-|Participación evento de Fútbol|Asistir a un partido donde no juega tu equipo|10|30|**40**|N|N|
-|Participación evento de Fútbol|Participar en cánticos de la afición|10|5|**15**|N|N|
-|Conocimiento de Fútbol|Preguntas sobre tu equipo (según ubicación)|5|10|**15**|S|S|
-|Conocimiento de Fútbol|Acertar el MVP (votado por los asistentes)|5|15|**20**|N|S|
-|Conocimiento de Fútbol|Acertar la alineación de tu equipo|5|15|**20**|S|S|
+|Categoría|Aspecto a valorar|Puntuación base|Puntuación evento|**Puntuación Total**|¿Múltiple?|
+|---|---|---|---|---|---|
+|Participación en eventos de Fútbol|Asistir al partido de tu equipo como local|10|40|**50**|N|
+|Participación en eventos de Fútbol|Asistir al partido de tu equipo como visitante|10|50|**60**|N|
+|Participación en eventos de Fútbol|Asistir a un partido donde no juega tu equipo|10|30|**40**|N|
+|Participación en eventos de Fútbol|Participar en cánticos de la afición|10|5|**15**|N|
+|Conocimiento de Fútbol|Preguntas sobre tu equipo (según ubicación)|5|10|**15**|S|
+|Conocimiento de Fútbol|Acertar el MVP (votado por los asistentes)|5|15|**20**|N|
+|Conocimiento de Fútbol|Acertar la alineación de tu equipo|5|15|**20**|S|
 
-> **Leyenda**: **N** = No se aplica; **S** = Se aplica (múltiples opciones o bonificación por tiempo).
+> **Leyenda**: **N** = No se aplica; **S** = Se aplica (el evento tiene múltiples opciones y se valora con la regla proporcional).
 
 ---
 
-## 🧮 4. Cómo ajustamos la "Puntuación Total" según el evento?
+## 🧮 4. ¿Cómo ajustamos la "Puntuación Total" si el evento tiene múltiples opciones?
 
-Una vez tenemos la **Puntuación Total** del evento, miramos si tiene las siguientes características:
-
-### 🔹 Si el evento tiene **múltiples opciones** (ej: alineación de 11 jugadores)
+Cuando un evento tiene varias opciones (por ejemplo, acertar los 11 jugadores de una alineación), la puntuación se calcula así:
 
 - Si aciertas **todas** las opciones → obtienes la **Puntuación Total** completa.
-- Si solo aciertas una parte → recibirás **el 80% de la Puntuación Total** repartido proporcionalmente entre el número de opciones acertadas, redondeado a la unidad.
+    
+- Si solo aciertas una parte → recibirás la **parte proporcional directa** sobre el 100% de la Puntuación Total, repartida entre el número total de opciones, y redondeada a la unidad.
+    
 
-**Ejemplo**: La alineación tiene **Puntuación Total = 20 puntos**. Aciertas 8 de los 11 jugadores.
+**Fórmula**:
 
-- 80% de 20 = 16 puntos.
-- 16 puntos / 11 jugadores = 1,454 puntos por jugador.
-- 8 aciertos × 1,454 = 11,63 → **12 puntos** (redondeado).
+```text
+Puntos = (Puntuación Total / Número total de opciones) × Número de opciones acertadas
 
-### 🔹 Si el evento se valora con **tiempo**
+**Ejemplo**: La alineación tiene **Puntuación Total = 20 puntos** y 11 jugadores. Aciertas 8 jugadores.
 
-La bonificación por tiempo se calcula en función del **plazo disponible para responder** (por ejemplo, las 24 horas antes del partido, o las horas desde que se publica el evento hasta que se cierra).
-
-- Si respondes **dentro de la primera mitad de ese plazo** → tu puntuación se multiplica por **1,2**.
-- Si respondes **dentro de la segunda mitad del plazo** → la puntuación se multiplica por **1** (sin bonificación).
-
-**Ejemplo**: El MVP tiene **Puntuación Total = 20 puntos**. El plazo para responder es de 24 horas.
-
-- Respondes en las primeras 12 horas → 20 × 1,2 = **24 puntos**.
-- Respondes en las últimas 12 horas → 20 × 1 = **20 puntos**.
-
-> 💡 **Si el evento tiene múltiple y tiempo a la vez**, se aplican **ambas reglas**: primero se calcula el acierto parcial (80% proporcional) y, sobre ese resultado, se aplica el factor temporal según la mitad del plazo en que has respondido.
+- (20 / 11) = 1,818 puntos por jugador.
+    
+- 8 aciertos × 1,818 = 14,54 → **15 puntos** (redondeado).
+    
+```
 
 ---
 
 ## 🏆 ¿Por qué todo esto?
 
-Queremos que cada gesto tuyo tenga valor y que el sistema sea **transparente, motivador y justo**. Ahora ya sabes que tus puntos no salen de una caja mágica: parten de la suma de la **base de la categoría** y la **puntuación específica de la acción**, y luego se ajustan para premiar el acierto y la rapidez (entendida como responder pronto dentro del plazo disponible).
+Queremos que cada gesto tuyo tenga valor y que el sistema sea **transparente, motivador y justo**. Ahora ya sabes que tus puntos parten de la suma de la **base de la categoría** y la **puntuación específica de la acción**, y se ajustan proporcionalmente si el evento tiene múltiples respuestas.
 
 Así que ya lo sabes: participa, demuestra tu pasión... ¡y sube en el ranking de Ffans! 🔥
 
