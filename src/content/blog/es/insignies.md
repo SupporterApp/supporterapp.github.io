@@ -17,9 +17,9 @@ Las insignias son **reconocimientos visuales** que marcan tus hitos dentro de la
 
 |Categoría|¿Qué mide?|Icono|
 |---|---|---|
-|**Partidos**|Número de partidos a los que has asistido|<img src="/public/images/blog/fans.svg" width="40" alt="Partidos">|
-|**Canciones**|Número de canciones que has cantado durante los partidos|<img src="/public/images/blog/song.svg" width="40" alt="Canciones">|
-|**Preguntas**|Número de preguntas de fútbol que has respondido correctamente|<img src="/public/images/blog/question.svg" width="40" alt="Preguntas">|
+|**Partidos**|Número de partidos a los que has asistido|![Partidos](/images/blog/fans.svg)|
+|**Canciones**|Número de canciones que has cantado durante los partidos|![Canciones](/images/blog/song.svg)|
+|**Preguntas**|Número de preguntas de fútbol que has respondido correctamente|![Preguntas](/images/blog/question.svg)|
 
 Cada categoría tiene su propia escala de progreso, y las insignias que consigues se muestran en la **pestaña "Insignias"** de tu página de progreso.
 
@@ -44,7 +44,7 @@ Cada vez que consigues un nuevo nivel, la insignia se actualiza automáticamente
 
 Los umbrales son específicos para cada categoría y están diseñados para ser progresivos: los primeros niveles son alcanzables y los últimos requieren dedicación. Aquí los tienes todos en una sola tabla:
 
-|Nivel|<img src="/public/images/blog/fans.svg" width="30" alt="Partidos"> Partidos|<img src="/public/images/blog/song.svg" width="30" alt="Canciones"> Canciones|<img src="/public/images/blog/question.svg" width="30" alt="Preguntas"> Preguntas|
+|Nivel|Partidos|Canciones|Preguntas|
 |---|---|---|---|
 |🥉 **Bronce**|1|1|1|
 |🥈 **Plata**|5|3|5|
@@ -61,9 +61,9 @@ Cada insignia tiene un diseño único que combina:
 
 - **Forma circular** con gradiente metálico del nivel correspondiente.
 - **Icono central** que identifica la categoría:
-  - <img src="/public/images/blog/fans.svg" width="24" alt="Partidos"> **Partidos**: el escudo de la app
-  - <img src="/public/images/blog/song.svg" width="24" alt="Canciones"> **Canciones**: una nota musical
-  - <img src="/public/images/blog/question.svg" width="24" alt="Preguntas"> **Preguntas**: un interrogante
+  - ![Partidos](/images/blog/fans.svg) **Partidos**: el escudo de la app
+  - ![Canciones](/images/blog/song.svg) **Canciones**: una nota musical
+  - ![Preguntas](/images/blog/question.svg) **Preguntas**: un interrogante
 - **Estrellas** en la parte inferior, que se llenan progresivamente (de izquierda a derecha) a medida que subes de nivel.
 - **Adornos especiales** para los niveles más altos:
   - **Oro**: unas alas que sobresalen por encima de la insignia.

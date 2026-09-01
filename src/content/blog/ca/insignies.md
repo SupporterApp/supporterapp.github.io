@@ -17,9 +17,9 @@ Les insígnies són **reconeixements visuals** que marquen les teves fites dins 
 
 |Categoria|Què mesura?|Icona|
 |---|---|---|
-|**Partits**|Nombre de partits als quals has assistit|<img src="/public/images/blog/fans.svg" width="40" alt="Partits">|
-|**Cançons**|Nombre de cançons que has cantat durant els partits|<img src="/public/images/blog/song.svg" width="40" alt="Cançons">|
-|**Preguntes**|Nombre de preguntes de futbol que has respost correctament|<img src="/public/images/blog/question.svg" width="40" alt="Preguntes">|
+|**Partits**|Nombre de partits als quals has assistit|![Partits](/images/blog/fans.svg)|
+|**Cançons**|Nombre de cançons que has cantat durant els partits|![Cançons](/images/blog/song.svg)|
+|**Preguntes**|Nombre de preguntes de futbol que has respost correctament|![Preguntes](/images/blog/question.svg)|
 
 Cada categoria té la seva pròpia escala de progrés, i les insígnies que aconsegueixes es mostren a la **pestanya "Insígnies"** de la teva pàgina de progrés.
 
@@ -44,7 +44,7 @@ Cada vegada que aconsegueixes un nou nivell, la insígnia s'actualitza automàti
 
 Els llindars són específics per a cada categoria i estan dissenyats per ser progressius: els primers nivells són assequibles i els últims requereixen dedicació. Aquí els tens tots en una sola taula:
 
-|Nivell|<img src="/public/images/blog/fans.svg" width="30" alt="Partits"> Partits|<img src="/public/images/blog/song.svg" width="30" alt="Cançons"> Cançons|<img src="/public/images/blog/question.svg" width="30" alt="Preguntes"> Preguntes|
+|Nivell|Partits|Cançons|Preguntes|
 |---|---|---|---|
 |🥉 **Bronze**|1|1|1|
 |🥈 **Plata**|5|3|5|
@@ -60,23 +60,14 @@ Els llindars són específics per a cada categoria i estan dissenyats per ser pr
 Cada insígnia té un disseny únic que combina:
 
 - **Forma circular** amb gradient metàl·lic del nivell corresponent.
-    
 - **Icona central** que identifica la categoria:
-    
-    - <img src="/public/images/blog/fans.svg" width="24" alt="Partits"> **Partits**: l'escut de l'app
-        
-    - <img src="/public/images/blog/song.svg" width="24" alt="Cançons"> **Cançons**: una nota musical
-        
-    - <img src="/public/images/blog/question.svg" width="24" alt="Preguntes"> **Preguntes**: un interrogant
-        
+  - ![Partits](/images/blog/fans.svg) **Partits**: l'escut de l'app
+  - ![Cançons](/images/blog/song.svg) **Cançons**: una nota musical
+  - ![Preguntes](/images/blog/question.svg) **Preguntes**: un interrogant
 - **Estrelles** a la part inferior, que s'omplen progressivament (d'esquerra a dreta) a mesura que puges de nivell.
-    
 - **Ornaments especials** per als nivells més alts:
-    
-    - **Or**: unes ales que sobresurten per sobre de la insígnia.
-        
-    - **Platí**: una torxa que corona la insígnia.
-        
+  - **Or**: unes ales que sobresurten per sobre de la insígnia.
+  - **Platí**: una torxa que corona la insígnia.
 
 Aquest disseny visual et permet reconèixer d'un cop d'ull el teu progrés en cada àrea i et motiva a seguir participant.
 
@@ -84,7 +75,7 @@ Aquest disseny visual et permet reconèixer d'un cop d'ull el teu progrés en ca
 
 ## 🔍 5. On puc veure les meves insígnies?
 
-A la pàgina de progrés (`Puntuació / Nivell`), trobaràs la pestanya **"Insígnies"**. Allà es mostren les tres categories amb la insígnia corresponent al teu nivell actual, juntament amb el nom del nivell i el progrés cap al següent (per exemple: _"Plata – 8/15"_).
+A la pàgina de progrés (`Puntuació / Nivell`), trobaràs la pestanya **"Insígnies"**. Allà es mostren les tres categories amb la insígnia corresponent al teu nivell actual, juntament amb el nom del nivell i el progrés cap al següent (per exemple: *"Plata – 8/15"*).
 
 A més, si encara no has desbloquejat el nivell més baix (Bronze), veuràs la insígnia en **gris** amb 0 estrelles, indicant que has de començar a participar en aquella categoria.
 
@@ -101,15 +92,10 @@ I recorda: **totes les categories compten**. Ser un aficionat complet no és nom
 ## 🏁 En resum
 
 - Tens **3 categories** d'insígnies: Partits, Cançons i Preguntes.
-    
 - Cada categoria té **4 nivells**: Bronze, Plata, Or i Platí.
-    
 - Avances automàticament en arribar als llindars definits per a cada nivell.
-    
 - Les insígnies es mostren amb un disseny progressiu que reflecteix el teu nivell.
-    
 - Consulta la teva progressió a la pestanya **"Insígnies"** de la pàgina de progrés.
-    
 
 Així que ja ho saps: **participa, canta, respon i puja de nivell**. Les insígnies de Ffans t'esperen! 💪🏅
 
