@@ -17,9 +17,9 @@ Badges are **visual recognitions** that mark your milestones within the app. The
 
 |Category|What does it measure?|Icon|
 |---|---|---|
-|**Matches**|Number of matches you've attended|![Matches](/images/blog/fans.svg)|
-|**Songs**|Number of songs you've sung during matches|![Songs](/images/blog/song.svg)|
-|**Quizzes**|Number of football questions you've answered correctly|![Quizzes](/images/blog/question.svg)|
+|**Matches**|Number of matches you've attended|<img src="/images/blog/fans.svg" width="40" height="40" alt="Matches">|
+|**Songs**|Number of songs you've sung during matches|<img src="/images/blog/song.svg" width="40" height="40" alt="Songs">|
+|**Quizzes**|Number of football questions you've answered correctly|<img src="/images/blog/question.svg" width="40" height="40" alt="Quizzes">|
 
 Each category has its own progress scale, and the badges you earn are displayed in the **"Badges" tab** on your progress page.
 
@@ -44,7 +44,7 @@ Every time you reach a new level, the badge updates automatically on your progre
 
 The thresholds are specific to each category and are designed to be progressive: the first levels are achievable, and the last ones require dedication. Here they are all in one table:
 
-|Level|Matches|Songs|Quizzes|
+|Level|<img src="/images/blog/fans.svg" width="30" height="30" alt="Matches"> Matches|<img src="/images/blog/song.svg" width="30" height="30" alt="Songs"> Songs|<img src="/images/blog/question.svg" width="30" height="30" alt="Quizzes"> Quizzes|
 |---|---|---|---|
 |🥉 **Bronze**|1|1|1|
 |🥈 **Silver**|5|3|5|
@@ -61,9 +61,9 @@ Each badge has a unique design that combines:
 
 - **Circular shape** with a metallic gradient for the corresponding level.
 - **Central icon** that identifies the category:
-  - ![Matches](/images/blog/fans.svg) **Matches**: the app's crest
-  - ![Songs](/images/blog/song.svg) **Songs**: a musical note
-  - ![Quizzes](/images/blog/question.svg) **Quizzes**: a question mark
+  - <img src="/images/blog/fans.svg" width="24" height="24" alt="Matches"> **Matches**: the app's crest
+  - <img src="/images/blog/song.svg" width="24" height="24" alt="Songs"> **Songs**: a musical note
+  - <img src="/images/blog/question.svg" width="24" height="24" alt="Quizzes"> **Quizzes**: a question mark
 - **Stars** at the bottom, which fill progressively (from left to right) as you level up.
 - **Special ornaments** for the highest levels:
   - **Gold**: wings that extend above the badge.

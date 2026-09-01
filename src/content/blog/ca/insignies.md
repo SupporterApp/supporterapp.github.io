@@ -17,9 +17,9 @@ Les insígnies són **reconeixements visuals** que marquen les teves fites dins 
 
 |Categoria|Què mesura?|Icona|
 |---|---|---|
-|**Partits**|Nombre de partits als quals has assistit|![Partits](/images/blog/fans.svg)|
-|**Cançons**|Nombre de cançons que has cantat durant els partits|![Cançons](/images/blog/song.svg)|
-|**Preguntes**|Nombre de preguntes de futbol que has respost correctament|![Preguntes](/images/blog/question.svg)|
+|**Partits**|Nombre de partits als quals has assistit|<img src="/images/blog/fans.svg" width="40" height="40" alt="Partits">|
+|**Cançons**|Nombre de cançons que has cantat durant els partits|<img src="/images/blog/song.svg" width="40" height="40" alt="Cançons">|
+|**Preguntes**|Nombre de preguntes de futbol que has respost correctament|<img src="/images/blog/question.svg" width="40" height="40" alt="Preguntes">|
 
 Cada categoria té la seva pròpia escala de progrés, i les insígnies que aconsegueixes es mostren a la **pestanya "Insígnies"** de la teva pàgina de progrés.
 
@@ -44,7 +44,7 @@ Cada vegada que aconsegueixes un nou nivell, la insígnia s'actualitza automàti
 
 Els llindars són específics per a cada categoria i estan dissenyats per ser progressius: els primers nivells són assequibles i els últims requereixen dedicació. Aquí els tens tots en una sola taula:
 
-|Nivell|Partits|Cançons|Preguntes|
+|Nivell|<img src="/images/blog/fans.svg" width="30" height="30" alt="Partits"> Partits|<img src="/images/blog/song.svg" width="30" height="30" alt="Cançons"> Cançons|<img src="/images/blog/question.svg" width="30" height="30" alt="Preguntes"> Preguntes|
 |---|---|---|---|
 |🥉 **Bronze**|1|1|1|
 |🥈 **Plata**|5|3|5|
@@ -61,9 +61,9 @@ Cada insígnia té un disseny únic que combina:
 
 - **Forma circular** amb gradient metàl·lic del nivell corresponent.
 - **Icona central** que identifica la categoria:
-  - ![Partits](/images/blog/fans.svg) **Partits**: l'escut de l'app
-  - ![Cançons](/images/blog/song.svg) **Cançons**: una nota musical
-  - ![Preguntes](/images/blog/question.svg) **Preguntes**: un interrogant
+  - <img src="/images/blog/fans.svg" width="24" height="24" alt="Partits"> **Partits**: l'escut de l'app
+  - <img src="/images/blog/song.svg" width="24" height="24" alt="Cançons"> **Cançons**: una nota musical
+  - <img src="/images/blog/question.svg" width="24" height="24" alt="Preguntes"> **Preguntes**: un interrogant
 - **Estrelles** a la part inferior, que s'omplen progressivament (d'esquerra a dreta) a mesura que puges de nivell.
 - **Ornaments especials** per als nivells més alts:
   - **Or**: unes ales que sobresurten per sobre de la insígnia.
