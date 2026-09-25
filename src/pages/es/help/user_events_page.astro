@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Mis eventos">
+  <style>
+    .help-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #f0f0f0;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .help-container h1 {
+      color: #4caf50;
+      font-size: 24px;
+      margin-top: 0;
+    }
+    .help-container h2 {
+      color: #81c784;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .help-container .highlight {
+      color: #ffb74d;
+    }
+    .help-container hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 20px 0;
+    }
+    .help-container ul {
+      margin: 8px 0 16px 20px;
+      padding-left: 0;
+    }
+    .help-container li {
+      margin-bottom: 4px;
+    }
+  </style>
+
+  <div class="help-container">
+    <h1>Mis eventos</h1>
+    <p>En esta sección encontrarás todos los eventos que tienes pendientes de completar y aquellos que ya han sido contabilizados. Es tu historial personal de participación, con la puntuación que has conseguido en cada uno.</p>
+
+    <hr>
+
+    <h2>📌 Eventos pendientes</h2>
+    <p>Aquí aparecen los eventos que aún no has completado o que, aunque hayas participado, todavía no han sido cerrados por el sistema. Cada evento se agrupa por partido y muestra la fase en la que se encuentra:</p>
+    <ul>
+      <li><strong>PRE_MATCH:</strong> eventos que se pueden completar antes de que empiece el partido.</li>
+      <li><strong>POST_MATCH:</strong> eventos que se pueden completar una vez finalizado el partido.</li>
+    </ul>
+    <p>Los tipos de eventos que puedes encontrar son:</p>
+    <ul>
+      <li>🎵 <strong>Canciones:</strong> haz sonar una canción durante un tiempo determinado.</li>
+      <li>❓ <strong>Cuestionarios:</strong> responde correctamente las preguntas del partido.</li>
+      <li>🏆 <strong>MVP del partido:</strong> vota por el jugador más valioso del partido.</li>
+      <li>⚽ <strong>Partidos:</strong> los partidos a los que has confirmado asistencia.</li>
+    </ul>
+
+    <h2>✅ Eventos contabilizados</h2>
+    <p>Una vez un evento <strong>ha finalizado y el sistema ha calculado su resultado</strong>, aparecerá en esta sección con:</p>
+    <ul>
+      <li>Los <span class="highlight">puntos ganados</span>.</li>
+      <li>Una <span class="highlight">marca verde</span> que confirma que el resultado ha sido procesado.</li>
+    </ul>
+    <p>Esto significa que un evento que has completado puede tardar un poco en aparecer aquí: primero debe terminar el período de participación y después el sistema debe calcular los resultados.</p>
+
+    <h2>🏆 Cómo funciona el MVP del partido</h2>
+    <p>El MVP es el evento estrella del partido: se trata de votar por el <strong>jugador más valioso</strong> de entre todos los que han participado en el encuentro.</p>
+    <ul>
+      <li>Cuando entres al MVP, se registra tu asistencia automáticamente.</li>
+      <li>Verás la <strong>ventana de votación</strong> con la hora de inicio y de fin. Asegúrate de votar dentro de este intervalo.</li>
+      <li>Puedes navegar entre las preguntas con los botones <em>Atrás</em> y <em>Siguiente</em>.</li>
+      <li><span class="highlight">Mientras la ventana de votación esté abierta, puedes volver a entrar y cambiar tu respuesta</span> tantas veces como quieras.</li>
+      <li>Una vez envíes las respuestas, el MVP <strong>no desaparecerá de pendientes</strong> ni pasará a contabilizados inmediatamente: esto solo ocurrirá <strong>cuando el evento se cierre y el sistema calcule los resultados</strong>.</li>
+      <li>Cuando esto ocurra, el MVP aparecerá en la sección de eventos contabilizados con los puntos correspondientes.</li>
+    </ul>
+
+    <h2>⚽ Acceder al widget del partido</h2>
+    <p>Los eventos de tipo <strong>MATCH</strong> tienen un enlace al widget del partido (con el icono de abrir en una ventana nueva). Haz clic en él para ver la información en directo del partido: alineaciones, estadísticas y resultado.</p>
+    <p>Los partidos ya contabilizados también tienen este enlace, por si quieres volver a consultar la información del partido.</p>
+
+    <h2>🔄 Actualizar la lista</h2>
+    <p>Puedes actualizar la lista en cualquier momento deslizando la pantalla hacia abajo (gesto de "tirar para refrescar"). Esto hará que se vuelvan a cargar los eventos y se reflejen los cambios más recientes.</p>
+
+    <h2>💡 Consejos</h2>
+    <ul>
+      <li>Completa los eventos de PRE_MATCH antes de que empiece el partido para no perderlos.</li>
+      <li>Si un evento tiene un tiempo límite, asegúrate de participar dentro de la ventana indicada.</li>
+      <li>El MVP suele aparecer al final del partido: estad atentos a las notificaciones.</li>
+      <li>Si has votado el MVP pero aún no lo ves en contabilizados, no te preocupes: está pendiente de que el sistema calcule los resultados.</li>
+    </ul>
+  </div>
+</Layout>

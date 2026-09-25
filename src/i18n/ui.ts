@@ -20,6 +20,7 @@ export const ui = {
     'help.home': 'Inici',
     'help.attend': 'Assistència',
     'help.progress': 'Progrés',
+	'help.my_events': 'Activitats',
   },
   es: {
     'nav.home': 'Inicio',
@@ -33,6 +34,7 @@ export const ui = {
     'help.home': 'Inicio',
     'help.attend': 'Asistencia',
     'help.progress': 'Progreso',
+	'help.my_events': 'Eventos',	
   },
   en: {
     'nav.home': 'Home',
@@ -46,6 +48,7 @@ export const ui = {
     'help.home': 'Home',
     'help.attend': 'Attendance',
     'help.progress': 'Progress',
+	'help.my_events': 'Events',
   },
 } as const;
 
