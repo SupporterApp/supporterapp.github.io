@@ -35,7 +35,7 @@ Cuando se acerca el final del partido, la aplicación activa la votación del MV
 
 ## 🔄 ¿Y si me arrepiento?
 
-Aquí viene una de las cosas más interesantes: **mientras la ventana de votación esté abierta, puedes cambiar tu voto tantas veces como quieras**. Si en el minuto 88 un jugador marca un gol espectacular y te convence, puedes cambiar el voto sin ningún problema. Tienes hasta el último momento para decidirte.
+Aquí viene una de las cosas más interesantes: **mientras la ventana de votación esté abierta, puedes cambiar tu voto tantas veces como quieras**. Si otro jugador acaba de convencerte, si cambias de opinión después de comentarlo con los compañeros de grada o si simplemente quieres esperar hasta el último momento, **tienes toda la ventana para cambiarlo**.
 
 Cuando la ventana se cierre, el voto queda bloqueado y empieza el recuento.
 

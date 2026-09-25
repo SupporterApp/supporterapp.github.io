@@ -3,45 +3,58 @@ import Layout from '../../../layouts/Layout.astro';
 ---
 
 <Layout title="Els meus esdeveniments">
-  <style>
-    .help-container {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 12px;
-      color: #f0f0f0;
-      line-height: 1.6;
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
       max-width: 800px;
       margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .help-container h1 {
-      color: #4caf50;
-      font-size: 24px;
-      margin-top: 0;
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
     }
-    .help-container h2 {
-      color: #81c784;
-      font-size: 18px;
-      margin-top: 24px;
-      margin-bottom: 8px;
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
     }
-    .help-container .highlight {
-      color: #ffb74d;
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
     }
-    .help-container hr {
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
       border: none;
-      border-top: 1px solid #444;
-      margin: 20px 0;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
     }
-    .help-container ul {
-      margin: 8px 0 16px 20px;
-      padding-left: 0;
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
     }
-    .help-container li {
-      margin-bottom: 4px;
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
     }
   </style>
 
-  <div class="help-container">
+  <div class="doc-card">
     <h1>Els meus esdeveniments</h1>
     <p>En aquesta secció trobaràs tots els esdeveniments que tens pendents de completar i aquells que ja han estat comptabilitzats. És el teu historial personal de participació, amb la puntuació que has aconseguit a cada un.</p>
 
@@ -64,8 +77,8 @@ import Layout from '../../../layouts/Layout.astro';
     <h2>✅ Esdeveniments comptabilitzats</h2>
     <p>Un cop un esdeveniment <strong>ha finalitzat i el sistema n'ha calculat el resultat</strong>, apareixerà en aquesta secció amb:</p>
     <ul>
-      <li>Els <span class="highlight">punts guanyats</span>.</li>
-      <li>Una <span class="highlight">marca verda</span> que confirma que el resultat ha estat processat.</li>
+      <li>Els <strong>punts guanyats</strong>.</li>
+      <li>Una <strong>marca verda</strong> que confirma que el resultat ha estat processat.</li>
     </ul>
     <p>Això vol dir que un esdeveniment que has completat pot trigar una mica a aparèixer aquí: primer ha d'acabar el període de participació i després el sistema ha de calcular els resultats.</p>
 
@@ -75,7 +88,7 @@ import Layout from '../../../layouts/Layout.astro';
       <li>Quan entris a l'MVP, es registra la teva assistència automàticament.</li>
       <li>Veure't la <strong>finestra de votació</strong> amb l'hora d'inici i de final. Assegura't de votar dins d'aquest interval.</li>
       <li>Pots navegar entre les preguntes amb els botons <em>Enrere</em> i <em>Següent</em>.</li>
-      <li><span class="highlight">Mentre la finestra de votació estigui oberta, pots tornar a entrar i canviar la teva resposta</span> tantes vegades com vulguis.</li>
+      <li><strong>Mentre la finestra de votació estigui oberta, pots tornar a entrar i canviar la teva resposta</strong> tantes vegades com vulguis.</li>
       <li>Un cop enviïs les respostes, l'MVP <strong>no desapareixerà de pendents</strong> ni passarà a comptabilitzats immediatament: això només passarà <strong>quan l'event es tanqui i el sistema calculi els resultats</strong>.</li>
       <li>Quan això passi, l'MVP apareixerà a la secció d'esdeveniments comptabilitzats amb els punts corresponents.</li>
     </ul>

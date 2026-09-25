@@ -3,45 +3,58 @@ import Layout from '../../../layouts/Layout.astro';
 ---
 
 <Layout title="My events">
-  <style>
-    .help-container {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 12px;
-      color: #f0f0f0;
-      line-height: 1.6;
+  <style is:global>
+    .doc-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #1a1a1a;
       max-width: 800px;
       margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .help-container h1 {
-      color: #4caf50;
-      font-size: 24px;
-      margin-top: 0;
+    .doc-card h1 {
+      color: #2e7d32;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
     }
-    .help-container h2 {
-      color: #81c784;
-      font-size: 18px;
-      margin-top: 24px;
-      margin-bottom: 8px;
+    .doc-card h2 {
+      color: #388e3c;
+      margin-top: 1.8rem;
+      font-size: 1.5rem;
     }
-    .help-container .highlight {
-      color: #ffb74d;
+    .doc-card p, .doc-card li {
+      color: #1a1a1a;
+      line-height: 1.7;
     }
-    .help-container hr {
+    .doc-card a {
+      color: #1a73e8;
+    }
+    .doc-card .highlight {
+      background-color: #fff3e0;
+      padding: 1.5rem;
+      border-left: 6px solid #ff9800;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #1a1a1a;
+    }
+    .doc-card hr {
       border: none;
-      border-top: 1px solid #444;
-      margin: 20px 0;
+      border-top: 1px solid #ddd;
+      margin: 1.5rem 0;
     }
-    .help-container ul {
-      margin: 8px 0 16px 20px;
-      padding-left: 0;
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
     }
-    .help-container li {
-      margin-bottom: 4px;
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
     }
   </style>
 
-  <div class="help-container">
+  <div class="doc-card">
     <h1>My events</h1>
     <p>In this section you'll find all the events you have pending to complete and those that have already been counted. It's your personal participation history, with the score you've earned on each one.</p>
 
@@ -64,8 +77,8 @@ import Layout from '../../../layouts/Layout.astro';
     <h2>✅ Counted events</h2>
     <p>Once an event <strong>has finished and the system has calculated its result</strong>, it will appear in this section with:</p>
     <ul>
-      <li>The <span class="highlight">points earned</span>.</li>
-      <li>A <span class="highlight">green check mark</span> confirming the result has been processed.</li>
+      <li>The <strong>points earned</strong>.</li>
+      <li>A <strong>green check mark</strong> confirming the result has been processed.</li>
     </ul>
     <p>This means an event you've completed may take a while to appear here: first the participation period must end, and then the system must calculate the results.</p>
 
@@ -75,7 +88,7 @@ import Layout from '../../../layouts/Layout.astro';
       <li>When you enter the MVP, your attendance is registered automatically.</li>
       <li>You'll see the <strong>voting window</strong> with the start and end times. Make sure you vote within this interval.</li>
       <li>You can navigate between questions with the <em>Back</em> and <em>Next</em> buttons.</li>
-      <li><span class="highlight">While the voting window is open, you can re-enter and change your answer</span> as many times as you like.</li>
+      <li><strong>While the voting window is open, you can re-enter and change your answer</strong> as many times as you like.</li>
       <li>Once you submit your answers, the MVP <strong>won't disappear from pending</strong> nor move to counted immediately: this will only happen <strong>when the event closes and the system calculates the results</strong>.</li>
       <li>When that happens, the MVP will appear in the counted events section with the corresponding points.</li>
     </ul>

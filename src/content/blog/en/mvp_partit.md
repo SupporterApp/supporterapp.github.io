@@ -35,7 +35,7 @@ As the match nears its end, the app activates the MVP vote and it will appear as
 
 ## 🔄 What if I change my mind?
 
-Here's one of the most interesting things: **while the voting window is open, you can change your vote as many times as you want**. If in the 88th minute a player scores a spectacular goal and wins you over, you can change your vote without any problem. You have until the very last moment to decide.
+Here's one of the most interesting things: **while the voting window is open, you can change your vote as many times as you want**. If another player has just won you over, if you change your mind after discussing it with your fellow fans, or if you simply want to wait until the last moment, **you have the whole window to change it**.
 
 When the window closes, the vote is locked and the counting begins.
 
