@@ -9,9 +9,10 @@ export interface Props {
   description?: string;
   image?: string;
   lang?: string;
+  wide?: boolean;
 }
 
-const { title, description, image, lang = 'ca' } = Astro.props;
+const { title, description, image, lang = 'ca', wide = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -96,6 +97,9 @@ const { title, description, image, lang = 'ca' } = Astro.props;
         width: 100%;
         box-sizing: border-box;
       }
+      main.wide {
+        max-width: 1400px;
+      }
       h1, h2, h3, p {
         color: var(--text);
       }
@@ -114,6 +118,12 @@ const { title, description, image, lang = 'ca' } = Astro.props;
       body.webview footer {
         display: none !important;
       }
+      body.webview .post-sidebar {
+        display: none !important;
+      }
+      body.webview .post-layout {
+        flex-direction: column;
+      }
 
       img, iframe, video, .doc-card, .blog-post, .help-container {
         max-width: 100%;
@@ -124,7 +134,7 @@ const { title, description, image, lang = 'ca' } = Astro.props;
   <body>
     <div class="overlay">
       <Header />
-      <main>
+      <main class:list={[{ wide }]}>
         <slot />
       </main>
       <Footer />

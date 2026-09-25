@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Els meus esdeveniments">
+  <style>
+    .help-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #f0f0f0;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .help-container h1 {
+      color: #4caf50;
+      font-size: 24px;
+      margin-top: 0;
+    }
+    .help-container h2 {
+      color: #81c784;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .help-container .highlight {
+      color: #ffb74d;
+    }
+    .help-container hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 20px 0;
+    }
+    .help-container ul {
+      margin: 8px 0 16px 20px;
+      padding-left: 0;
+    }
+    .help-container li {
+      margin-bottom: 4px;
+    }
+  </style>
+
+  <div class="help-container">
+    <h1>Els meus esdeveniments</h1>
+    <p>En aquesta secció trobaràs tots els esdeveniments que tens pendents de completar i aquells que ja han estat comptabilitzats. És el teu historial personal de participació, amb la puntuació que has aconseguit a cada un.</p>
+
+    <hr>
+
+    <h2>📌 Esdeveniments pendents</h2>
+    <p>Aquí apareixen els esdeveniments que encara no has completat o que, tot i haver participat, encara no han estat tancats pel sistema. Cada esdeveniment s'agrupa per partit i mostra la fase en què es troba:</p>
+    <ul>
+      <li><strong>PRE_MATCH:</strong> esdeveniments que es poden completar abans que comenci el partit.</li>
+      <li><strong>POST_MATCH:</strong> esdeveniments que es poden completar un cop finalitzat el partit.</li>
+    </ul>
+    <p>Els tipus d'esdeveniments que pots trobar són:</p>
+    <ul>
+      <li>🎵 <strong>Cançons:</strong> fes sonar una cançó durant un temps determinat.</li>
+      <li>❓ <strong>Qüestionaris:</strong> respon correctament les preguntes del partit.</li>
+      <li>🏆 <strong>MVP del partit:</strong> vota pel jugador més valuós del partit.</li>
+      <li>⚽ <strong>Partits:</strong> els partits als quals has confirmat assistència.</li>
+    </ul>
+
+    <h2>✅ Esdeveniments comptabilitzats</h2>
+    <p>Un cop un esdeveniment <strong>ha finalitzat i el sistema n'ha calculat el resultat</strong>, apareixerà en aquesta secció amb:</p>
+    <ul>
+      <li>Els <span class="highlight">punts guanyats</span>.</li>
+      <li>Una <span class="highlight">marca verda</span> que confirma que el resultat ha estat processat.</li>
+    </ul>
+    <p>Això vol dir que un esdeveniment que has completat pot trigar una mica a aparèixer aquí: primer ha d'acabar el període de participació i després el sistema ha de calcular els resultats.</p>
+
+    <h2>🏆 Com funciona el MVP del partit</h2>
+    <p>El MVP és l'esdeveniment estrella del partit: es tracta de votar pel <strong>jugador més valuós</strong> d'entre tots els que han participat al matx.</p>
+    <ul>
+      <li>Quan entris a l'MVP, es registra la teva assistència automàticament.</li>
+      <li>Veure't la <strong>finestra de votació</strong> amb l'hora d'inici i de final. Assegura't de votar dins d'aquest interval.</li>
+      <li>Pots navegar entre les preguntes amb els botons <em>Enrere</em> i <em>Següent</em>.</li>
+      <li><span class="highlight">Mentre la finestra de votació estigui oberta, pots tornar a entrar i canviar la teva resposta</span> tantes vegades com vulguis.</li>
+      <li>Un cop enviïs les respostes, l'MVP <strong>no desapareixerà de pendents</strong> ni passarà a comptabilitzats immediatament: això només passarà <strong>quan l'event es tanqui i el sistema calculi els resultats</strong>.</li>
+      <li>Quan això passi, l'MVP apareixerà a la secció d'esdeveniments comptabilitzats amb els punts corresponents.</li>
+    </ul>
+
+    <h2>⚽ Accedir al widget del partit</h2>
+    <p>Els esdeveniments de tipus <strong>MATCH</strong> tenen un enllaç al widget del partit (amb la icona d'obrir en una finestra nova). Fes-hi clic per veure la informació en directe del partit: alineacions, estadístiques i resultat.</p>
+    <p>Els partits ja comptabilitzats també tenen aquest enllaç, per si vols tornar a consultar la informació del partit.</p>
+
+    <h2>🔄 Actualitzar la llista</h2>
+    <p>Pots actualitzar la llista en qualsevol moment lliscant la pantalla cap avall (gest de "estirar per refrescar"). Això farà que es tornin a carregar els esdeveniments i es reflecteixin els canvis més recents.</p>
+
+    <h2>💡 Consells</h2>
+    <ul>
+      <li>Completa els esdeveniments de PRE_MATCH abans que comenci el partit per no perdre'ls.</li>
+      <li>Si un esdeveniment té un temps límit, assegura't de participar-hi dins de la finestra indicada.</li>
+      <li>L'MVP sol aparèixer al final del partit: estigueu atents a les notificacions.</li>
+      <li>Si has votat l'MVP però encara no el veus a comptabilitzats, no pateixis: està pendent que el sistema en calculi els resultats.</li>
+    </ul>
+  </div>
+</Layout>

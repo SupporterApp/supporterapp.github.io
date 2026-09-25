@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="My events">
+  <style>
+    .help-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #f0f0f0;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .help-container h1 {
+      color: #4caf50;
+      font-size: 24px;
+      margin-top: 0;
+    }
+    .help-container h2 {
+      color: #81c784;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .help-container .highlight {
+      color: #ffb74d;
+    }
+    .help-container hr {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 20px 0;
+    }
+    .help-container ul {
+      margin: 8px 0 16px 20px;
+      padding-left: 0;
+    }
+    .help-container li {
+      margin-bottom: 4px;
+    }
+  </style>
+
+  <div class="help-container">
+    <h1>My events</h1>
+    <p>In this section you'll find all the events you have pending to complete and those that have already been counted. It's your personal participation history, with the score you've earned on each one.</p>
+
+    <hr>
+
+    <h2>📌 Pending events</h2>
+    <p>Here you'll see the events you haven't completed yet, or that you've taken part in but the system hasn't closed yet. Each event is grouped by match and shows the phase it's in:</p>
+    <ul>
+      <li><strong>PRE_MATCH:</strong> events that can be completed before the match starts.</li>
+      <li><strong>POST_MATCH:</strong> events that can be completed once the match has finished.</li>
+    </ul>
+    <p>The types of events you may find are:</p>
+    <ul>
+      <li>🎵 <strong>Songs:</strong> play a song for a set amount of time.</li>
+      <li>❓ <strong>Quizzes:</strong> answer the match questions correctly.</li>
+      <li>🏆 <strong>Match MVP:</strong> vote for the most valuable player of the match.</li>
+      <li>⚽ <strong>Matches:</strong> the matches you've confirmed attendance for.</li>
+    </ul>
+
+    <h2>✅ Counted events</h2>
+    <p>Once an event <strong>has finished and the system has calculated its result</strong>, it will appear in this section with:</p>
+    <ul>
+      <li>The <span class="highlight">points earned</span>.</li>
+      <li>A <span class="highlight">green check mark</span> confirming the result has been processed.</li>
+    </ul>
+    <p>This means an event you've completed may take a while to appear here: first the participation period must end, and then the system must calculate the results.</p>
+
+    <h2>🏆 How the match MVP works</h2>
+    <p>The MVP is the star event of the match: it's about voting for the <strong>most valuable player</strong> among everyone who took part in the game.</p>
+    <ul>
+      <li>When you enter the MVP, your attendance is registered automatically.</li>
+      <li>You'll see the <strong>voting window</strong> with the start and end times. Make sure you vote within this interval.</li>
+      <li>You can navigate between questions with the <em>Back</em> and <em>Next</em> buttons.</li>
+      <li><span class="highlight">While the voting window is open, you can re-enter and change your answer</span> as many times as you like.</li>
+      <li>Once you submit your answers, the MVP <strong>won't disappear from pending</strong> nor move to counted immediately: this will only happen <strong>when the event closes and the system calculates the results</strong>.</li>
+      <li>When that happens, the MVP will appear in the counted events section with the corresponding points.</li>
+    </ul>
+
+    <h2>⚽ Access the match widget</h2>
+    <p>Events of type <strong>MATCH</strong> have a link to the match widget (with the open-in-new-window icon). Click it to see the live match information: lineups, statistics and score.</p>
+    <p>Already counted matches also have this link, in case you want to check the match information again.</p>
+
+    <h2>🔄 Refresh the list</h2>
+    <p>You can refresh the list at any time by swiping the screen down (pull-to-refresh gesture). This will reload the events and reflect the most recent changes.</p>
+
+    <h2>💡 Tips</h2>
+    <ul>
+      <li>Complete PRE_MATCH events before the match starts so you don't miss them.</li>
+      <li>If an event has a time limit, make sure you take part within the indicated window.</li>
+      <li>The MVP usually appears at the end of the match: stay tuned to notifications.</li>
+      <li>If you've voted for the MVP but don't see it in counted yet, don't worry: it's pending the system calculating the results.</li>
+    </ul>
+  </div>
+</Layout>
