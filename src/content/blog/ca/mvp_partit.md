@@ -35,7 +35,7 @@ Quan s'acosta el final del partit, l'aplicació activa la votació del MVP i t'a
 
 ## 🔄 I si me'n penedeixo?
 
-Aquí ve una de les coses més interessants: **mentre la finestra de votació estigui oberta, pots canviar el teu vot tantes vegades com vulguis**. Si al minut 88 un jugador fa un gol espectacular i et convenç, pots canviar el vot sense cap problema. Tens fins a l'últim moment per decidir-te.
+Aquí ve una de les coses més interessants: **mentre la finestra de votació estigui oberta, pots canviar el teu vot tantes vegades com vulguis**. Si un altre jugador t'acaba de convèncer, si canvies d'opinió després de comentar-ho amb els companys de grada o si simplement vols esperar fins a l'últim moment, **tens tota la finestra per canviar-ho**.
 
 Quan la finestra es tanqui, el vot queda bloquejat i comença el recompte.
 
