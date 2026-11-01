@@ -1,17 +1,23 @@
 ---
 interface Props {
 	date: Date;
+	/** Codi d'idioma ('ca', 'es', 'en'). Per defecte, el de la pàgina actual. */
+	locale?: string;
 }
 
-const { date } = Astro.props;
+const { date, locale = Astro.currentLocale ?? 'ca' } = Astro.props;
+
+const locales: Record<string, string> = {
+	ca: 'ca-ES',
+	es: 'es-ES',
+	en: 'en-GB',
+};
+
+const formatted = date.toLocaleDateString(locales[locale] ?? 'ca-ES', {
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric',
+});
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
-</time>
+<time datetime={date.toISOString()}>{formatted}</time>

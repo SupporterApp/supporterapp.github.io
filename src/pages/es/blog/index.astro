@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../../consts';
+import { SITE_TITLE } from '../../../consts';
 
 // Carreguem només els posts de la carpeta 'es/'
 const allPosts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
@@ -12,11 +12,20 @@ const posts = allPosts.sort(
 );
 ---
 
-<Layout title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+<Layout
+  title={`Blog - ${SITE_TITLE}`}
+  description="Novedades, guías e historias de la comunidad Ffans."
+>
+  <h1 class="page-title">Blog</h1>
   <style>
     /* Manté els mateixos estils que tenies */
     .blog-list {
       padding: 1rem 0;
+    }
+    .page-title {
+      margin: 0 0 1.5rem;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      color: var(--text);
     }
     .blog-list ul {
       display: flex;
@@ -29,13 +38,15 @@ const posts = allPosts.sort(
     .blog-list ul li {
       width: calc(50% - 1rem);
       background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 4px 16px var(--card-shadow);
-      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s, border-color 0.2s;
     }
     .blog-list ul li:hover {
       transform: scale(1.02);
+      border-color: var(--accent);
       box-shadow: 0 8px 24px var(--card-shadow-hover);
     }
     .blog-list ul li:first-child {
@@ -50,6 +61,14 @@ const posts = allPosts.sort(
       font-size: 2.369rem;
     }
     .blog-list ul li img {
+      display: block;
+      width: 100%;
+      /* Una mica més baixa que la imatge original (2:1) perquè la targeta no
+         quedi tan alta; es retalla per dalt i es conserva la barra de sota. */
+      aspect-ratio: 2.2 / 1;
+      height: auto;
+      object-fit: cover;
+      object-position: center bottom;
       margin-bottom: 0.5rem;
       border-radius: 12px;
     }

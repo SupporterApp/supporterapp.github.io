@@ -1,12 +1,22 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & {
+	/** Quan és true, només es marca actiu si la ruta coincideix exactament. */
+	exact?: boolean;
+};
 
-const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const { href, exact = false, class: className, ...props } = Astro.props;
+
+const normalize = (path: string) => path.replace(/\/+$/, '') || '/';
+const pathname = normalize(Astro.url.pathname);
+const target = normalize(typeof href === 'string' ? href : (href?.toString() ?? '/'));
+
+// Amb `exact` evitem que /ca marqui Inici a totes les pàgines del lloc;
+// sense `exact`, una ruta filla (/ca/blog/post) també activa la seva secció.
+const isActive = exact
+	? pathname === target
+	: pathname === target || pathname.startsWith(`${target}/`);
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

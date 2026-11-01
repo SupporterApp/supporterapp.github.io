@@ -2,10 +2,10 @@
 title: 'Welcome to the Ffans blog'
 pubDate: 2026-08-05
 description: 'The first post of the Ffans blog'
+heroImage: '../../../assets/blog/primer-post.png'
 author: 'Ffans Team'
 tags: ["football", "fans", "community"]
 ---
-# Welcome to Ffans!
 
 We are very excited to launch this blog, a space where we will share news, fan stories, tips and everything related to the world of football from the perspective of the true protagonists: you, the fans.
 

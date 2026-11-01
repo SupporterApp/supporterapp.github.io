@@ -1,0 +1,36 @@
+---
+title: "Legal Notice"
+description: "Owner identification, intellectual property and jurisdiction for Ffans."
+section: legal
+order: 3
+route: legalNotice
+---
+import { nom, nif, adreca, email, ciutat, dataRevisio } from '../../../data/empresa';
+
+<h1>Legal Notice</h1>
+<p><strong>Last updated:</strong> {dataRevisio}</p>
+
+<div class="highlight">
+<h2>1. Identification of the responsible party</h2>
+<p>In compliance with Law 34/2002, of July 11, on information society services and electronic commerce (LSSI), the following information is provided:</p>
+<ul>
+<li><strong>Responsible:</strong> {nom}</li>
+<li><strong>Tax ID (NIF):</strong> {nif}</li>
+<li><strong>Registered address:</strong> {adreca}</li>
+<li><strong>Contact email:</strong> <a href={`mailto:${email}`}>{email}</a></li>
+</ul>
+</div>
+
+<h2>2. Intellectual and industrial property</h2>
+<p>All contents of this application (texts, designs, source code, logos, icons, images, and software) are the property of {nom} or its licensors, and are protected by intellectual and industrial property laws.</p>
+<p>Reproduction, distribution, modification, or public communication without the prior written authorization of the owner is prohibited.</p>
+
+<h2>3. Terms of use</h2>
+<p>The user agrees to use the application appropriately, respecting current legislation and third-party rights. Use of the application for illegal or harmful purposes is strictly prohibited.</p>
+
+<h2>4. Applicable law and jurisdiction</h2>
+<p>Relations arising from the use of this application are governed by Spanish law. For any dispute, the parties submit to the courts of the city of {ciutat}, expressly waiving any other jurisdiction that may correspond to them.</p>
+
+<div class="footer">
+<p>© {dataRevisio} - {nom}. All rights reserved.</p>
+</div>

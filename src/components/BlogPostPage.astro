@@ -1,0 +1,347 @@
+---
+/**
+ * src/components/BlogPostPage.astro
+ *
+ * Layout compartit dels posts: article + barra lateral + navegació
+ * anterior/següent. Abans cada idioma tenia la seva còpia i el català era
+ * l'únic que mostrava sidebar, així que ara els tres idiomes fan el mateix.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import FormattedDate from './FormattedDate.astro';
+import { SITE_TITLE } from '../consts';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  lang: Lang;
+}
+
+const { post, lang } = Astro.props;
+const t = useTranslations(lang);
+const basePath = `/${lang}`;
+
+const slugOf = (entry: CollectionEntry<'blog'>) =>
+  entry.id.replace(new RegExp(`^${lang}/`), '');
+
+const allPosts = (
+  await getCollection('blog', ({ id }) => id.startsWith(`${lang}/`))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const sidebarPosts = allPosts.slice(0, 10).map((entry) => ({
+  slug: slugOf(entry),
+  title: entry.data.title,
+  pubDate: entry.data.pubDate,
+  isCurrent: entry.id === post.id,
+}));
+
+// Ordre cronològic: ← més antic, més recent →
+const currentIndex = allPosts.findIndex((entry) => entry.id === post.id);
+const prevPost =
+  currentIndex >= 0 && currentIndex < allPosts.length - 1
+    ? allPosts[currentIndex + 1]
+    : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+---
+
+<Layout
+  title={`${post.data.title} - ${SITE_TITLE}`}
+  description={post.data.description}
+  image={post.data.heroImage}
+  lang={lang}
+  wide={true}
+>
+  <div class="post-layout">
+    <article class="blog-post">
+      <div class="post-nav-top">
+        <a href={`${basePath}/blog/`} class="back-link">← {t('blog.back')}</a>
+      </div>
+
+      {post.data.heroImage && (
+        <Image
+          class="post-hero"
+          src={post.data.heroImage}
+          alt=""
+          layout="constrained"
+          width={1200}
+          height={600}
+          loading="eager"
+          decoding="async"
+        />
+      )}
+
+      <header>
+        <h1>{post.data.title}</h1>
+        <p class="date">
+          <FormattedDate date={post.data.pubDate} locale={lang} />
+          {post.data.author && <span> • {post.data.author}</span>}
+          {post.data.updatedDate && (
+            <span class="last-updated-on">
+              ({t('blog.updated')}: <FormattedDate date={post.data.updatedDate} locale={lang} />)
+            </span>
+          )}
+        </p>
+      </header>
+
+      <div class="content">
+        <slot />
+      </div>
+
+      <nav class="post-nav-bottom">
+        <div class="nav-prev">
+          {prevPost ? (
+            <a href={`${basePath}/blog/${slugOf(prevPost)}/`}>
+              <span class="nav-label">← {t('blog.prev')}</span>
+              <span class="nav-title">{prevPost.data.title}</span>
+            </a>
+          ) : <span />}
+        </div>
+        <div class="nav-next">
+          {nextPost ? (
+            <a href={`${basePath}/blog/${slugOf(nextPost)}/`}>
+              <span class="nav-label">{t('blog.next')} →</span>
+              <span class="nav-title">{nextPost.data.title}</span>
+            </a>
+          ) : <span />}
+        </div>
+      </nav>
+    </article>
+
+    <aside class="post-sidebar">
+      <h3>{t('blog.otherPosts')}</h3>
+      <ul>
+        {sidebarPosts.map((entry) => (
+          <li class:list={[{ current: entry.isCurrent }]}>
+            {entry.isCurrent ? (
+              <span class="sidebar-link current" aria-current="page">
+                <span class="sidebar-title">{entry.title}</span>
+                <span class="sidebar-date">
+                  <FormattedDate date={entry.pubDate} locale={lang} />
+                </span>
+              </span>
+            ) : (
+              <a href={`${basePath}/blog/${entry.slug}/`} class="sidebar-link">
+                <span class="sidebar-title">{entry.title}</span>
+                <span class="sidebar-date">
+                  <FormattedDate date={entry.pubDate} locale={lang} />
+                </span>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  /* ── Layout de dues columnes (post + sidebar) ── */
+  .post-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  /* ── Article ── */
+  .blog-post {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px var(--card-shadow);
+    color: var(--text);
+    transition: background 0.3s;
+  }
+  .blog-post h1 {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-top: 0;
+  }
+  /* La imatge de capçalera queda enganxada als marges de la targeta */
+  .blog-post .post-hero {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 1.75rem;
+    border-radius: 10px;
+  }
+  .blog-post .date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .blog-post .last-updated-on {
+    font-style: italic;
+  }
+  .blog-post .content {
+    line-height: 1.8;
+  }
+  .blog-post .content p {
+    margin: 1rem 0;
+  }
+  .blog-post .content a {
+    color: var(--accent);
+  }
+  .blog-post .content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  /* ── Enllaç "Tornar al blog" ── */
+  .post-nav-top {
+    margin-bottom: 1.5rem;
+  }
+  .back-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  .back-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  /* ── Navegació anterior/següent ── */
+  .post-nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+  }
+  .nav-prev, .nav-next {
+    flex: 1;
+    min-width: 0;
+  }
+  .nav-next {
+    text-align: right;
+  }
+  .post-nav-bottom a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .post-nav-bottom a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .nav-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .nav-title {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* ── Sidebar ── */
+  .post-sidebar {
+    flex: 0 0 280px;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    transition: background 0.3s;
+  }
+  .post-sidebar h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .post-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .post-sidebar li {
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .post-sidebar li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .sidebar-link {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .sidebar-link:hover .sidebar-title {
+    color: var(--accent);
+  }
+  .sidebar-link.current {
+    cursor: default;
+  }
+  .sidebar-link.current .sidebar-title {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .sidebar-title {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    transition: color 0.2s;
+  }
+  .sidebar-date {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+
+  /* ── Responsiu ── */
+  @media (max-width: 1024px) {
+    .post-layout {
+      flex-direction: column;
+    }
+    .post-sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .blog-post {
+      padding: 1.25rem;
+    }
+    .blog-post h1 {
+      font-size: 1.8rem;
+    }
+    .post-nav-bottom {
+      flex-direction: column;
+    }
+    .nav-next {
+      text-align: left;
+    }
+  }
+</style>

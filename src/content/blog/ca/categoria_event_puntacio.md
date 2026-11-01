@@ -2,10 +2,10 @@
 title: 'Categories, events i puntuació'
 pubDate: 2026-08-08
 description: 'Què i com valorem?'
+heroImage: '../../../assets/blog/categoria_event_puntacio.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat","puntuacio","events"]
 ---
-# Com funciona la puntuació a Ffans? ⚽
 
 A **Ffans**, cada acció que realitzes com a aficionat té recompensa. Hem dissenyat un sistema de punts per valorar la teva participació i coneixement. Et presentem com ho classifiquem i com calculem la teva puntuació final, pas a pas i de manera transparent.
 

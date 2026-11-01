@@ -2,11 +2,10 @@
 title: 'Song events (chanting)'
 pubDate: 2026-09-07
 description: 'Make the stadium vibrate with your voice and your app'
+heroImage: '../../../assets/blog/event_animar_canco.png'
 author: 'Ffans Team'
 tags: ["football", "fans", "community", "chant", "events"]
 ---
-
-# 🎶 How do song events work in Ffans?
 
 At **Ffans**, you don't just go to the stadium – you **make it vibrate**. Song events (chanting) are one of the most collective and exciting experiences you'll find in the app. Let us explain how they work and how to get the most out of them.
 

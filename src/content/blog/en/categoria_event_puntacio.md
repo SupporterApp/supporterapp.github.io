@@ -2,10 +2,10 @@
 title: 'Categories, events and scoring'
 pubDate: 2026-08-08
 description: 'What and how do we value?'
+heroImage: '../../../assets/blog/categoria_event_puntacio.png'
 author: 'Ffans Team'
 tags: ["football", "fans", "community", "scoring", "events"]
 ---
-# How does scoring work in Ffans? ⚽
 
 At **Ffans**, every action you take as a fan earns you rewards. We've designed a points system to value your participation and knowledge. Here’s how we classify everything and how we calculate your final score, step by step, with full transparency.
 

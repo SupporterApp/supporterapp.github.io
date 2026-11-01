@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations, type Lang } from '../i18n/ui';
+import { APP_NAME } from '../consts';
+
+// En una pàgina estàtica 404 no hi ha ruta d'idioma, així que mostrem els tres
+// enllaços i deixem que el visitant triï.
+const lang: Lang = 'ca';
+const t = useTranslations(lang);
+
+const homes: { code: Lang; label: string }[] = [
+  { code: 'ca', label: 'Català' },
+  { code: 'es', label: 'Castellano' },
+  { code: 'en', label: 'English' },
+];
+---
+
+<Layout title={`404 — ${t('notFound.title')} | ${APP_NAME}`} description={t('notFound.desc')} lang={lang}>
+  <section class="not-found">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>{t('notFound.title')}</h1>
+    <p class="desc">{t('notFound.desc')}</p>
+
+    <nav class="links" aria-label={t('notFound.home')}>
+      {homes.map((home) => (
+        <a href={`/${home.code}/`}>{home.label}</a>
+      ))}
+    </nav>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    padding: 2rem 0;
+  }
+  .code {
+    margin: 0;
+    font-size: clamp(4rem, 14vw, 7rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    letter-spacing: -0.04em;
+  }
+  h1 {
+    margin: 0.5rem 0 0.75rem;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--text);
+  }
+  .desc {
+    margin: 0 0 2rem;
+    max-width: 46ch;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .links a {
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .links a:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+</style>

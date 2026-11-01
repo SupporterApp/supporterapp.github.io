@@ -2,10 +2,10 @@
 title: 'Badges'
 pubDate: 2026-09-01
 description: 'What can you achieve?'
+heroImage: '../../../assets/blog/insignies.png'
 author: 'Ffans Team'
 tags: ["football", "fans", "community", "badges", "events"]
 ---
-# 🏅 How do Ffans badges work?
 
 At **Ffans**, every match, every chant, and every answer shows your passion. But we want to go further: we want to recognise your journey and your commitment to your team. That's why we've created a **badge system** that evolves with you. Let us explain how they work, what unlocks them, and how you can reach the highest levels. ⚽🔥
 

@@ -2,11 +2,10 @@
 title: 'My events: everything you''ve done, in one place'
 pubDate: 2026-09-25
 description: 'The new screen that organises it all: pending, attended and much more'
+heroImage: '../../../assets/blog/els_meus_esdeveniments.png'
 author: 'Equip Ffans'
 tags: ["football", "fans", "community", "events", "app"]
 ---
-
-# 📋 My events: everything you've done, in one place
 
 At **Ffans** a lot happens during a match: you sing, answer questions, vote for the MVP, confirm attendance... And with so much activity, it's easy to get lost. That's why we've created the **"My events"** screen: your personal participation history, where you'll find everything organised and classified. ⚽✨
 
@@ -21,10 +20,7 @@ The screen is divided into **two main sections**:
 
 Each section is numbered (for example, *"Pending events (3)"*) so you can see at a glance how many you have on each side.
 
-Additionally, pending events are grouped **by match**, and each group shows the **moment** when you can take part:
-
-- **Before the match**: events that can be completed before the game starts.
-- **After the match**: events that can be completed once the match has finished.
+Additionally, pending events are grouped **by match**, so you have everything in order.
 
 ---
 
@@ -34,9 +30,9 @@ In the list you'll find different types of events, each with its icon:
 
 | Type | Icon | What do you have to do? |
 |---|---|---|
-| **Match** | ⚽ | Confirm attendance and access the match widget |
+| **Match** | ⚽ | Confirm attendance and access the match information |
 | **Song** | 🎵 | Play the song for the indicated time |
-| **Quiz** | ❓ | Answer the match questions correctly |
+| **Questions** | ❓ | Answer the match questions correctly |
 | **MVP** | 🏆 | Vote for the most valuable player of the match |
 
 > Want to know more about the MVP? Read the post **[Match MVP: only the fans at the stadium decide it](/en/blog/mvp_partit/)**.
@@ -70,12 +66,12 @@ If you see an event in attended but **without the green mark**, it means it's be
 
 ---
 
-## ⚽ Accessing the match widget
+## ⚽ Accessing the match information
 
-Match events have a particularity: their name is **an underlined link** with an open-in-new-window icon. If you click it, the **match widget** opens, where you can see:
+Match events have a particularity: their name is **an underlined link** with an open-in-new-window icon. If you click it, the **match information** opens, where you can see:
 
 - Lineups.
-- Live statistics.
+- Statistics.
 - Score.
 
 This also works for already attended matches, in case you want to check the information of an old match again.
@@ -84,8 +80,7 @@ This also works for already attended matches, in case you want to check the info
 
 ## 💡 Fan tips
 
-- **Complete the before-the-match events before it starts**: if you leave them for later, you might not be able to take part.
-- **Stay tuned to notifications**: the MVP and other after-the-match events usually appear at the end of the game.
+- **Stay tuned to notifications**: the MVP and the rest of the events usually appear at the end of the game.
 - **Don't worry if an event takes a while to be counted**: the system has to process all participations from all users.
 
 ---
@@ -95,9 +90,9 @@ This also works for already attended matches, in case you want to check the info
 - The **"My events"** screen organises all your participation.
 - It has **two sections**: pending and attended.
 - Pending events are grouped **by match and by moment** (before or after the game).
-- There are **four types of events**: Match, Song, Quiz and MVP.
+- There are **four types of events**: Match, Song, Questions and MVP.
 - The flow is: **pending → take part → close → calculate → attended**.
-- From match events you can **access the match widget**.
+- From match events you can **access the match information**.
 
 So now you know: next time you ask yourself *"where can I see what I've done?"*, open Ffans, go to **My events** and you'll have it all at hand. 💪📋
 

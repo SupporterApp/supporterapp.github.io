@@ -2,11 +2,10 @@
 title: 'El MVP del partido: solo lo decide la afición que está en el campo'
 pubDate: 2026-09-18
 description: 'La votación más democrática del fútbol: tú, que estás allí, tienes la palabra'
+heroImage: '../../../assets/blog/mvp_partit.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunidad", "mvp", "votacion", "eventos"]
 ---
-
-# 🏆 El MVP del partido: solo lo decide la afición que está en el campo
 
 En **Ffans** creemos que el fútbol es mucho más que lo que se ve por televisión. El fútbol es lo que se vive en la grada, con la voz rota de cantar, con las manos frías de aplaudir, con el corazón acelerado en los últimos minutos. Y si el fútbol lo vivimos nosotros, **el mejor jugador del partido también lo tenemos que elegir nosotros**. ⚽🔥
 
@@ -55,6 +54,21 @@ Solo cuando el sistema termina todo este proceso, el evento aparece en la secci�
 
 ---
 
+## 🔍 ¿Cómo consulto el resultado?
+
+Cuando termina el recuento, la votación deja de ser un evento pendiente y pasa a la sección de **eventos atendidos** de *Mis eventos*. Allí no solo ves cuántos puntos has hecho: también tienes **el detalle de la votación**.
+
+Toca la tarjeta del MVP (la que lleva una **flecha ›** a la derecha) y se abrirá una ventana con:
+
+- **Los más votados**: el ranking de jugadores con el número de votos de cada uno.
+- **Tu voto**: destacado dentro de la lista, para que veas de un vistazo si has acertado el MVP.
+
+Si tu voto no ha quedado entre los más votados, también te lo mostramos en una tarjeta aparte, para que no te quedes con la duda.
+
+> Si la votación ya está cerrada pero todavía no ves el detalle, es que el sistema aún está publicando los resultados. Vuelve al cabo de un rato: no hace falta que hagas nada.
+
+---
+
 ## 🏅 ¿Cuántos puntos gano?
 
 El MVP forma parte de la categoría **Conocimiento de Fútbol**, y tiene una puntuación total de **20 puntos**, repartidos así:
@@ -85,6 +99,7 @@ Y además, es una manera más de demostrar que **sabes de fútbol**. Porque acer
 - La votación se abre **al final del partido** y tiene una **ventana de tiempo limitada**.
 - Puedes **cambiar el voto** mientras la ventana esté abierta.
 - El resultado **no es inmediato**: el sistema lo calcula cuando el evento se cierra.
+- Puedes consultar **el detalle de la votación** en *Mis eventos* → eventos atendidos.
 - **Acertar el MVP** te da **20 puntos** (5 base + 15 de evento).
 - Es **el único MVP que decide la grada**.
 

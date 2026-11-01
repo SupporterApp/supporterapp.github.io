@@ -2,11 +2,10 @@
 title: 'Match MVP: only the fans at the stadium decide it'
 pubDate: 2026-09-18
 description: 'The most democratic vote in football: you, who are there, have the say'
+heroImage: '../../../assets/blog/mvp_partit.png'
 author: 'Equip Ffans'
 tags: ["football", "fans", "community", "mvp", "voting", "events"]
 ---
-
-# 🏆 Match MVP: only the fans at the stadium decide it
 
 At **Ffans** we believe football is much more than what you see on TV. Football is what you live in the stands, with a voice worn out from singing, with hands cold from clapping, with a heart racing in the final minutes. And if we're the ones living football, **we should also be the ones choosing the best player of the match**. ⚽🔥
 
@@ -55,6 +54,21 @@ Only when the system finishes this whole process does the event appear in the **
 
 ---
 
+## 🔍 How do I check the result?
+
+When the count is done, the poll stops being a pending event and moves to the **attended events** section in *My events*. There you do not only see your points: you also get **the voting breakdown**.
+
+Tap the MVP card (the one with a **› arrow** on the right) and a window opens with:
+
+- **The most voted**: the ranking of players with the number of votes each one got.
+- **Your vote**: highlighted in the list, so you can see at a glance whether you got the MVP right.
+
+If your vote did not make the top options, we still show it in a separate card, so you are not left wondering.
+
+> If the poll is already closed but you still cannot see the details, the system is still publishing the results. Check again in a little while: there is nothing you need to do.
+
+---
+
 ## 🏅 How many points do I get?
 
 The MVP is part of the **Football Knowledge** category, and has a total score of **20 points**, broken down as follows:
@@ -85,6 +99,7 @@ And besides, it's another way to show that **you know football**. Because guessi
 - The voting opens **at the end of the match** and has a **limited time window**.
 - You can **change your vote** while the window is open.
 - The result **isn't immediate**: the system calculates it when the event closes.
+- You can check **the voting breakdown** in *My events* → attended events.
 - **Guessing the MVP** gives you **20 points** (5 base + 15 event).
 - It's **the only MVP decided by the stands**.
 

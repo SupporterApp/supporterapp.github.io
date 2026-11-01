@@ -2,10 +2,10 @@
 title: 'Benvinguts al blog de Ffans'
 pubDate: 2026-08-05
 description: 'El primer post del blog de Ffans'
+heroImage: '../../../assets/blog/primer-post.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat"]
 ---
-# Benvinguts a Ffans!
 
 Estem molt contents de llançar aquest blog, un espai on compartirem novetats, històries d'aficionats, consells i tot allò que envolta el món del futbol des de la perspectiva dels veritables protagonistes: vosaltres, els fans.
 

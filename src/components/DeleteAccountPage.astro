@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { nom, nif, email, nomApp, diesEliminacioCompte, dataRevisio } from '../data/empresa';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const basePath = `/${lang}`;
+
+const copy = {
+  ca: {
+    title: `Eliminar el compte — ${nomApp}`,
+    h1: 'Eliminar el teu compte',
+    lead: `Pots sol·licitar l'eliminació del teu compte de ${nomApp} en qualsevol moment. Aquí t'expliquem com fer-ho, quines dades s'eliminen i quines es conserven.`,
+    updated: "Data d'actualització",
+    stepsTitle: 'Com sol·licitar-ho',
+    steps: [
+      `Envia un correu electrònic a ${email} amb l'assumpte «Eliminar compte».`,
+      "Indica l'àlies amb què et vas registrar: és l'única dada que necessitem per localitzar el compte.",
+      "Et respondrem per confirmar que la sol·licitud s'ha processat.",
+    ],
+    deletesTitle: "Què s'elimina",
+    deletes: [
+      "El teu àlies i l'identificador intern del compte.",
+      "L'historial d'assistència i de participació en esdeveniments.",
+      "La puntuació, el nivell i les insígnies aconseguides.",
+      "El token de notificacions push del teu dispositiu.",
+      "Les dades d'ús associades al teu compte.",
+    ],
+    keepsTitle: 'Què es conserva',
+    keeps: [
+      "Dades agregades i anonimitzades que no permeten identificar-te (estadístiques globals de la comunitat).",
+      "Les dades que la normativa ens obligui a conservar durant els terminis legals corresponents.",
+    ],
+    termTitle: 'Termini',
+    term: `Eliminarem les dades del teu compte en un termini màxim de ${diesEliminacioCompte} dies des que confirmem la sol·licitud.`,
+    moreTitle: 'Més informació',
+    more: 'Pots consultar el detall del tractament a la',
+    privacy: 'política de privacitat',
+    and: 'i a',
+    terms: 'termes d’ús',
+    contact: 'Si tens qualsevol dubte, escriu-nos a',
+  },
+  es: {
+    title: `Eliminar la cuenta — ${nomApp}`,
+    h1: 'Eliminar tu cuenta',
+    lead: `Puedes solicitar la eliminación de tu cuenta de ${nomApp} en cualquier momento. Aquí te explicamos cómo hacerlo, qué datos se eliminan y cuáles se conservan.`,
+    updated: 'Fecha de actualización',
+    stepsTitle: 'Cómo solicitarlo',
+    steps: [
+      `Envía un correo electrónico a ${email} con el asunto «Eliminar cuenta».`,
+      'Indica el alias con el que te registraste: es el único dato que necesitamos para localizar la cuenta.',
+      'Te responderemos para confirmar que la solicitud se ha procesado.',
+    ],
+    deletesTitle: 'Qué se elimina',
+    deletes: [
+      'Tu alias y el identificador interno de la cuenta.',
+      'El historial de asistencia y de participación en eventos.',
+      'La puntuación, el nivel y las insignias conseguidas.',
+      'El token de notificaciones push de tu dispositivo.',
+      'Los datos de uso asociados a tu cuenta.',
+    ],
+    keepsTitle: 'Qué se conserva',
+    keeps: [
+      'Datos agregados y anonimizados que no permiten identificarte (estadísticas globales de la comunidad).',
+      'Los datos que la normativa nos obligue a conservar durante los plazos legales correspondientes.',
+    ],
+    termTitle: 'Plazo',
+    term: `Eliminaremos los datos de tu cuenta en un plazo máximo de ${diesEliminacioCompte} días desde que confirmemos la solicitud.`,
+    moreTitle: 'Más información',
+    more: 'Puedes consultar el detalle del tratamiento en la',
+    privacy: 'política de privacidad',
+    and: 'y en los',
+    terms: 'términos de uso',
+    contact: 'Si tienes cualquier duda, escríbenos a',
+  },
+  en: {
+    title: `Delete your account — ${nomApp}`,
+    h1: 'Delete your account',
+    lead: `You can ask us to delete your ${nomApp} account at any time. Here is how to do it, what gets deleted and what we keep.`,
+    updated: 'Last updated',
+    stepsTitle: 'How to request it',
+    steps: [
+      `Email us at ${email} with the subject “Delete account”.`,
+      'Tell us the alias you signed up with: it is the only detail we need to find your account.',
+      'We will reply to confirm that your request has been processed.',
+    ],
+    deletesTitle: 'What gets deleted',
+    deletes: [
+      'Your alias and the internal account identifier.',
+      'Your attendance and event participation history.',
+      'Your score, level and earned badges.',
+      'Your device push notification token.',
+      'Usage data linked to your account.',
+    ],
+    keepsTitle: 'What we keep',
+    keeps: [
+      'Aggregated, anonymised data that cannot identify you (community-wide statistics).',
+      'Data we are legally required to keep for the applicable statutory periods.',
+    ],
+    termTitle: 'Timeline',
+    term: `We will delete your account data within ${diesEliminacioCompte} days of confirming your request.`,
+    moreTitle: 'More information',
+    more: 'You can read the details of how we process data in our',
+    privacy: 'privacy policy',
+    and: 'and our',
+    terms: 'terms of use',
+    contact: 'If you have any questions, write to us at',
+  },
+} as const;
+
+const c = copy[lang];
+---
+
+<Layout title={c.title} description={c.lead} lang={lang}>
+  <style is:global>
+    .doc-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px var(--card-shadow);
+      color: var(--text);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .doc-card h1 {
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+    .doc-card h2 {
+      color: var(--accent);
+      margin-top: 1.8rem;
+      font-size: 1.35rem;
+    }
+    .doc-card p,
+    .doc-card li {
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .doc-card a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .doc-card .updated {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .doc-card ol,
+    .doc-card ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+      padding: 0;
+    }
+    .doc-card li {
+      margin-bottom: 0.4rem;
+    }
+    .doc-card .contact {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--footer-border);
+    }
+    @media (max-width: 640px) {
+      .doc-card { padding: 1.5rem; }
+    }
+  </style>
+
+  <div class="doc-card">
+    <h1>{c.h1}</h1>
+    <p class="updated"><strong>{c.updated}:</strong> <time datetime={dataRevisio}>{dataRevisio}</time></p>
+    <p>{c.lead}</p>
+
+    <h2>{c.stepsTitle}</h2>
+    <ol>
+      {c.steps.map((step) => <li>{step}</li>)}
+    </ol>
+
+    <h2>{c.deletesTitle}</h2>
+    <ul>
+      {c.deletes.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <h2>{c.keepsTitle}</h2>
+    <ul>
+      {c.keeps.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <h2>{c.termTitle}</h2>
+    <p>{c.term}</p>
+
+    <h2>{c.moreTitle}</h2>
+    <p>
+      {c.more} <a href={`${basePath}/legal/privacyPolicy`}>{c.privacy}</a> {c.and}
+      <a href={`${basePath}/legal/termsOfUse`}>{c.terms}</a>.
+    </p>
+
+    <p class="contact">
+      {c.contact} <a href={`mailto:${email}`}>{email}</a>.
+    </p>
+    <p class="updated">
+      {nom} · NIF {nif}
+    </p>
+  </div>
+</Layout>

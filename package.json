@@ -9,6 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "npm run check && npm run build && npm run check:links",
     "astro": "astro"
   },
   "dependencies": {
@@ -21,6 +24,10 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "unzipper": "0.12.3"
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }

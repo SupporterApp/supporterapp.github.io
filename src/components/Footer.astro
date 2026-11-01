@@ -1,19 +1,51 @@
 ---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { email } from '../data/empresa';
+import { useTranslations, type Lang } from '../i18n/ui';
+
 const today = new Date();
+const currentLocale: Lang = (Astro.currentLocale as Lang) || 'ca';
+const basePath = `/${currentLocale}`;
+const t = useTranslations(currentLocale);
 ---
 
 <footer>
 	<div class="footer-content">
-		<p>&copy; {today.getFullYear()} Ffans. Tots els drets reservats.</p>
-		<!-- Si vols les xarxes socials, descomenta-les i adapta els enllaços -->
-		<!--
-		<div class="social-links">
-			<a href="#" target="_blank">
-				<span class="sr-only">... </span>
-				<svg ... ></svg>
-			</a>
+		<div class="footer-grid">
+			<div class="footer-brand">
+				<p class="brand">
+					<img src="/fans.png" alt="" width="28" height="28" />
+					{SITE_TITLE}
+				</p>
+				<p class="tagline">{SITE_DESCRIPTION}</p>
+			</div>
+
+			<nav class="footer-col" aria-label={t('footer.nav')}>
+				<h3>{t('footer.nav')}</h3>
+				<a href={basePath}>{t('nav.home')}</a>
+				<a href={`${basePath}/blog`}>{t('nav.blog')}</a>
+				<a href={`${basePath}/about`}>{t('nav.about')}</a>
+			</nav>
+
+			<nav class="footer-col" aria-label={t('footer.help')}>
+				<h3>{t('footer.help')}</h3>
+				<a href={`${basePath}/help/home_page`}>{t('help.home')}</a>
+				<a href={`${basePath}/help/attend_match`}>{t('help.attend')}</a>
+				<a href={`${basePath}/help/progress_page`}>{t('help.progress')}</a>
+				<a href={`${basePath}/help/user_events_page`}>{t('help.my_events')}</a>
+			</nav>
+
+			<nav class="footer-col" aria-label={t('footer.legal')}>
+				<h3>{t('footer.legal')}</h3>
+				<a href={`${basePath}/legal/privacyPolicy`}>{t('legal.privacy')}</a>
+				<a href={`${basePath}/legal/termsOfUse`}>{t('legal.terms')}</a>
+				<a href={`${basePath}/legal/legalNotice`}>{t('legal.notice')}</a>
+				<a href={`${basePath}/legal/deleteAccount`}>{t('legal.deleteAccount')}</a>
+				<a href={`mailto:${email}`}>{email}</a>
+			</nav>
 		</div>
-		-->
+
+		<p class="copyright">&copy; {today.getFullYear()} {SITE_TITLE}. {t('footer.rights')}</p>
 	</div>
 </footer>
 
@@ -22,33 +54,75 @@ const today = new Date();
 		background: var(--footer-bg);
 		backdrop-filter: blur(8px);
 		color: var(--text);
-		text-align: center;
-		padding: 2rem 1rem;
+		padding: 2.5rem 1.5rem 1.5rem;
 		margin-top: auto;
 		border-top: 1px solid var(--footer-border);
 		transition: background 0.3s;
 	}
 	.footer-content {
-		max-width: 1200px;
+		max-width: 1100px;
 		margin: 0 auto;
 	}
-	footer p {
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+		gap: 2rem;
+		text-align: left;
+	}
+	.footer-brand .brand {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0 0 0.4rem;
+		font-weight: 700;
+		font-size: 1.05rem;
+	}
+	.footer-brand .brand img {
+		border-radius: 50%;
+	}
+	.tagline {
 		margin: 0;
 		font-size: 0.9rem;
-		opacity: 0.9;
+		color: var(--text-muted);
+		max-width: 22ch;
 	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 0.5rem;
+	.footer-col h3 {
+		margin: 0 0 0.6rem;
+		font-size: 0.8rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--text-muted);
 	}
-	.social-links a {
+	.footer-col a {
+		display: block;
+		padding: 0.2rem 0;
+		font-size: 0.9rem;
 		color: var(--text);
-		opacity: 0.7;
-		transition: opacity 0.2s;
+		text-decoration: none;
+		word-break: break-word;
 	}
-	.social-links a:hover {
-		opacity: 1;
+	.footer-col a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+	.copyright {
+		margin: 2rem 0 0;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--footer-border);
+		font-size: 0.85rem;
+		text-align: center;
+		color: var(--text-muted);
+	}
+	@media (max-width: 760px) {
+		.footer-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+		.footer-brand {
+			grid-column: 1 / -1;
+		}
+		.tagline {
+			max-width: none;
+		}
 	}
 </style>

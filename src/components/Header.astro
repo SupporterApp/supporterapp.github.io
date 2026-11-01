@@ -1,15 +1,20 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
-import { useTranslations } from '../i18n/ui';
+import { useTranslations, type Lang } from '../i18n/ui';
 
 // Idiomes: l'actual (per defecte 'ca')
-const currentLocale = (Astro.currentLocale as keyof typeof ui) || 'ca';
+const currentLocale: Lang = (Astro.currentLocale as Lang) || 'ca';
 const basePath = `/${currentLocale}`;
 const t = useTranslations(currentLocale);
 
-// Obtenim la ruta sense el prefix de l'idioma
-const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
+// Obtenim la ruta sense el prefix de l'idioma. Si la pàgina no té prefix
+// (per exemple la 404), no hi ha equivalent en un altre idioma: en aquest cas
+// l'selector porta a la portada de cada llengua en lloc d'una ruta inexistent.
+const localeMatch = Astro.url.pathname.match(/^\/(ca|es|en)(?=\/|$)/);
+const pathWithoutLocale = localeMatch
+  ? Astro.url.pathname.slice(localeMatch[0].length) || '/'
+  : '/';
 ---
 
 <header>
@@ -21,38 +26,39 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 			</a>
 		</h2>
 		<div class="internal-links">
-			<HeaderLink href={basePath}>{t('nav.home')}</HeaderLink>
+			<HeaderLink href={basePath} exact>{t('nav.home')}</HeaderLink>
 			<HeaderLink href={`${basePath}/blog`}>{t('nav.blog')}</HeaderLink>
 			<HeaderLink href={`${basePath}/about`}>{t('nav.about')}</HeaderLink>
 
-			<!-- Menú desplegable: Legal -->
+			<!-- Menú desplegable: Legal (patró disclosure: aria-expanded + aria-controls) -->
 			<div class="dropdown">
-				<button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+				<button class="dropbtn" aria-expanded="false" aria-controls="menu-legal">
 					{t('nav.legal')} ▾
 				</button>
-				<div class="dropdown-content" role="menu">
-					<a href={`${basePath}/legal/privacyPolicy`} role="menuitem">{t('legal.privacy')}</a>
-					<a href={`${basePath}/legal/legalNotice`} role="menuitem">{t('legal.notice')}</a>
-					<a href={`${basePath}/legal/termsOfUse`} role="menuitem">{t('legal.terms')}</a>
+				<div class="dropdown-content" id="menu-legal">
+					<a href={`${basePath}/legal/privacyPolicy`}>{t('legal.privacy')}</a>
+					<a href={`${basePath}/legal/legalNotice`}>{t('legal.notice')}</a>
+					<a href={`${basePath}/legal/termsOfUse`}>{t('legal.terms')}</a>
+					<a href={`${basePath}/legal/deleteAccount`}>{t('legal.deleteAccount')}</a>
 				</div>
 			</div>
 
 			<!-- Menú desplegable: Ajuda -->
 			<div class="dropdown">
-				<button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+				<button class="dropbtn" aria-expanded="false" aria-controls="menu-ajuda">
 					{t('nav.help')} ▾
 				</button>
-				<div class="dropdown-content" role="menu">
-					<a href={`${basePath}/help/home_page`} role="menuitem">{t('help.home')}</a>
-					<a href={`${basePath}/help/attend_match`} role="menuitem">{t('help.attend')}</a>
-					<a href={`${basePath}/help/progress_page`} role="menuitem">{t('help.progress')}</a>
-					<a href={`${basePath}/help/user_events_page`} role="menuitem">{t('help.my_events')}</a>
+				<div class="dropdown-content" id="menu-ajuda">
+					<a href={`${basePath}/help/home_page`}>{t('help.home')}</a>
+					<a href={`${basePath}/help/attend_match`}>{t('help.attend')}</a>
+					<a href={`${basePath}/help/progress_page`}>{t('help.progress')}</a>
+					<a href={`${basePath}/help/user_events_page`}>{t('help.my_events')}</a>
 				</div>
 			</div>
 		</div>
 
 		<!-- Theme toggle -->
-		<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+		<button class="theme-toggle" id="theme-toggle" aria-label="Canviar entre tema clar i fosc" title="Canviar de tema">
 			<span class="theme-icon">🌙</span>
 		</button>
 
@@ -165,7 +171,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 		position: absolute;
 		background: var(--dropdown-bg);
 		backdrop-filter: blur(8px);
-		min-width: 160px;
+		min-width: 180px;
 		box-shadow: 0 8px 16px var(--header-shadow);
 		z-index: 1000;
 		top: 100%;
@@ -251,38 +257,55 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '');
 </style>
 
 <script>
-	// Theme toggle
+	// Theme toggle — la classe viu a <html> perquè el tema s'apliqui abans del
+	// primer pintat (veure l'script inline del <head> a Layout.astro).
 	const btn = document.getElementById('theme-toggle');
-	const icon = btn.querySelector('.theme-icon');
-	function applyTheme(dark) {
-		document.body.classList.toggle('dark', dark);
-		icon.textContent = dark ? '☀️' : '🌙';
+	const icon = btn ? btn.querySelector('.theme-icon') : null;
+
+	function applyTheme(dark: boolean) {
+		document.documentElement.classList.toggle('dark', dark);
+		if (icon) icon.textContent = dark ? '☀️' : '🌙';
 		localStorage.setItem('theme', dark ? 'dark' : 'light');
 	}
-	// Init icon from current state
-	applyTheme(document.body.classList.contains('dark'));
-	btn.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark')));
+
+	if (btn) {
+		// Init icon from current state
+		applyTheme(document.documentElement.classList.contains('dark'));
+		btn.addEventListener('click', () =>
+			applyTheme(!document.documentElement.classList.contains('dark'))
+		);
+	}
 
 	// Dropdown management
 	document.querySelectorAll('.dropdown').forEach(dropdown => {
 		const button = dropdown.querySelector('.dropbtn');
-		const content = dropdown.querySelector('.dropdown-content');
+		if (!button) return;
 
 		button.addEventListener('click', (e) => {
 			e.stopPropagation();
 			const isOpen = dropdown.classList.contains('open');
 			document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+			document.querySelectorAll('.dropdown .dropbtn').forEach(b => b.setAttribute('aria-expanded', 'false'));
 			if (!isOpen) {
 				dropdown.classList.add('open');
 				button.setAttribute('aria-expanded', 'true');
-			} else {
-				button.setAttribute('aria-expanded', 'false');
 			}
 		});
 
 		document.addEventListener('click', () => {
 			dropdown.classList.remove('open');
 			button.setAttribute('aria-expanded', 'false');
+		});
+
+		// Escape tanca el desplegable i torna el focus al botó.
+		dropdown.addEventListener('keydown', (e) => {
+			const key = (e as KeyboardEvent).key;
+			if (key === 'Escape' && dropdown.classList.contains('open')) {
+				e.stopPropagation();
+				dropdown.classList.remove('open');
+				button.setAttribute('aria-expanded', 'false');
+				if (button instanceof HTMLElement) button.focus();
+			}
 		});
 	});
 </script>

@@ -3,81 +3,128 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import type { ImageMetadata } from 'astro';
+import { useTranslations, type Lang } from '../i18n/ui';
 
 export interface Props {
   title: string;
   description?: string;
-  image?: string;
+  /** Imatge per a Open Graph: metadada d'Astro o ruta estàtica. */
+  image?: ImageMetadata | string;
+  /** Codi d'idioma. Si no s'indica, es dedueix de la ruta (i18n routing). */
   lang?: string;
   wide?: boolean;
 }
 
-const { title, description, image, lang = 'ca', wide = false } = Astro.props;
+const { title, description, image, lang, wide = false } = Astro.props;
+
+// Astro.currentLocale surt de la configuració d'i18n i de la URL actual
+// (/es/... => 'es'), així que cap pàgina no ha de repetir el seu idioma.
+const htmlLang = lang ?? Astro.currentLocale ?? 'ca';
+const t = useTranslations(htmlLang as Lang);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={htmlLang}>
   <head>
-    <BaseHead title={title} description={description} image={image} />
+    <BaseHead title={title} description={description} image={image} lang={htmlLang} />
     <script is:inline>
-      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-pending');
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
     </script>
     <style is:global>
       /* ── Theme tokens ── */
       :root {
-        --overlay-bg:        rgba(255, 255, 255, 0.75);
+        /* ── Tema clar ──────────────────────────────────────────────────
+           Fons blanc amb la foto de l'estadi molt rebaixada a sota: es veu
+           com una textura, no com una ombra. Les targetes són blanques
+           opaques amb vora fina, que és el que les separa del fons. */
+        --overlay-bg:        rgba(255, 255, 255, 0.92);
         --text:              #1a1a2e;
         --text-muted:        #555;
         --text-subtle:       #666;
-        --accent:            #2e7d32;
+        --accent:            #2b7330;
         --accent-hover:      #1b5e20;
-        --header-bg:         rgba(255, 255, 255, 0.85);
-        --header-shadow:     rgba(0, 0, 0, 0.15);
-        --dropdown-bg:       rgba(255, 255, 255, 0.95);
-        --dropdown-hover:    rgba(46, 125, 50, 0.15);
-        --footer-bg:         rgba(255, 255, 255, 0.85);
-        --footer-border:     rgba(0, 0, 0, 0.1);
-        --card-bg:           rgba(255, 255, 255, 0.9);
-        --card-shadow:       rgba(0, 0, 0, 0.12);
-        --card-shadow-hover: rgba(0, 0, 0, 0.18);
-        --hero-title-shadow: rgba(255, 255, 255, 0.6);
+        --header-bg:         rgba(255, 255, 255, 0.94);
+        --header-shadow:     rgba(0, 0, 0, 0.10);
+        --dropdown-bg:       rgba(255, 255, 255, 0.98);
+        --dropdown-hover:    rgba(46, 125, 50, 0.12);
+        --footer-bg:         rgba(255, 255, 255, 0.95);
+        --footer-border:     rgba(0, 0, 0, 0.10);
+        --card-bg:           #ffffff;
+        --card-border:       rgba(0, 0, 0, 0.09);
+        --card-shadow:       rgba(0, 0, 0, 0.10);
+        --card-shadow-hover: rgba(0, 0, 0, 0.16);
+        --hero-title-shadow: transparent;
         --highlight:         #1b5e20;
-        --webview-overlay:   rgba(255, 255, 255, 0.85);
+        --page-bg:           #fbfcfb;
+        --code-bg:           rgba(0, 0, 0, 0.05);
+        --code-text:         #1a1a2e;
+        --webview-overlay:   rgba(255, 255, 255, 0.94);
       }
-      body.dark {
-        --overlay-bg:        rgba(0, 0, 0, 0.65);
+      html.dark {
+        /* El fons de pàgina és una foto: a fosques cal apagar-la més perquè les
+           targetes es puguin llegir. */
+        --overlay-bg:        rgba(8, 10, 14, 0.82);
         --text:              #f0f0f0;
-        --text-muted:        #ccc;
-        --text-subtle:       #aaa;
-        --accent:            #4caf50;
-        --accent-hover:      #81c784;
-        --header-bg:         rgba(0, 0, 0, 0.75);
-        --header-shadow:     rgba(0, 0, 0, 0.4);
-        --dropdown-bg:       rgba(20, 20, 30, 0.97);
-        --dropdown-hover:    rgba(76, 175, 80, 0.25);
-        --footer-bg:         rgba(0, 0, 0, 0.8);
-        --footer-border:     rgba(255, 255, 255, 0.1);
-        --card-bg:           rgba(0, 0, 0, 0.55);
-        --card-shadow:       rgba(0, 0, 0, 0.35);
-        --card-shadow-hover: rgba(0, 0, 0, 0.5);
-        --hero-title-shadow: rgba(0, 0, 0, 0.8);
+        --text-muted:        #b9bec7;
+        --text-subtle:       #9aa1ac;
+        --accent:            #66bb6a;
+        --accent-hover:      #a5d6a7;
+        --header-bg:         rgba(12, 14, 18, 0.92);
+        --header-shadow:     rgba(0, 0, 0, 0.5);
+        --dropdown-bg:       rgba(24, 28, 35, 0.98);
+        --dropdown-hover:    rgba(102, 187, 106, 0.18);
+        --footer-bg:         rgba(12, 14, 18, 0.94);
+        --footer-border:     rgba(255, 255, 255, 0.12);
+        /* Superfície elevada: més CLARA que el fons, gairebé opaca, i amb vora.
+           Abans era negre al 55% sobre negre: la targeta desapareixia. */
+        --card-bg:           rgba(30, 35, 43, 0.96);
+        --card-border:       rgba(255, 255, 255, 0.14);
+        --card-shadow:       rgba(0, 0, 0, 0.45);
+        --card-shadow-hover: rgba(0, 0, 0, 0.6);
+        --hero-title-shadow: rgba(0, 0, 0, 0.85);
         --highlight:         #ffb74d;
-        --webview-overlay:   rgba(0, 0, 0, 0.75);
+        --page-bg:           #0b0d11;
+        --code-bg:           rgba(255, 255, 255, 0.14);
+        --code-text:         #f0f0f0;
+        --webview-overlay:   rgba(10, 12, 16, 0.94);
       }
 
       body {
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        background-image: url('/FootballFans.webp');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        /* Color de base: si la foto no carrega, mai queda un fons blanc
+           darrere d'un text clar. */
+        background-color: var(--page-bg);
         color: var(--text);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         overflow-x: hidden;
         width: 100%;
         max-width: 100%;
+      }
+      /* La foto de fons va en un pseudo-element fix en lloc de
+         `background-attachment: fixed` al body: així cobreix sempre la
+         finestra (iOS Safari no suporta bé el fixed) i no deixa mai una
+         meitat de pàgina sense imatge. */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url('/FootballFans.webp');
+        background-size: cover;
+        background-position: center;
+        /* La foto original és molt fosca. Aclarida i amb poca opacitat queda
+           com una textura clara sota el vel blanc, no com una ombra grisa. */
+        filter: brightness(2.3) saturate(0.25);
+        opacity: 0.75;
+      }
+      /* En fosc la foto ha de tornar a ser fosca i plena. */
+      html.dark body::before {
+        filter: none;
+        opacity: 1;
       }
       * {
         box-sizing: border-box;
@@ -132,16 +179,16 @@ const { title, description, image, lang = 'ca', wide = false } = Astro.props;
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main">{t('a11y.skip')}</a>
     <div class="overlay">
       <Header />
-      <main class:list={[{ wide }]}>
+      <main id="main" tabindex="-1" class:list={[{ wide }]}>
         <slot />
       </main>
       <Footer />
     </div>
 
     <script>
-      if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
       (function() {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('webview')) {

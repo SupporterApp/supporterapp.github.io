@@ -2,11 +2,10 @@
 title: 'El MVP del partit: només el decideix l''afició que és al camp'
 pubDate: 2026-09-18
 description: 'La votació més democràtica del futbol: tu, que hi ets, tens la paraula'
+heroImage: '../../../assets/blog/mvp_partit.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat", "mvp", "votacio", "events"]
 ---
-
-# 🏆 El MVP del partit: només el decideix l'afició que és al camp
 
 A **Ffans** creiem que el futbol és molt més que el que es veu per la televisió. El futbol és el que es viu a la grada, amb la veu trencada de cantar, amb les mans fredes d'aplaudir, amb el cor accelerat als últims minuts. I si el futbol el vivim nosaltres, **el millor jugador del partit també l'hem de triar nosaltres**. ⚽🔥
 
@@ -55,6 +54,21 @@ Només quan el sistema acaba tot aquest procés, l'event apareix a la secció d'
 
 ---
 
+## 🔍 Com consulto el resultat?
+
+Quan el recompte acaba, la votació deixa de ser un event pendent i passa a la secció d'**esdeveniments atesos** de *Els meus esdeveniments*. Allà no només veus quants punts has fet: també hi tens **el detall de la votació**.
+
+Toca la targeta de l'MVP (la que porta una **fletxa ›** a la dreta) i s'obrirà una finestra amb:
+
+- **Els més votats**: el rànquing de jugadors amb el nombre de vots de cadascun.
+- **El teu vot**: destacat dins la llista, perquè vegis d'un cop d'ull si has encertat el MVP.
+
+Si el teu vot no ha quedat entre els més votats, també te'l mostrem en una targeta a part, perquè no et quedis amb el dubte.
+
+> Si la votació ja està tancada però encara no veus el detall, és que el sistema encara està publicant els resultats. Torna-hi al cap d'una estona: no cal que facis res.
+
+---
+
 ## 🏅 Quants punts guanyo?
 
 El MVP forma part de la categoria **Coneixement de Futbol**, i té una puntuació total de **20 punts**, repartits així:
@@ -85,6 +99,7 @@ I a més, és una manera més de demostrar que **saps de futbol**. Perquè encer
 - La votació s'obre **al final del partit** i té una **finestra de temps limitada**.
 - Pots **canviar el vot** mentre la finestra estigui oberta.
 - El resultat **no és immediat**: el sistema el calcula quan l'event es tanca.
+- Pots consultar **el detall de la votació** a *Els meus esdeveniments* → esdeveniments atesos.
 - **Encertar el MVP** et dona **20 punts** (5 base + 15 d'event).
 - És **l'únic MVP que decideix la grada**.
 

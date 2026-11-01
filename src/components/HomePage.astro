@@ -1,0 +1,586 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { APP_NAME, APP_STORE_URL, PLAY_STORE_URL } from '../consts';
+import { useTranslations, type Lang } from '../i18n/ui';
+import FormattedDate from './FormattedDate.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Les captures són les mateixes per als tres idiomes: un sol joc d'imatges.
+import screenshotMatch from '../assets/screenshots/phone-match.jpg';
+import screenshotBadges from '../assets/screenshots/phone-badges.jpg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const basePath = `/${lang}`;
+
+const hasStoreLink = Boolean(PLAY_STORE_URL || APP_STORE_URL);
+
+// Últimes novetats de l'idioma actual (les targetes només apareixen si n'hi ha).
+const posts = (await getCollection('blog', ({ id }) => id.startsWith(`${lang}/`)))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((post) => ({
+    slug: post.id.replace(new RegExp(`^${lang}/`), ''),
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    heroImage: post.data.heroImage,
+  }));
+
+const features = [
+  {
+    icon: '📈',
+    title: t('home.feature.score.title'),
+    description: t('home.feature.score.desc'),
+    href: `${basePath}/help/progress_page`,
+  },
+  {
+    icon: '🎵',
+    title: t('home.feature.events.title'),
+    description: t('home.feature.events.desc'),
+    href: `${basePath}/help/attend_match`,
+  },
+  {
+    icon: '🏆',
+    title: t('home.feature.mvp.title'),
+    description: t('home.feature.mvp.desc'),
+    href: `${basePath}/blog/mvp_partit/`,
+  },
+  {
+    icon: '🗂️',
+    title: t('home.feature.history.title'),
+    description: t('home.feature.history.desc'),
+    href: `${basePath}/help/user_events_page`,
+  },
+];
+---
+
+<Layout
+  title={`${APP_NAME} — ${t('home.eyebrow')}`}
+  description={t('home.desc')}
+  lang={lang}
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">{t('home.eyebrow')}</p>
+      <h1 class="main-title">{t('home.title')}</h1>
+      <p class="lead">{t('home.lead')}</p>
+      <p class="description">{t('home.desc')}</p>
+
+      <div class="actions">
+        {hasStoreLink ? (
+          <div class="store-buttons">
+            {PLAY_STORE_URL && (
+              <a class="store-btn" href={PLAY_STORE_URL} rel="noopener">
+                <span class="store-icon" aria-hidden="true">▶</span>
+                <span class="store-label">
+                  <span class="store-prefix">{t('home.cta.play')}</span>
+                  <span class="store-suffix">{APP_NAME}</span>
+                </span>
+              </a>
+            )}
+            {APP_STORE_URL && (
+              <a class="store-btn" href={APP_STORE_URL} rel="noopener">
+                <span class="store-icon" aria-hidden="true"></span>
+                <span class="store-label">
+                  <span class="store-prefix">{t('home.cta.appStore')}</span>
+                  <span class="store-suffix">{APP_NAME}</span>
+                </span>
+              </a>
+            )}
+          </div>
+        ) : (
+          <p class="soon">{t('home.cta.soon')}</p>
+        )}
+        <a class="ghost-btn" href={`${basePath}/help/home_page`}>{t('home.cta.help')} →</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="phones">
+        <div class="phone phone-back">
+          <Image
+            src={screenshotBadges}
+            alt={t('home.shot.badges')}
+            widths={[190, 380, 560]}
+            sizes="(max-width: 400px) 134px, (max-width: 860px) 158px, 184px"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="phone phone-front">
+          <Image
+            src={screenshotMatch}
+            alt={t('home.shot.match')}
+            widths={[220, 430, 620]}
+            sizes="(max-width: 400px) 152px, (max-width: 860px) 176px, 208px"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <p class="wordmark">{APP_NAME}</p>
+    </div>
+  </section>
+
+  <section class="steps" aria-labelledby="steps-title">
+    <h2 id="steps-title">{t('home.steps.title')}</h2>
+    <ol>
+      <li>
+        <span class="step-num" aria-hidden="true">1</span>
+        <h3>{t('home.steps.1.title')}</h3>
+        <p>{t('home.steps.1.desc')}</p>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">2</span>
+        <h3>{t('home.steps.2.title')}</h3>
+        <p>{t('home.steps.2.desc')}</p>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">3</span>
+        <h3>{t('home.steps.3.title')}</h3>
+        <p>{t('home.steps.3.desc')}</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="features" aria-labelledby="features-title">
+    <h2 id="features-title">{t('home.features.title')}</h2>
+    <ul>
+      {features.map((feature) => (
+        <li>
+          <a href={feature.href}>
+            <span class="feature-icon" aria-hidden="true">{feature.icon}</span>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="news" aria-labelledby="news-title">
+      <h2 id="news-title">{t('home.news.title')}</h2>
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a href={`${basePath}/blog/${post.slug}/`}>
+              {post.heroImage && (
+                <Image
+                  class="news-thumb"
+                  src={post.heroImage}
+                  alt=""
+                  width={640}
+                  height={320}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <span class="news-date"><FormattedDate date={post.pubDate} locale={lang} /></span>
+              <h3>{post.title}</h3>
+              <p>{post.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="news-more">
+        <a href={`${basePath}/blog`}>{t('home.news.cta')} →</a>
+      </p>
+    </section>
+  )}
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">{t('home.final.title')}</h2>
+    <p>{t('home.final.desc')}</p>
+    <a class="ghost-btn" href={`${basePath}/help/home_page`}>{t('home.cta.help')} →</a>
+  </section>
+</Layout>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 0 3rem;
+  }
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .main-title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-shadow: 0 2px 8px var(--hero-title-shadow);
+  }
+  .lead {
+    margin: 0 0 1rem;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .description {
+    margin: 0 0 1.75rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 60ch;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .soon {
+    margin: 0;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px dashed var(--accent);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .ghost-btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .ghost-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .store-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1rem;
+    border-radius: 10px;
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1.1;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .store-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+  }
+  .store-icon {
+    font-size: 1.1rem;
+  }
+  .store-label {
+    display: flex;
+    flex-direction: column;
+  }
+  .store-prefix {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+  }
+  .store-suffix {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .hero-art {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.35rem;
+  }
+
+  /* Dos mòbils encavalcats. El marc es dibuixa en CSS i no a la imatge, així
+     s'adapta al tema (en fosc la vora s'aclareix) i la captura queda nítida. */
+  .phones {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .phone {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #0d0f12;
+    border: 7px solid #1c1f24;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.3);
+    line-height: 0;
+  }
+  .phone :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .phone-back {
+    width: 184px;
+    margin-top: 28px;
+    z-index: 1;
+  }
+  .phone-front {
+    width: 208px;
+    margin-left: -30px;
+    z-index: 2;
+  }
+  /* En fosc, el marc dels mòbils ha de ser més clar que el fons. */
+  :global(html.dark) .phone {
+    border-color: #3c434d;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55);
+  }
+
+  /* El nom de l'app, en gran, sota els mòbils. */
+  .wordmark {
+    position: relative;
+    margin: 0;
+    font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  /* ── Seccions ─────────────────────────────────────────────────────────── */
+  section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin: 0 0 1.25rem;
+  }
+  .steps,
+  .features,
+  .news,
+  .final {
+    margin: 0 0 3rem;
+  }
+
+  .steps ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .steps li {
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .steps h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+  .steps p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .features ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .features a {
+    display: block;
+    height: 100%;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .features a:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 26px var(--card-shadow-hover);
+  }
+  .feature-icon {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .features h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .features p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .news ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+  }
+  .news a {
+    display: block;
+    height: 100%;
+    padding: 1.1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .news a:hover {
+    border-color: var(--accent);
+  }
+  /* Miniatura de la novetat: mateixa proporció que al blog per mantenir
+     el ritme visual, una mica més baixa que la imatge original. */
+  .news-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2.2 / 1;
+    height: auto;
+    object-fit: cover;
+    object-position: center bottom;
+    border-radius: 8px;
+    margin-bottom: 0.7rem;
+  }
+  .news a:hover h3 {
+    color: var(--accent);
+  }
+  .news-date {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .news h3 {
+    margin: 0.3rem 0 0.4rem;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .news p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .news-more {
+    margin: 0;
+  }
+
+  .final {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+  }
+  .final p {
+    margin: 0 auto 1.25rem;
+    max-width: 60ch;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding-top: 1rem;
+    }
+    .description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .actions {
+      justify-content: center;
+    }
+    .hero-art {
+      order: -1;
+    }
+    .phones {
+      margin-bottom: 0.25rem;
+    }
+    .phone-back {
+      width: 158px;
+      margin-top: 22px;
+    }
+    .phone-front {
+      width: 176px;
+      margin-left: -26px;
+    }
+    .steps ol,
+    .news ul {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 400px) {
+    .phone-back {
+      width: 134px;
+      margin-top: 18px;
+    }
+    .phone-front {
+      width: 152px;
+      margin-left: -22px;
+    }
+  }
+  @media (max-width: 560px) {
+    .features ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

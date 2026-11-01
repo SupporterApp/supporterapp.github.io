@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://supporter-app.com/sitemap-index.xml

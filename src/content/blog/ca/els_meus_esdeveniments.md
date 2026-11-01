@@ -2,11 +2,10 @@
 title: 'Els meus esdeveniments: tot el que has fet, en un sol lloc'
 pubDate: 2026-09-25
 description: 'La nova pantalla que t''ho organitza tot: pendents, atesos i molt més'
+heroImage: '../../../assets/blog/els_meus_esdeveniments.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat", "events", "esdeveniments", "app"]
 ---
-
-# 📋 Els meus esdeveniments: tot el que has fet, en un sol lloc
 
 A **Ffans** passen moltes coses durant un partit: cantes, respons preguntes, votes el MVP, confirmes assistència... I amb tanta activitat, és fàcil perdre's. Per això hem creat la pantalla **"Els meus esdeveniments"**: el teu historial personal de participació, on ho trobaràs tot ordenat i classificat. ⚽✨
 
@@ -21,10 +20,7 @@ La pantalla està dividida en **dues grans seccions**:
 
 Cada secció està numerada (per exemple, *"Esdeveniments pendents (3)"*) perquè sàpigues d'un cop d'ull quants en tens a cada banda.
 
-A més, els esdeveniments pendents s'agrupen **per partit**, i cada grup mostra el **moment** en què es pot participar:
-
-- **Abans del partit**: esdeveniments que es poden completar abans que comenci el matx.
-- **Després del partit**: esdeveniments que es poden completar un cop finalitzat el partit.
+A més, els esdeveniments pendents s'agrupen **per partit**, perquè ho tinguis tot ordenat.
 
 ---
 
@@ -34,9 +30,9 @@ A la llista hi trobaràs diferents tipus d'events, cadascun amb la seva icona:
 
 | Tipus | Icona | Què has de fer? |
 |---|---|---|
-| **Partit** | ⚽ | Confirmar assistència i accedir al widget del partit |
+| **Partit** | ⚽ | Confirmar assistència i accedir a la informació del partit |
 | **Cançó** | 🎵 | Fer sonar la cançó durant el temps indicat |
-| **Qüestionari** | ❓ | Respondre correctament les preguntes del partit |
+| **Preguntes** | ❓ | Respondre correctament les preguntes del partit |
 | **MVP** | 🏆 | Votar el jugador més valuós del partit |
 
 > Vols saber més sobre el MVP? Llegeix el post **[El MVP del partit: només el decideix l'afició que és al camp](/ca/blog/mvp_partit/)**.
@@ -70,12 +66,12 @@ Si veus un event a atesos però **sense la marca verda**, vol dir que s'ha proce
 
 ---
 
-## ⚽ Accedir al widget del partit
+## ⚽ Accedir a la informació del partit
 
-Els esdeveniments de partit tenen una particularitat: el seu nom és **un enllaç subratllat** amb una icona d'obrir en una finestra nova. Si hi fas clic, s'obre el **widget del partit**, on podràs veure:
+Els esdeveniments de partit tenen una particularitat: el seu nom és **un enllaç subratllat** amb una icona d'obrir en una finestra nova. Si hi fas clic, s'obre la **informació del partit**, on podràs veure:
 
 - Alineacions.
-- Estadístiques en directe.
+- Estadístiques.
 - Resultat.
 
 Això també funciona per als partits ja atesos, per si vols tornar a consultar la informació d'un partit antic.
@@ -84,8 +80,7 @@ Això també funciona per als partits ja atesos, per si vols tornar a consultar 
 
 ## 💡 Consells d'aficionat
 
-- **Completa els events d'abans del partit abans que comenci**: si els deixes per després, potser ja no hi podràs participar.
-- **Estigueu atents a les notificacions**: l'MVP i altres events de després del partit solen aparèixer al final del matx.
+- **Estigueu atents a les notificacions**: l'MVP i la resta d'events solen aparèixer al final del matx.
 - **No et preocupis si un event triga a comptabilitzar-se**: el sistema ha de processar totes les participacions de tots els usuaris.
 
 ---
@@ -95,9 +90,9 @@ Això també funciona per als partits ja atesos, per si vols tornar a consultar 
 - La pantalla **"Els meus esdeveniments"** organitza tota la teva participació.
 - Té **dues seccions**: pendents i atesos.
 - Els pendents s'agrupen **per partit i per moment** (abans o després del matx).
-- Hi ha **quatre tipus d'events**: Partit, Cançó, Qüestionari i MVP.
+- Hi ha **quatre tipus d'events**: Partit, Cançó, Preguntes i MVP.
 - El flux és: **pendent → participar → tancar → calcular → atès**.
-- Des dels events de partit pots **accedir al widget del partit**.
+- Des dels events de partit pots **accedir a la informació del partit**.
 
 Així que ja ho saps: la propera vegada que et preguntis *"on veig el que he fet?"*, obre Ffans, entra a **Els meus esdeveniments** i ho tindràs tot a mà. 💪📋
 

@@ -1,81 +1,17 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
-import FormattedDate from '../../../components/FormattedDate.astro';
-import { SITE_TITLE } from '../../../consts';
+import BlogPostPage from '../../../components/BlogPostPage.astro';
 
 export async function getStaticPaths() {
-  // Carreguem tots els posts (incloent el prefix de l'idioma)
-  const allPosts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
-  return allPosts.map((post) => {
-    // L'slug que es mostrarà a la URL serà sense el prefix
-    const slug = post.id.replace(/^es\//, '');
-    return {
-      params: { slug },
-      props: { post },
-    };
-  });
+  const posts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/^es\//, '') },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={`${post.data.title} - ${SITE_TITLE}`}>
-  <article class="blog-post">
-    <header>
-      <h1>{post.data.title}</h1>
-      <p class="date">
-        <FormattedDate date={post.data.pubDate} />
-        {post.data.author && <span> • {post.data.author}</span>}
-      </p>
-    </header>
-    <div class="content">
-      <Content />
-    </div>
-  </article>
-</Layout>
-
-<style>
-  /* Els mateixos estils que tenies */
-  .blog-post {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 24px var(--card-shadow);
-    color: var(--text);
-    transition: background 0.3s;
-  }
-  .blog-post h1 {
-    font-size: 2.5rem;
-    color: var(--text);
-  }
-  .blog-post .date {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  .blog-post .content {
-    line-height: 1.8;
-  }
-  .blog-post .content p {
-    margin: 1rem 0;
-  }
-  .blog-post .content a {
-    color: var(--accent);
-  }
-  .blog-post .content img {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-  @media (max-width: 720px) {
-    .blog-post {
-      padding: 1rem;
-    }
-    .blog-post h1 {
-      font-size: 1.8rem;
-    }
-  }
-</style>
+<BlogPostPage post={post} lang="es"><Content /></BlogPostPage>

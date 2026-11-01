@@ -2,11 +2,10 @@
 title: 'Events de cançó (animar)'
 pubDate: 2026-09-07
 description: 'Fes vibrar l''estadi amb la teva veu i la teva app'
+heroImage: '../../../assets/blog/event_animar_canco.png'
 author: 'Equip Ffans'
 tags: ["fútbol", "fans", "comunidad", "animar", "cánticos", "eventos"]
 ---
-
-# 🎶 Com funcionen els events de cançó a Ffans?
 
 A **Ffans** no només vas al camp, sinó que el **fas vibrar**. Els events de cançó (animar) són una de les experiències més col·lectives i emocionants que trobaràs a l'aplicació. T'expliquem com funcionen i com pots treure'n el màxim profit.
 

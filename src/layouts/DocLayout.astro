@@ -1,0 +1,164 @@
+---
+/**
+ * src/layouts/DocLayout.astro
+ *
+ * Layout únic per a les pàgines d'ajuda i legals. Abans cada pàgina portava la
+ * seva pròpia còpia de `<style is:global>` amb colors fixos, així que en mode
+ * fosc sortien fulls blancs. Ara tot passa pels tokens del tema.
+ */
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+}
+
+const { title, description, lang } = Astro.props;
+---
+
+<Layout title={title} description={description} lang={lang}>
+  <div class="doc-card">
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  /* Les classes les posa el contingut MDX, així que han de ser globals. */
+  .doc-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--card-shadow);
+    color: var(--text);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .doc-card h1 {
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.75rem;
+    font-size: 2rem;
+    margin-top: 0;
+  }
+  .doc-card h2 {
+    color: var(--accent);
+    margin-top: 1.8rem;
+    font-size: 1.4rem;
+  }
+  .doc-card h3 {
+    color: var(--text);
+    margin-top: 1.4rem;
+    font-size: 1.15rem;
+  }
+  .doc-card p,
+  .doc-card li,
+  .doc-card td,
+  .doc-card th {
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .doc-card a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .doc-card a:hover {
+    color: var(--accent-hover);
+  }
+  .doc-card ul,
+  .doc-card ol {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+  }
+  .doc-card li {
+    margin-bottom: 0.35rem;
+  }
+  .doc-card hr {
+    border: none;
+    border-top: 1px solid var(--footer-border);
+    margin: 1.5rem 0;
+  }
+  .doc-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .doc-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .doc-card th,
+  .doc-card td {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--card-border);
+    vertical-align: top;
+  }
+  .doc-card th {
+    color: var(--accent);
+  }
+  .doc-card blockquote {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--accent);
+    background: var(--code-bg);
+    border-radius: 4px;
+  }
+  .doc-card blockquote p {
+    margin: 0;
+  }
+
+  /* Caixa destacada (div.highlight): bloc amb fons i barra lateral. */
+  .doc-card div.highlight {
+    background: var(--code-bg);
+    border-left: 4px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+  }
+  .doc-card div.highlight h2 {
+    margin-top: 0;
+  }
+  .doc-card div.highlight ul {
+    margin-bottom: 0;
+  }
+
+  /* Èmfasi en línia (span.highlight): NO pot portar fons, vora ni marges,
+     perquè el text ha de continuar fluint dins del paràgraf. */
+  .doc-card span.highlight {
+    color: var(--highlight);
+    font-weight: 600;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .doc-card .footer {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--footer-border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .doc-card .footer p {
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .doc-card {
+      padding: 1.5rem;
+    }
+    .doc-card h1 {
+      font-size: 1.6rem;
+    }
+    .doc-card table {
+      font-size: 0.85rem;
+    }
+  }
+</style>

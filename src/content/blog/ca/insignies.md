@@ -2,10 +2,10 @@
 title: 'Insígnies'
 pubDate: 2026-09-01
 description: 'Què pots aconseguir?'
+heroImage: '../../../assets/blog/insignies.png'
 author: 'Equip Ffans'
 tags: ["futbol", "fans", "comunitat","insignies","events"]
 ---
-# 🏅 Com funcionen les insígnies a Ffans?
 
 A **Ffans**, cada partit, cada càntic i cada resposta demostra la teva passió. Però volem anar més enllà: volem reconèixer la teva trajectòria i el teu compromís amb el teu equip. Per això hem creat un sistema d’**insígnies** que evoluciona amb tu. Et presentem com funcionen, què les activa i com pots arribar als nivells més alts. ⚽🔥
 

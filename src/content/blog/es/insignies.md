@@ -2,10 +2,10 @@
 title: 'Insignias'
 pubDate: 2026-09-01
 description: '¿Qué puedes conseguir?'
+heroImage: '../../../assets/blog/insignies.png'
 author: 'Equipo Ffans'
 tags: ["fútbol", "fans", "comunidad", "insignias", "eventos"]
 ---
-# 🏅 ¿Cómo funcionan las insignias en Ffans?
 
 En **Ffans**, cada partido, cada canto y cada respuesta demuestra tu pasión. Pero queremos ir más allá: queremos reconocer tu trayectoria y tu compromiso con tu equipo. Por eso hemos creado un sistema de **insignias** que evoluciona contigo. Te presentamos cómo funcionan, qué las activa y cómo puedes llegar a los niveles más altos. ⚽🔥
 
